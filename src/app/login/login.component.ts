@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -8,9 +9,25 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  user = {
+    email : "" ,
+    password : ""
+  } ;
+
+  cookieValue : any ;
+
+  constructor(private http: HttpClient, private cookieService: CookieService) { }
 
   ngOnInit(): void {
+  }
+
+  submitForm(user: any){
+    this.http.post('http://localhost:3000/auth-client/signin' , user ,{withCredentials: true})
+    .subscribe(result => {
+      console.log(result) ; 
+      console.log(this.cookieService.getAll()) ;
+      
+    }) ;
   }
 
 }

@@ -7,13 +7,26 @@
                     <h6>Connectez-vous en tant que client </h6>
                 </div>
                 <br>
-                <form>
+                <form #form="ngForm" (submit)="submitForm(user)">
                     <div class="form-group">
-                      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Adresse mail">
+                      <input 
+                        type="email" 
+                        class="form-control" 
+                        name="email" 
+                        aria-describedby="emailHelp" 
+                        placeholder="Adresse mail"
+                        [(ngModel)]="user.email"
+                      >
                     </div>
                     <br/>
                     <div class="form-group">
-                      <input type="password" class="form-control" id="password" placeholder="Mot de passe">
+                      <input 
+                        type="password" 
+                        class="form-control" 
+                        name="password" 
+                        placeholder="Mot de passe"
+                        [(ngModel)]="user.password"
+                      >
                     </div>
                     <br>
                     <br/>

@@ -7,21 +7,21 @@
                     <h6>Inscrivez-vous en tant que client</h6>
                 </div>
                 <br>
-                <form>
+                <form #form="ngForm" (submit)="submitForm(user)">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Prénom">
+                        <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="Prénom"  [(ngModel)]="user.name">
                       </div>
                       <br/>
                     <div class="form-group">
-                      <input type="text" class="form-control" id="lastNAme" aria-describedby="lastName" placeholder="Nom">
+                      <input type="text" class="form-control" name="lastNAme" aria-describedby="lastName" placeholder="Nom" [(ngModel)]="user.FamilyName">
                     </div>
                     <br/>
                     <div class="form-group">
-                      <input type="number" class="form-control" id="age" placeholder="Âge">
+                      <input type="number" class="form-control" name="age" placeholder="Âge"  [(ngModel)]="user.age">
                     </div>
                     <br/>
                     <div class="form-group">
-                        <select class="form-control" placeholder="Ville">
+                        <select class="form-control" placeholder="Ville" name="ville"  [(ngModel)]="user.city">
                             <option>Tunis</option>
                             <option>Sousse</option>
                             <option>Sfax</option>
@@ -31,26 +31,22 @@
                       </div>
                       <br/>
                       <div class="form-group">
-                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Adresse mail">
-                      </div>
-                      <br/>
-                      <div class="form-group">
-                          <input type="text" class="form-control" id="phone" aria-describedby="phoneHelp" placeholder="numéro de télèphone">
+                        <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Adresse mail"  [(ngModel)]="user.email">
                       </div>
                       <br/>
                       
                       
                       <div class="form-group">
-                        <input type="password" class="form-control" id="password" placeholder="Mot de passe">
+                        <input type="password" class="form-control" name="password" placeholder="Mot de passe"  [(ngModel)]="user.password">
                       </div>
                       <br/>  
                       <div class="form-group">
-                        <input type="password" class="form-control" id="cpassword" placeholder="Confirmation du mot de passe">
+                        <input type="password" class="form-control" name="cpassword" placeholder="Confirmation du mot de passe"  [(ngModel)]="user.confirmPassword">
                       </div>
                       <br/>
                       
                     <br>
-                    <button type="submit" class="btn btn-primary">S'inscrire</button>
+                    <button type="submit" class="btn btn-primary" routerLink="/">S'inscrire</button>
                   </form>
                   <a style="color: black; margin-top: 10px;" routerLink="/login">Avez-vous déja un compte? Connectez-vous.</a>
             </div>

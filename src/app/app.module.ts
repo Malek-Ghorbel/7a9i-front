@@ -27,6 +27,7 @@ import { SignupLawyerComponent } from './signup-lawyer/signup-lawyer.component';
 import { SignupClientComponent } from './signup-client/signup-client.component';
 
 import {HttpClientModule} from '@angular/common/http'
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import {HttpClientModule} from '@angular/common/http'
     MdbValidationModule,
     BrowserAnimationsModule,
 
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

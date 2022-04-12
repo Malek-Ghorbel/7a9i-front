@@ -22,13 +22,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './login/login.component';
+import { SignupLawyerComponent } from './signup-lawyer/signup-lawyer.component';
+import { SignupClientComponent } from './signup-client/signup-client.component';
+
+import {HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    SignupLawyerComponent,
+    SignupClientComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +56,9 @@ import { FooterComponent } from './footer/footer.component';
     MdbTabsModule,
     MdbTooltipModule,
     MdbValidationModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

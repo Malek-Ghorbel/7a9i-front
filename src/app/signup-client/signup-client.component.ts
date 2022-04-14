@@ -19,7 +19,7 @@ export class SignupClientComponent implements OnInit {
     email:"",
     password:"",
     confirmPassword:"",
-    type:"string"
+    type:"client"
 }
   cookieValue : any ;
 

@@ -38,6 +38,24 @@ export class LoginComponent implements OnInit {
       console.log(this.cookieService.getAll()) ;
       
     }) ;
+
+  /*submitFormClient(user: any){
+    this.http.post('http://localhost:3000/auth-client/signin' , user ,{withCredentials: true})
+    .subscribe(result => {
+      console.log(result) ; 
+      console.log(this.cookieService.getAll()) ;
+      
+    }) ;
   }
+
+  submitFormLawyer(user: any){
+    this.http.post('http://localhost:3000/auth-lawyer/signin' , user ,{withCredentials: true})
+    .subscribe(result => {
+      console.log(result) ; 
+      console.log(this.cookieService.getAll()) ;
+      
+    }) ;
+  }*/
+
 
 }

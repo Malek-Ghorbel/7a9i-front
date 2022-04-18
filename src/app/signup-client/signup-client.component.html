@@ -92,12 +92,12 @@
                         name="confirmPassword" 
                         placeholder="Confirmation du mot de passe"  
                         [(ngModel)]="user.confirmPassword">
-                        <span class="text-danger" *ngIf="signupClientForm.controls['confirmPasswords'].dirty && signupClientForm.hasError('required','confirmPassword')">confirmez votre mot de passe</span>
+                        <span class="text-danger" *ngIf="signupClientForm.controls['confirmPassword'].dirty && signupClientForm.hasError('required','confirmPassword')">confirmez votre mot de passe</span>
                       </div>
                       <br/>
                       
                     <br>
-                    <button type="submit" [disabled]="!signupClientForm.valid" class="btn btn-primary" routerLink="/" >S'inscrire</button>
+                    <button type="submit" [disabled]="!signupClientForm.valid" class="btn btn-primary" (click)="submitForm(user)">S'inscrire</button>
                   </form>
                   <a style="color: black; margin-top: 10px;" routerLink="/login">Avez-vous déja un compte? Connectez-vous.</a>
             </div>

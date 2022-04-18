@@ -28,6 +28,7 @@ import { SignupClientComponent } from './signup-client/signup-client.component';
 
 import {HttpClientModule} from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProblemComponent } from './problem/problem.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     LoginComponent,
     SignupLawyerComponent,
-    SignupClientComponent
+    SignupClientComponent,
+    ProblemComponent
   ],
   imports: [
     BrowserModule,

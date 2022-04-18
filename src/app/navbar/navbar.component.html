@@ -3,7 +3,7 @@
     <!-- Container wrapper -->
     <div class="container">
       <!-- Navbar brand -->
-      <a class="navbar-brand me-2" href="#">
+      <a class="navbar-brand me-2" routerLink="**">
         <img
           src="assets/img/159.png"
           height="40"
@@ -30,7 +30,7 @@
         <!-- Left links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#">Acceuil</a>
+            <a class="nav-link" routerLink="**">Acceuil</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Faire une demande</a>
@@ -42,11 +42,14 @@
         <!-- Left links -->
   
         <div class="d-flex align-items-center">
-          <button type="button" class="btn btn-link px-3 me-2" routerLink="login">
+          <button type="button" class="btn btn-link px-3 me-2" routerLink="login" *ngIf="!isAuth()">
             Se connecter
           </button>
-          <button type="button" class="btn btn-primary me-3" [routerLink]="['/signupClient']">
+          <button type="button" class="btn btn-primary me-3" *ngIf="!isAuth()" routerLink="/signupClient">
             S'inscrire
+          </button>
+          <button type="button" class="btn btn-primary me-3" *ngIf="isAuth()" routerLink="/signupClient">
+            Se déconnecter
           </button>
         </div>
       </div>

@@ -34,7 +34,7 @@
                     </div>
                     <br>
                     <br/>
-                    <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Se connecter</button>
+                    <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary" (click)="submitForm(user)">Se connecter</button>
                   </form>
                   <a style="color:  black; margin-top: 10px;" routerLink="/signup">Inscrivez-vous si vous n'avez pas de compte</a>
             </div>

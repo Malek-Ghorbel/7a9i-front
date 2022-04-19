@@ -28,7 +28,7 @@ export class SignupClientComponent implements OnInit {
     FamilyName :new FormControl('', Validators.required),
     age : new FormControl('', Validators.required),
     city : new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
     confirmPassword : new FormControl('', Validators.required)
   })
@@ -42,8 +42,9 @@ export class SignupClientComponent implements OnInit {
       age:['', Validators.required],
       city:['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required]
+      password: ['', [Validators.required, Validators.minLength(9)]],
+      confirmPassword: ['', Validators.required],
+      type:["string"]
   })
   }
 
@@ -54,8 +55,6 @@ export class SignupClientComponent implements OnInit {
       console.log(this.cookieService.getAll()) ;
     }) ;
    }
-
-  
   
 }
 

@@ -17,7 +17,7 @@
                         aria-describedby="name" 
                         placeholder="Prénom"  
                         [(ngModel)]="user.name">
-                        <span class="text-danger" *ngIf="signupClientForm.controls['name'].dirty && signupClientForm.hasError('required','name')">entrez votre prénom</span>
+                        <span class="text-danger" *ngIf="signupClientForm.controls['name'].dirty && signupClientForm.hasError('required','name')">Entrez votre prénom</span>
                       </div>
                       <br/>
                     <div class="form-group">
@@ -29,7 +29,7 @@
                       aria-describedby="FamilyName" 
                       placeholder="Nom" 
                       [(ngModel)]="user.FamilyName">
-                      <span class="text-danger" *ngIf="signupClientForm.controls['FamilyName'].dirty && signupClientForm.hasError('required','FamilyName')">entrez votre nom</span>
+                      <span class="text-danger" *ngIf="signupClientForm.controls['FamilyName'].dirty && signupClientForm.hasError('required','FamilyName')">Entrez votre nom</span>
                     </div>
                     <br/>
                     <div class="form-group">
@@ -40,7 +40,7 @@
                       name="age" 
                       placeholder="Âge"  
                       [(ngModel)]="user.age">
-                      <span class="text-danger" *ngIf="signupClientForm.controls['age'].dirty && signupClientForm.hasError('required','age')">entrez votre âge</span>
+                      <span class="text-danger" *ngIf="signupClientForm.controls['age'].dirty && signupClientForm.hasError('required','age')">Entrez votre âge</span>
                     </div>
                     <br/>
                     <div class="form-group">
@@ -56,7 +56,7 @@
                             <option>Kairouan</option>
                             <option>Monastir</option>
                           </select>
-                          <span class="text-danger" *ngIf="signupClientForm.controls['city'].dirty && signupClientForm.hasError('required','city')">entrez votre ville</span>
+                          <span class="text-danger" *ngIf="signupClientForm.controls['city'].dirty && signupClientForm.hasError('required','city')">Entrez votre ville</span>
                       </div>
                       <br/>
                       <div class="form-group">
@@ -68,11 +68,10 @@
                         aria-describedby="emailHelp" 
                         placeholder="Adresse mail"  
                         [(ngModel)]="user.email">
-                        <span class="text-danger" *ngIf="signupClientForm.controls['email'].dirty && signupClientForm.hasError('required','email')">entrez votre adresse mail</span>
+                        <span class="text-danger" *ngIf="signupClientForm.controls['email'].dirty && signupClientForm.hasError('required','email')">Entrez votre adresse mail</span>
+                        <span class="text-danger" *ngIf="signupClientForm.controls['email'].dirty && signupClientForm.hasError('email','email')">Adresse mail invalide</span>
                       </div>
                       <br/>
-                      
-                      
                       <div class="form-group">
                         <input 
                         type="password" 
@@ -81,7 +80,7 @@
                         name="password" 
                         placeholder="Mot de passe"  
                         [(ngModel)]="user.password">
-                        <span class="text-danger" *ngIf="signupClientForm.controls['password'].dirty && signupClientForm.hasError('required','password')">entrez votre mot de passe</span>
+                        <span class="text-danger" *ngIf="signupClientForm.controls['password'].dirty && signupClientForm.hasError('required','password')">Entrez votre mot de passe</span>
                       </div>
                       <br/>  
                       <div class="form-group">
@@ -92,7 +91,7 @@
                         name="confirmPassword" 
                         placeholder="Confirmation du mot de passe"  
                         [(ngModel)]="user.confirmPassword">
-                        <span class="text-danger" *ngIf="signupClientForm.controls['confirmPassword'].dirty && signupClientForm.hasError('required','confirmPassword')">confirmez votre mot de passe</span>
+                        <span class="text-danger" *ngIf="signupClientForm.controls['confirmPassword'].dirty && signupClientForm.hasError('required','confirmPassword')">Confirmez votre mot de passe</span>
                       </div>
                       <br/>
                       

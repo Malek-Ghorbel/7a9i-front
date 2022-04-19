@@ -54,6 +54,8 @@ export class SignupClientComponent implements OnInit {
       console.log(this.cookieService.getAll()) ;
     }) ;
    }
+
+  
   
 }
 

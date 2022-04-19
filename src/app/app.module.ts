@@ -26,9 +26,12 @@ import { LoginComponent } from './login/login.component';
 import { SignupLawyerComponent } from './signup-lawyer/signup-lawyer.component';
 import { SignupClientComponent } from './signup-client/signup-client.component';
 
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {HttpClientModule} from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProblemComponent } from './problem/problem.component';
+import { ProfileLawyerComponent } from './profile/profile-lawyer/profile-lawyer.component';
+import { ProfileClientComponent } from './profile/profile-client/profile-client.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,9 @@ import { ProblemComponent } from './problem/problem.component';
     LoginComponent,
     SignupLawyerComponent,
     SignupClientComponent,
-    ProblemComponent
+    ProblemComponent,
+    ProfileLawyerComponent,
+    ProfileClientComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +65,7 @@ import { ProblemComponent } from './problem/problem.component';
     MdbTooltipModule,
     MdbValidationModule,
     BrowserAnimationsModule,
-
+    MDBBootstrapModule.forRoot(),
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule

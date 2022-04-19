@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder,FormControl, FormGroup, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -20,13 +21,36 @@ export class SignupLawyerComponent implements OnInit {
     password:"",
     confirmPassword:"",
     type:"lawyer"
-}
+  }
 
   cookieValue : any ;
 
-  constructor(private http: HttpClient, private cookieService: CookieService) { }
+  public signupLawyerForm = new FormGroup ({
+    name: new FormControl('', Validators.required),
+    FamilyName :new FormControl('', Validators.required),
+    age : new FormControl('', Validators.required),
+    city : new FormControl('', Validators.required),
+    speciality : new FormControl('', Validators.required),
+    description : new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', Validators.required),
+    confirmPassword : new FormControl('', Validators.required)
+  })
+
+  constructor(private http: HttpClient, private cookieService: CookieService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.signupLawyerForm = this.formBuilder.group({
+      name: ['',Validators.required],
+      FamilyName: ['', Validators.required],
+      age:['', Validators.required],
+      city:['', Validators.required],
+      speciality:['', Validators.required],
+      description:['', Validators.required],
+      email: ['',[Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required]
+  }, );
   }
 
   submitForm(lawyer: any){

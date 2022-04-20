@@ -10,7 +10,7 @@ import { SignupLawyerComponent } from './signup-lawyer/signup-lawyer.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path:'signupLawyer', component:SignupLawyerComponent},
+  {path:'signuplawyer', component:SignupLawyerComponent},
   {path:'signupClient', component:SignupClientComponent},
   {path:'problem', component:ProblemComponent},
   {path : 'profileLawyer' , component: ProfileLawyerComponent},

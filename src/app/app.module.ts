@@ -65,7 +65,7 @@ import { ProfileClientComponent } from './profile/profile-client/profile-client.
     MdbTooltipModule,
     MdbValidationModule,
     BrowserAnimationsModule,
-    MDBBootstrapModule.forRoot(),
+    
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule

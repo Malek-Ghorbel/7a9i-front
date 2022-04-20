@@ -39,10 +39,10 @@ export class SignupClientComponent implements OnInit {
     this.signupClientForm = this.formBuilder.group({
       name: ['', Validators.required],
       FamilyName: ['', Validators.required],
-      age:['', Validators.required],
+      age:['',[ Validators.required, Validators.min(18)]],
       city:['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(9)]],
       confirmPassword: ['', Validators.required]
   })
   }

@@ -42,20 +42,21 @@
                     [(ngModel)]="lawyer.age"
                   >
                   <span class="text-danger" *ngIf="signupLawyerForm.controls['age'].dirty && signupLawyerForm.hasError('required','age')">Entrez votre âge</span>
+                  <span class="text-danger" *ngIf="signupLawyerForm.controls['age'].dirty && signupLawyerForm.hasError('min','age')">Votre âge doit depsser les 25 ans</span>
                 </div>
                 <br/>
                 <div class="form-group">
                   <select 
                     class="form-control" 
                     formControlName="city"
-                    placeholder="Ville" 
                     name="city"  
                     [(ngModel)]="lawyer.city">
-                    <option>Tunis</option>
-                    <option>Sousse</option>
-                    <option>Sfax</option>
-                    <option>Kairouan</option>
-                    <option>Monastir</option>
+                    <option value="" disabled selected hidden>Ville</option>
+                    <option value="0">Tunis</option>
+                    <option value="1">Sousse</option>
+                    <option value="2">Sfax</option>
+                    <option value="3">Kairouan</option>
+                    <option value="4">Monastir</option>
                   </select>
                   <span class="text-danger" *ngIf="signupLawyerForm.controls['city'].dirty && signupLawyerForm.hasError('required','city')">Entrez votre ville</span>
                 </div>

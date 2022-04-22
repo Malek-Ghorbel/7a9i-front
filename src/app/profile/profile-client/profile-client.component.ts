@@ -49,7 +49,11 @@ export class ProfileClientComponent implements OnInit {
       
   
   }
+<<<<<<< HEAD
 
+=======
+  }
+>>>>>>> 34bde9421460b6098a8bcfd705ce40788a769627
 
 }
 }

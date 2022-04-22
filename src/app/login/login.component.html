@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div style='background-image:url("../../assets/img/signup.png");height:700px;width:100%;background-repeat: no-repeat;background-size: cover;'>
     <div class="div container b">
         <div class="card">
@@ -36,6 +37,27 @@
           </form>
           <a style="color:  black; margin-top: 10px;" routerLink="/signupClient">Inscrivez-vous si vous n'avez pas de compte</a>
         </div>
+=======
+<div class="div container b">
+  <div class="card">
+    <div class="text-center">
+        <h1>Se connecter</h1>
+        <h6>Connectez-vous en tant que client </h6>
+    </div>
+    <br>
+    <form [formGroup]="loginForm"  (ngsubmit)="submitForm(user)">
+      <div class="form-group">
+        <input 
+          type="email" 
+          formControlName="email"
+          class="form-control" 
+          name="email" 
+          aria-describedby="emailHelp" 
+          placeholder="Adresse mail"
+          [(ngModel)]="user.email"
+        >
+        <span class="text-danger" *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required','email')">entrez votre e-mail</span>
+>>>>>>> 34bde9421460b6098a8bcfd705ce40788a769627
       </div>
  
 </div>

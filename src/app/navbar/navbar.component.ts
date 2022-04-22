@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-navbar',
@@ -8,20 +8,27 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private cookieService:CookieService) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
 
   isAuth() : boolean {
-    const token = this.cookieService.get('auth') ;
-    if (token)
-      return true ;
-    else 
-      return false ;
+    if (localStorage.getItem("token")) return true
+    else return false ;
+  }
+
+  
+  getProfile(){
+    const token =localStorage.getItem("token");
+    this.http.get('http://localhost:3000/auth-client/info/'+token)
+    .subscribe((result :any)  => {
+      console.log(result);
+    }) ;
   }
 
   signout() : void {
-    this.cookieService.deleteAll() ;
+    localStorage.removeItem("token");
   }
- }
+ 
+}

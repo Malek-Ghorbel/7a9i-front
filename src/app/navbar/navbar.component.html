@@ -48,7 +48,10 @@
           <button type="button" class="btn btn-primary me-3" *ngIf="!isAuth()" routerLink="/signupClient">
             S'inscrire
           </button>
-          <button type="button" class="btn btn-primary me-3" *ngIf="isAuth()" routerLink="/signupClient">
+          <button type="button" class="btn btn-primary me-3"  *ngIf="isAuth()" routerLink="/profileClient">
+            Profile
+          </button>
+          <button type="button" class="btn btn-primary me-3" (click)="signout()" *ngIf="isAuth()" routerLink="/">
             Se déconnecter
           </button>
         </div>

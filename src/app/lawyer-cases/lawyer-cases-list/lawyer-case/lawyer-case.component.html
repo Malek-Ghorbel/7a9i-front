@@ -1,0 +1,14 @@
+<div class="card">
+    <div class="card-header">{{case.clientName}}</div>
+    <div class="card-body">
+      <h5 class="card-title">{{case.name}}</h5>
+      <p class="card-text">
+        {{case.description}}
+      </p>
+      <button 
+        type="button" 
+        class="btn btn-outline-danger btn-rounded"
+        (click)="openModal()">Modifier</button>
+    </div>
+  </div>
+  

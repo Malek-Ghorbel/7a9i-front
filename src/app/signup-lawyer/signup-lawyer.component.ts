@@ -43,12 +43,12 @@ export class SignupLawyerComponent implements OnInit {
     this.signupLawyerForm = this.formBuilder.group({
       name: ['',Validators.required],
       FamilyName: ['', Validators.required],
-      age:['', Validators.required],
+      age:['', [Validators.required, Validators.min(25)]],
       city:['', Validators.required],
       speciality:['', Validators.required],
       description:['', Validators.required],
       email: ['',[Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(9)]],
       confirmPassword: ['', Validators.required]
   }, );
   }

@@ -32,6 +32,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProblemComponent } from './problem/problem.component';
 import { ProfileLawyerComponent } from './profile/profile-lawyer/profile-lawyer.component';
 import { ProfileClientComponent } from './profile/profile-client/profile-client.component';
+import { LawyerCasesComponent } from './lawyer-cases/lawyer-cases.component';
+import { LawyerCasesListComponent } from './lawyer-cases/lawyer-cases-list/lawyer-cases-list.component';
+import { LawyerCaseComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case/lawyer-case.component';
+import { ModifModalComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case/modif-modal/modif-modal.component';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +49,11 @@ import { ProfileClientComponent } from './profile/profile-client/profile-client.
     SignupClientComponent,
     ProblemComponent,
     ProfileLawyerComponent,
-    ProfileClientComponent
+    ProfileClientComponent,
+    LawyerCasesComponent,
+    LawyerCasesListComponent,
+    LawyerCaseComponent,
+    ModifModalComponent,
   ],
   imports: [
     BrowserModule,

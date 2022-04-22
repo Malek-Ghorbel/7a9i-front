@@ -1,0 +1,15 @@
+<div class="container">
+<div *ngFor="let i of cases">
+    <app-lawyer-case 
+            *ngIf="i.etat === etat"
+            [case]="i" >
+    </app-lawyer-case>
+    <br>
+</div>
+<div *ngIf="etat === 'en cours'">
+    <h3 *ngIf="nbencours === 0">Il n'y a aucune affaire en cours</h3>  
+</div>
+<div *ngIf="etat === 'terminée'">
+    <h3 *ngIf="nbterm === 0">Il n'y a aucune affaire terminée</h3>  
+</div>
+</div>

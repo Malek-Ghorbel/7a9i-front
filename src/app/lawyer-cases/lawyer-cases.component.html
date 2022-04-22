@@ -1,0 +1,17 @@
+
+<div class="btn-group" >
+    <button 
+        type="button" 
+       [ngClass]="btnencours"
+        data-mdb-color="dark"
+        (click)="onShowEncours()">En cours
+    </button>
+    <button 
+        type="button" 
+        [ngClass]="btnterm"
+        data-mdb-color="dark"
+        (click)="onShowTermine()">Terminée
+    </button>
+</div>
+<app-lawyer-cases-list  [etat]="etat" ></app-lawyer-cases-list>
+

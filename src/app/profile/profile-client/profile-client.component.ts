@@ -36,19 +36,20 @@ export class ProfileClientComponent implements OnInit {
       console.log(this.client);
     });
   }
-/*
+
   setImage(event: any){
     const file = event.target.files[0].name ;
     console.log(file);
     let reader = new FileReader();
     reader.onload = () => {
-      file.fileAsBase64 = reader.result.toString();
+      //file.fileAsBase64 = reader.result.toString();
       this.client.image= file ;
       this.http.post("http://localhost:3000/auth-client/picture/"+this.token,file)
         .subscribe(result => console.log(result)) ;
       
   
   }
-*/
 
+
+}
 }

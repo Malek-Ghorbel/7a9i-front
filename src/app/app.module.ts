@@ -38,6 +38,7 @@ import { LawyerCaseComponent } from './lawyer-cases/lawyer-cases-list/lawyer-cas
 import { ModifModalComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case/modif-modal/modif-modal.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +55,7 @@ import { ModifModalComponent } from './lawyer-cases/lawyer-cases-list/lawyer-cas
     LawyerCasesListComponent,
     LawyerCaseComponent,
     ModifModalComponent,
+  
   ],
   imports: [
     BrowserModule,

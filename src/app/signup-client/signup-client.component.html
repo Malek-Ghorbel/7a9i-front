@@ -1,101 +1,102 @@
 <div style='background-image:url("../../assets/img/im.jpg.png");height:900px;width:100%;background-repeat: no-repeat;background-size: cover;'>
- <div  class="div container" >
-  <div class="card">
-      <div class="text-center">
-          <h1>S'inscrire</h1>
-          <h6>Inscrivez-vous en tant que client</h6>
-      </div>
-      <br>
-      <form [formGroup]="signupClientForm" (ngsubmit)="submitForm(user)">
-      <div class="form-group">
-          <input 
-          type="text" 
-          formControlName="name"
-          class="form-control" 
-          name="name" 
-          aria-describedby="name" 
-          placeholder="Prénom"  
-          [(ngModel)]="user.name">
-          <span class="text-danger" *ngIf="signupClientForm.controls['name'].dirty && signupClientForm.hasError('required','name')">Entrez votre prénom</span>
-        </div>
-        <br/>
-      <div class="form-group">
-        <input 
-        type="text" 
-        formControlName="FamilyName"
-        class="form-control" 
-        name="FamilyName" 
-        aria-describedby="FamilyName" 
-        placeholder="Nom" 
-        [(ngModel)]="user.FamilyName">
-        <span class="text-danger" *ngIf="signupClientForm.controls['FamilyName'].dirty && signupClientForm.hasError('required','FamilyName')">Entrez votre nom</span>
-      </div>
-      <br/>
-      <div class="form-group">
-        <input 
-        type="number" 
-        formControlName="age"
-        class="form-control" 
-        name="age" 
-        placeholder="Âge"  
-        [(ngModel)]="user.age">
-        <span class="text-danger" *ngIf="signupClientForm.controls['age'].dirty && signupClientForm.hasError('required','age')">Entrez votre âge</span>
-      </div>
-      <br/>
-      <div class="form-group">
-        <select 
-        class="form-control" 
-        formControlName="city"
-        placeholder="Ville" 
-        name="city"  
-        [(ngModel)]="user.city">
-            <option>Tunis</option>
-            <option>Sousse</option>
-            <option>Sfax</option>
-            <option>Kairouan</option>
-            <option>Monastir</option>
-          </select>
-          <span class="text-danger" *ngIf="signupClientForm.controls['city'].dirty && signupClientForm.hasError('required','city')">Entrez votre ville</span>
-      </div>
-      <br/>
-      <div class="form-group">
-        <input 
-        type="email"
-        formControlName="email" 
-        class="form-control" 
-        name="email" 
-        aria-describedby="emailHelp" 
-        placeholder="Adresse mail"  
-        [(ngModel)]="user.email">
-        <span class="text-danger" *ngIf="signupClientForm.controls['email'].dirty && signupClientForm.hasError('required','email')">Entrez votre adresse mail</span>
-        <span class="text-danger" *ngIf="signupClientForm.controls['email'].dirty && signupClientForm.hasError('email','email')">Adresse mail invalide</span>
-      </div>
-      <br/>
-      <div class="form-group">
-        <input 
-        type="password" 
-        formControlName="password"
-        class="form-control" 
-        name="password" 
-        placeholder="Mot de passe"  
-        [(ngModel)]="user.password">
-        <span class="text-danger" *ngIf="signupClientForm.controls['password'].dirty && signupClientForm.hasError('required','password')">Entrez votre mot de passe</span>
-      </div>
-      <br/>  
-      <div class="form-group">
-        <input 
-        type="password" 
-        formControlName="confirmPassword"
-        class="form-control" 
-        name="confirmPassword" 
-        placeholder="Confirmation du mot de passe"  
-        [(ngModel)]="user.confirmPassword">
-        <span class="text-danger" *ngIf="signupClientForm.controls['confirmPassword'].dirty && signupClientForm.hasError('required','confirmPassword')">Confirmez votre mot de passe</span>
-      </div>
-      <br/>
-      <button type="submit" [disabled]="!signupClientForm.valid" class="btn btn-primary" (click)="submitForm(user)">S'inscrire</button>
-    </form>
-    <a style="color: black; margin-top: 10px;" routerLink="/login">Avez-vous déja un compte? Connectez-vous.</a>
+  <div  class="div container" >
+   <div class="card">
+       <div class="text-center">
+           <h1>S'inscrire</h1>
+           <h6>Inscrivez-vous en tant que client</h6>
+       </div>
+       <br>
+       <form [formGroup]="signupClientForm" (ngsubmit)="submitForm(user)">
+       <div class="form-group">
+           <input 
+           type="text" 
+           formControlName="name"
+           class="form-control" 
+           name="name" 
+           aria-describedby="name" 
+           placeholder="Prénom"  
+           [(ngModel)]="user.name">
+           <span class="text-danger" *ngIf="signupClientForm.controls['name'].dirty && signupClientForm.hasError('required','name')">Entrez votre prénom</span>
+         </div>
+         <br/>
+       <div class="form-group">
+         <input 
+         type="text" 
+         formControlName="FamilyName"
+         class="form-control" 
+         name="FamilyName" 
+         aria-describedby="FamilyName" 
+         placeholder="Nom" 
+         [(ngModel)]="user.FamilyName">
+         <span class="text-danger" *ngIf="signupClientForm.controls['FamilyName'].dirty && signupClientForm.hasError('required','FamilyName')">Entrez votre nom</span>
+       </div>
+       <br/>
+       <div class="form-group">
+         <input 
+         type="number" 
+         formControlName="age"
+         class="form-control" 
+         name="age" 
+         placeholder="Âge"  
+         [(ngModel)]="user.age">
+         <span class="text-danger" *ngIf="signupClientForm.controls['age'].dirty && signupClientForm.hasError('required','age')">Entrez votre âge</span>
+       </div>
+       <br/>
+       <div class="form-group">
+         <select 
+         class="form-control" 
+         formControlName="city"
+         placeholder="Ville" 
+         name="city"  
+         [(ngModel)]="user.city">
+             <option>Tunis</option>
+             <option>Sousse</option>
+             <option>Sfax</option>
+             <option>Kairouan</option>
+             <option>Monastir</option>
+           </select>
+           <span class="text-danger" *ngIf="signupClientForm.controls['city'].dirty && signupClientForm.hasError('required','city')">Entrez votre ville</span>
+       </div>
+       <br/>
+       <div class="form-group">
+         <input 
+         type="email"
+         formControlName="email" 
+         class="form-control" 
+         name="email" 
+         aria-describedby="emailHelp" 
+         placeholder="Adresse mail"  
+         [(ngModel)]="user.email">
+         <span class="text-danger" *ngIf="signupClientForm.controls['email'].dirty && signupClientForm.hasError('required','email')">Entrez votre adresse mail</span>
+         <span class="text-danger" *ngIf="signupClientForm.controls['email'].dirty && signupClientForm.hasError('email','email')">Adresse mail invalide</span>
+       </div>
+       <br/>
+       <div class="form-group">
+         <input 
+         type="password" 
+         formControlName="password"
+         class="form-control" 
+         name="password" 
+         placeholder="Mot de passe"  
+         [(ngModel)]="user.password">
+         <span class="text-danger" *ngIf="signupClientForm.controls['password'].dirty && signupClientForm.hasError('required','password')">Entrez votre mot de passe</span>
+       </div>
+       <br/>  
+       <div class="form-group">
+         <input 
+         type="password" 
+         formControlName="confirmPassword"
+         class="form-control" 
+         name="confirmPassword" 
+         placeholder="Confirmation du mot de passe"  
+         [(ngModel)]="user.confirmPassword">
+         <span class="text-danger" *ngIf="signupClientForm.controls['confirmPassword'].dirty && signupClientForm.hasError('required','confirmPassword')">Confirmez votre mot de passe</span>
+       </div>
+       <br/>
+       
+       <button  mdbBtn type="submit" [disabled]="!signupClientForm.valid" class="btn" color="deep-orange" (click)="submitForm(user)"  mdbWavesEffect>S'inscrire</button>
+     </form>
+     <a style="color: black; margin-top: 10px;" routerLink="/login">Avez-vous déja un compte? Connectez-vous.</a>
+   </div>
   </div>
  </div>
-</div>

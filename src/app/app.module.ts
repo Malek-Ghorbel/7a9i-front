@@ -26,7 +26,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupLawyerComponent } from './signup-lawyer/signup-lawyer.component';
 import { SignupClientComponent } from './signup-client/signup-client.component';
 
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { ButtonsModule, MDBBootstrapModule } from 'angular-bootstrap-md';
 import {HttpClientModule} from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProblemComponent } from './problem/problem.component';
@@ -64,6 +64,7 @@ import { ModifModalComponent } from './lawyer-cases/lawyer-cases-list/lawyer-cas
     MdbCarouselModule,
     MdbCheckboxModule,
     MdbCollapseModule,
+    ButtonsModule,
     MdbDropdownModule,
     MdbFormsModule,
     MdbModalModule,

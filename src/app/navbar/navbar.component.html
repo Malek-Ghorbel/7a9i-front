@@ -42,16 +42,17 @@
       <!-- Left links -->
 
       <div class="d-flex align-items-center">
-        <button type="button" class="btn btn-link px-3 me-2" routerLink="login" *ngIf="!isAuth()">
+        <button mdbBtn type="button" class="btn btn-link px-3 me-2"  routerLink="login" *ngIf="!isAuth()" mdbWavesEffect>
           Se connecter
         </button>
-        <button type="button" class="btn btn-primary me-3" *ngIf="!isAuth()" routerLink="/signupClient">
+
+        <button mdbBtn type="button" class="btn  me-3" color="deep-orange" *ngIf="!isAuth()" routerLink="/signupClient" mdbWavesEffect>
           S'inscrire
         </button>
         <button type="button" class="btn me-2" routerLink="profileClient" *ngIf="isAuth()">
           <i class="fas fa-user"></i>
         </button>
-        <button type="button" class="btn btn-primary me-3" (click)="signout()" *ngIf="isAuth()" routerLink="/">
+        <button mdbBtn type="button" class="btn btn-primary me-3" color="deep-orange" (click)="signout()" *ngIf="isAuth()" routerLink="/" mdbWavesEffect>
           Se déconnecter
         </button>
       </div>

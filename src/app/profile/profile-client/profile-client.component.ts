@@ -17,7 +17,7 @@ export class ProfileClientComponent implements OnInit {
     age:"",
     adress:"",
     email:"",
-    image:"https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+    image:""
   }
   ngOnInit(): void {
     this.getProfile();
@@ -33,21 +33,29 @@ export class ProfileClientComponent implements OnInit {
       this.client.age=result.age;
       this.client.adress=result.adress;
       this.client.email=result.email;
-      console.log(this.client);
+      if(result.image === undefined){
+        this.client.image="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" ;
+      }else{
+        this.client.image=result.image;
+      }
+      
     });
   }
 
   setImage(event: any){
-    const file = event.target.files[0].name ;
-    console.log(file);
-    let reader = new FileReader();
-    reader.onload = () => {
-      //file.fileAsBase64 = reader.result.toString();
-      this.client.image= file ;
-      this.http.post("http://localhost:3000/auth-client/picture/"+this.token,file)
-        .subscribe(result => console.log(result)) ;
-      
-  
-  }
+    const fd=new FormData();
+    const file =<File>event.target.files[0];
+    fd.append("file",file,file.name);
+    
+    this.http.post("http://localhost:3000/auth-client/picture/"+this.token,fd)
+        .subscribe((result:any) => {
+           this.client.image=result.image;
+        }) ;
+    
 }
+
+
+
+
+
 }

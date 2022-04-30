@@ -49,7 +49,9 @@ export class SignupLawyerComponent implements OnInit {
       description:['', Validators.required],
       email: ['',[Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(9)]],
-      confirmPassword: ['', Validators.required]
+      confirmPassword: ['', Validators.required],
+      type:["lawyer"],
+      image:[""],
   }, );
   }
 

@@ -19,7 +19,8 @@ export class SignupClientComponent implements OnInit {
     email:"",
     password:"",
     confirmPassword:"",
-    type:"client"
+    type:"client",
+   
 }
   cookieValue : any ;
 
@@ -44,7 +45,8 @@ export class SignupClientComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(9)]],
       confirmPassword: ['', Validators.required],
-      type:["string"]
+      type:["client"],
+      image:[""],
   })
   }
 
@@ -57,5 +59,3 @@ export class SignupClientComponent implements OnInit {
    }
   
 }
-
-

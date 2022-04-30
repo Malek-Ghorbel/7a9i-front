@@ -1,3 +1,4 @@
+<div style='background-image:url("../../assets/img/signuplawyer.jpg");height:1100px;width:100%;background-repeat: no-repeat;background-size: cover;'>
 <div class="div container">
   <div class="card">
     <div class="text-center">
@@ -122,9 +123,9 @@
         <span class="text-danger" *ngIf="signupLawyerForm.controls['confirmPassword'].dirty && signupLawyerForm.hasError('required','confirmPassword')">Confirmez votre mot de passe</span>
       </div>
       <br/>
-      <button type="submit" [disabled]="!signupLawyerForm.valid" class="btn btn-primary" (click)="submitForm(lawyer)" >S'inscrire</button>
+        <button mdbBtn type="submit" [disabled]="!signupLawyerForm.valid" class="btn" color="deep-orange" (click)="submitForm(lawyer)" mdbWavesEffect>S'inscrire</button>
     </form>
     <a style="color: black; margin-top: 10px;" routerLink="/login">Avez-vous déja un compte? Connectez-vous.</a>
   </div>
 </div>
-
+</div>

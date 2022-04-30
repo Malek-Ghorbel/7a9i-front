@@ -26,7 +26,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupLawyerComponent } from './signup-lawyer/signup-lawyer.component';
 import { SignupClientComponent } from './signup-client/signup-client.component';
 
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { ButtonsModule, MDBBootstrapModule } from 'angular-bootstrap-md';
 import {HttpClientModule} from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProblemComponent } from './problem/problem.component';
@@ -37,6 +37,7 @@ import { LawyerCasesListComponent } from './lawyer-cases/lawyer-cases-list/lawye
 import { LawyerCaseComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case/lawyer-case.component';
 import { ModifModalComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case/modif-modal/modif-modal.component';
 import { TodoComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case/modif-modal/todo/todo.component';
+
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { TodoComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case/modi
     MdbCarouselModule,
     MdbCheckboxModule,
     MdbCollapseModule,
+    ButtonsModule,
     MdbDropdownModule,
     MdbFormsModule,
     MdbModalModule,

@@ -14,8 +14,8 @@ const routes: Routes = [
   {path:'signuplawyer', component:SignupLawyerComponent},
   {path:'signupClient', component:SignupClientComponent},
   {path:'problem', component:ProblemComponent},
-  {path : 'profileLawyer' , component: ProfileLawyerComponent},
-  {path : 'profileClient' , component: ProfileClientComponent},
+  {path : 'profileLawyer', component: ProfileLawyerComponent},
+  {path : 'profileClient', component: ProfileClientComponent},
   {path : 'lawyerCases', component: LawyerCasesComponent},
   {path : '**' , component: HomeComponent}
   

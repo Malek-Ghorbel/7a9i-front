@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row mt-1" >
+        <div class="col-12 col-md-12  d-flex 
+                    justify-content-center align-items-center ">
+            <input [(ngModel)]="newTask" 
+                    type="text" 
+                    value="" 
+                    class="col-10 form-control"
+                    style="width:600px;"
+            >
+            <div class="col-1"></div>
+            <button (click)="addToList()" 
+                class="btn btn-light text-success">
+                <i class="fas fa-plus"></i>
+            </button>  
+        </div>
+    </div>
+
+     <ul *ngFor="let x of items; let index = index;" class="row mt-1" style="height:100px;">
+       <li class="row d-flex align-items-center" >
+            <div class="column" >{{x}}</div>
+            <div class="column">
+                <button (click)="deleteTask(index)" 
+                    class="btn btn-danger" 
+                    style="margin-left:10px;">
+                    <i class="fas fa-times"></i>
+            </button>
+            </div>
+            
+        </li>
+    </ul> 
+   
+
+</div>

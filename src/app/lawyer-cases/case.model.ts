@@ -3,10 +3,12 @@ export class Case {
      public description: string;
      public clientName: string;
      public etat: string;
-     constructor(name:string, desc: string, clientName: string, etat: string){
+     public todos : string[];
+     constructor(name:string, desc: string, clientName: string, etat: string, todos: string[]){
          this.name= name;
          this.description= desc;
          this.clientName=clientName;
          this.etat=etat;
+         this.todos= todos;
      }
  }

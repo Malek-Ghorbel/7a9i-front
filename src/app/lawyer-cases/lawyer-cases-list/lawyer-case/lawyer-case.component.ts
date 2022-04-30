@@ -20,7 +20,14 @@ export class LawyerCaseComponent implements OnInit {
   }
   openModal() {
     this.modalRef = this.modalService.open(ModifModalComponent, 
-      {data: this.case})
+            {data: this.case});
+
+    this.modalRef.onClose.subscribe((i: Case)=>{
+      this.case.etat = i.etat;
+      this.case.description=i.description;
+      //this.case.todos = todos;
+    })
+    
   }
 
 }

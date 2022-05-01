@@ -7,8 +7,10 @@ import { Component, OnInit, Output } from '@angular/core';
 })
 export class LawyerCasesComponent implements OnInit {
 
-  btnencours= "btn btn-primary";
-  btnterm="btn btn-outline-primary";
+ // btnencours= "btn btn-warning";
+  //btnterm="btn btn-outline-warning";
+  colorencours = "deep-orange";
+  colorterm="white";
   etat="en cours";
   constructor() { }
 
@@ -17,14 +19,18 @@ export class LawyerCasesComponent implements OnInit {
 
   onShowEncours(){
     this.etat="en cours";
-    this.btnencours="btn btn-primary";
-    this.btnterm ="btn btn-outline-primary"
+    //this.btnencours="btn btn-warning";
+    //this.btnterm ="btn btn-outline-warning"
+    this.colorencours = "deep-orange";
+    this.colorterm="white";
   }
 
   onShowTermine(){
     this.etat="terminée";
-    this.btnterm="btn btn-primary";
-    this.btnencours ="btn btn-outline-primary"
+    //this.btnterm="btn btn-warning";
+    //this.btnencours ="btn btn-outline-warning"
+    this.colorencours = "white";
+    this.colorterm="deep-orange";
   }
 
 }

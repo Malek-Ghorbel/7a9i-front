@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -37,7 +38,7 @@ export class SignupLawyerComponent implements OnInit {
     confirmPassword : new FormControl('', Validators.required)
   })
 
-  constructor(private http: HttpClient, private cookieService: CookieService, private formBuilder: FormBuilder) { }
+  constructor(private http: HttpClient, private cookieService: CookieService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.signupLawyerForm = this.formBuilder.group({
@@ -57,10 +58,9 @@ export class SignupLawyerComponent implements OnInit {
 
   submitForm(lawyer: any){
     this.http.post('http://localhost:3000/auth-lawyer/signup' , lawyer ,{withCredentials: true})
-    .subscribe(result => {
-      console.log(result) ; 
-      console.log(this.cookieService.getAll()) ;
-      
+    .subscribe((result :any)  => {
+      localStorage.setItem("token",result.token);
+      this.router.navigate(['/'])
     }) ;
   }
   

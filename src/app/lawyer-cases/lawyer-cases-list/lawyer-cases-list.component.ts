@@ -9,9 +9,9 @@ import { Case } from '../case.model';
 export class LawyerCasesListComponent implements OnInit {
 
   cases: Case[] = [
-    new Case('Divorce', 'Detail sur l avancement de l affaire', 'MR xx', 'en cours'),
-    new Case('Meurtre', 'Detail sur l avancement de l affaire', 'MR yy', 'en cours'),
-    new Case('Cheque sans provision', 'Detail sur l avancement de l affaire', 'MR zz', 'en cours')
+    new Case('Divorce', 'Detail sur l avancement de l affaire', 'MR xx', 'en cours',[]),
+    new Case('Meurtre', 'Detail sur l avancement de l affaire', 'MR yy', 'en cours',['appeler le client']),
+    new Case('Cheque sans provision', 'Detail sur l avancement de l affaire', 'MR zz', 'en cours',['Signer les papiers'])
   ]
 
   @Input() etat!:string ;

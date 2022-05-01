@@ -1,16 +1,50 @@
 <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">{{case.clientName}}</h5>
-    <button
-      type="button"
-      class="btn-close"
-      aria-label="Close"
-      (click)="modalRef.close()"
-    ></button>
+    <h4 class="modal-title" id="exampleModalLabel">{{clientName}}</h4>
   </div>
-  <div class="modal-body">{{case.description}}</div>
+  <div class="modal-body">
+        <b>{{name}}:</b>
+        <div class="row mt-1" >
+          <div class="col-12 col-md-12  d-flex 
+                      justify-content-center align-items-center ">
+              <input [(ngModel)]="description" 
+                      type="text" 
+                      value={{description}} 
+                      class="col-10 form-control"
+                      style="width:600px;"
+              > 
+          </div>
+      </div>
+        <br>
+        <b>Etat de l'affaire:</b>
+        <div class="form-check">
+            <input
+              mdbRadio
+              class="form-check-input"
+              type="radio"
+              name="encours"
+              id="encours"
+              [checked]="etat == 'en cours'"
+              (click)="etat='en cours'"
+              
+            />
+            <label class="form-check-label" for="encours"> En cours </label>
+        </div>
+        <div class="form-check">
+            <input
+            mdbRadio
+            class="form-check-input"
+            type="radio"
+            name="termine"
+            id="termine"
+            [checked]="etat == 'terminée'"
+            (click)="etat='terminée'"
+          />
+          <label class="form-check-label" for="termine"> Terminée </label>
+        </div>
+        <br>
+        <b>A faire:</b>
+        <app-todo [items]="todos" ></app-todo>
+  </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modalRef.close()">
-      Fermer
-    </button>
-<button type="button" class="btn btn-outline-success">Sauvegarder</button>
+    <button type="button" class="btn btn-outline-success" (click)="close()">Sauvegarder</button>
 </div>

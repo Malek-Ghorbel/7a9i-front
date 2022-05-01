@@ -1,16 +1,16 @@
 
 <div class="btn-group" >
-    <button 
+    <button mdbBtn
         type="button" 
-       [ngClass]="btnencours"
-        data-mdb-color="dark"
-        (click)="onShowEncours()">En cours
+        color={{colorencours}}
+        (click)="onShowEncours()"
+        mdbWavesEffect>En cours
     </button>
-    <button 
+    <button mdbBtn
         type="button" 
-        [ngClass]="btnterm"
-        data-mdb-color="dark"
-        (click)="onShowTermine()">Terminée
+        color={{colorterm}}
+        (click)="onShowTermine()"
+        mdbWavesEffect>Terminée
     </button>
 </div>
 <app-lawyer-cases-list  [etat]="etat" ></app-lawyer-cases-list>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-problem',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProblemComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  isAuth() : boolean {
+    if (localStorage.getItem("token")) return true
+    else return false ;
+  }
 
   ngOnInit(): void {
+    if(!this.isAuth()) {
+      this.router.navigate(['/loginClient'])
+    }
   }
 
 }

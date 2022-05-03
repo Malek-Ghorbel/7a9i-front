@@ -47,9 +47,9 @@
         <select 
           class="form-control" 
           formControlName="city"
-          placeholder="Ville" 
           name="city"  
           [(ngModel)]="lawyer.city">
+          <option value="" disabled selected>Ville</option>
           <option>Tunis</option>
           <option>Sousse</option>
           <option>Sfax</option>

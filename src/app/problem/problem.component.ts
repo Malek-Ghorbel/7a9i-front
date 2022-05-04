@@ -17,8 +17,14 @@ export class ProblemComponent implements OnInit {
 
   ngOnInit(): void {
     if(!this.isAuth()) {
-      this.router.navigate(['/loginClient'])
+      this.router.navigate(['/login'])
     }
+  }
+
+  shouldShowLawyers = false ;
+
+  loadLawyers() {
+    this.shouldShowLawyers = true ;
   }
 
 }

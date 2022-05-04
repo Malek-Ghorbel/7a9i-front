@@ -37,6 +37,7 @@ import { LawyerCasesListComponent } from './lawyer-cases/lawyer-cases-list/lawye
 import { LawyerCaseComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case/lawyer-case.component';
 import { ModifModalComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case/modif-modal/modif-modal.component';
 import { TodoComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case/modif-modal/todo/todo.component';
+import { LawyerTableComponent } from './lawyer-table/lawyer-table.component';
 
 
 
@@ -57,6 +58,7 @@ import { TodoComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case/modi
     LawyerCaseComponent,
     ModifModalComponent,
     TodoComponent,
+    LawyerTableComponent,
   ],
   imports: [
     BrowserModule,

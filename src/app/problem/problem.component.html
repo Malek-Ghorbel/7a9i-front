@@ -1,4 +1,5 @@
 <div class="container">
+    <br/>
     <h3> Posez votre problème : </h3>
     <br />
     <div style="width:40%">
@@ -18,8 +19,11 @@
                 <textarea class="form-control" id="comment" rows="3" placeholder="Commentaire"></textarea>
             </div>
             <br>
-            <button type="submit" class="btn btn-primary">Résoudre</button>
+            <button type="submit" class="btn btn-primary" (click)="loadLawyers()">Résoudre</button>
         </form>
     </div>
-    
+    <br/>
+    <div *ngIf="shouldShowLawyers">
+        <app-lawyer-table></app-lawyer-table>
+    </div>
 </div>

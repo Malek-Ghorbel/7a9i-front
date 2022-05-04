@@ -18,8 +18,6 @@ const routes: Routes = [
   {path : 'profileClient', component: ProfileClientComponent},
   {path : 'lawyerCases', component: LawyerCasesComponent},
   {path : '**' , component: HomeComponent}
-  
-
 ];
 
 @NgModule({

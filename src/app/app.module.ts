@@ -38,6 +38,7 @@ import { LawyerCaseComponent } from './lawyer-cases/lawyer-cases-list/lawyer-cas
 import { ModifModalComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case/modif-modal/modif-modal.component';
 import { TodoComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case/modif-modal/todo/todo.component';
 import { LawyerTableComponent } from './lawyer-table/lawyer-table.component';
+import { LoginLawyerComponent } from './login-lawyer/login-lawyer.component';
 
 
 
@@ -59,6 +60,7 @@ import { LawyerTableComponent } from './lawyer-table/lawyer-table.component';
     ModifModalComponent,
     TodoComponent,
     LawyerTableComponent,
+    LoginLawyerComponent,
   ],
   imports: [
     BrowserModule,

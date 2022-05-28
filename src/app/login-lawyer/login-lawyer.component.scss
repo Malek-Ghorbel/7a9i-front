@@ -1,0 +1,18 @@
+.card{
+    box-shadow: 0 3px 5px #0000006f ;
+    width: 500px;
+    padding: 40px;
+    margin-top: 40px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 5%);
+}
+
+.card h1,
+h6{
+    color: rgb(66, 60, 60);
+}
+label{
+    color: rgb(92, 86, 86);
+}
+

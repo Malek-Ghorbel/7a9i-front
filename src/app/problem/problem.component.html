@@ -1,28 +1,53 @@
+
+
 <div class="container">
     <br/>
-    <h3> Posez votre problème : </h3>
-    <br />
-    <div style="width:40%">
-        <form>
-            <div class="form-group">
-                <label for="age">Type de problème :</label>
-                <select class="form-control">
-                    <option>Droit public</option>
-                    <option>Droit pénal</option>
-                    <option>Droit immobilier</option>
-                    <option>Droit commercial</option>
-                </select>
+
+    <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+                <h3> Posez votre problème : </h3>
+                <br />
+                <div style="width:40%">
+                 <form [formGroup]="problemDescriptionForm">
+                  <div class="form-group">
+                    <label for="age">Type de problème :</label>
+                       <select class="form-control" name="type"  formControlName="type" [(ngModel)]="problem.type">
+                         <option>Droit public</option>
+                         <option>Droit pénal</option>
+                         <option>Droit immobilier</option>
+                         <option>Droit commercial</option>
+                        </select>
+                  </div>
+                  <br/>
+                 <div class="form-group">
+                  <label for="comment">description</label>
+                  <textarea class="form-control"  formControlName="description" id="comment" rows="3" placeholder="Commentaire" [(ngModel)]="problem.description"></textarea>
+                 </div>
+                 <br>
+                 <button type="submit" mdbBtn class="btn btn-primary" (click)="loadLawyers()" color="deep-orange">Résoudre</button>
+                </form>
             </div>
-            <br/>
-            <div class="form-group">
-                <label for="comment">description</label>
-                <textarea class="form-control" id="comment" rows="3" placeholder="Commentaire"></textarea>
+          </div>
+        </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body" style="background-image:url('assets/img/justice.jpg');height:440px;background-size:cover;background-repeat: no-repeat;">
+            
             </div>
-            <br>
-            <button type="submit" class="btn btn-primary" (click)="loadLawyers()">Résoudre</button>
-        </form>
+          </div>
+        </div>
+      
+    
+    
+    
     </div>
+    
+   
     <br/>
+
     <div *ngIf="shouldShowLawyers">
         <app-lawyer-table></app-lawyer-table>
     </div>

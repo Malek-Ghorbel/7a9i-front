@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,7 +9,19 @@ import { Router } from '@angular/router';
 })
 export class ProblemComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  
+  problem = {
+    type:"",
+    description:""
+  }
+  
+  public problemDescriptionForm = new FormGroup ({
+    type: new FormControl(''),
+    description :new FormControl('')
+  })
+
+  constructor(private formBuilder: FormBuilder, private router: Router) { }
+
 
   isAuth() : boolean {
     if (localStorage.getItem("token")) return true
@@ -19,12 +32,18 @@ export class ProblemComponent implements OnInit {
     if(!this.isAuth()) {
       this.router.navigate(['/login'])
     }
+    this.problemDescriptionForm = this.formBuilder.group({
+      type: [''],
+      description: [''],
+    })
   }
 
   shouldShowLawyers = false ;
 
   loadLawyers() {
     this.shouldShowLawyers = true ;
+    localStorage.setItem('type', this.problem.type);
+    localStorage.setItem('description',this.problem.description);
   }
 
 }

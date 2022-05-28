@@ -23,7 +23,7 @@ export class LawyerCasesComponent implements OnInit {
 
 
   casesDemand:any;
-  casesProgree:any;
+  casesProgress:any;
   cansesFinish:any;
 
 
@@ -61,7 +61,7 @@ export class LawyerCasesComponent implements OnInit {
   }
 
   getLawyerEmail(){
-    const jwt=localStorage.getItem("jwt");
+    const jwt=localStorage.getItem("token");
     this.http.get('http://localhost:3000/auth-lawyer/lawyerInfo/'+jwt)
     .subscribe((result :any)  => {
       this.email=result.email;
@@ -71,8 +71,8 @@ export class LawyerCasesComponent implements OnInit {
 
   loadCasesDemand() {
     this.onShowDemand()
-    
-    this.http.post("http://localhost:3000/appointment/demand",this.email)
+    console.log(this.email);
+    this.http.get("http://localhost:3000/appointment/demand/"+this.email)
       .subscribe((result) => {
         this.casesDemand = result ;
     })
@@ -81,16 +81,16 @@ export class LawyerCasesComponent implements OnInit {
 
   loadCasesProgress() {
     this.onShowEncours();
-    this.http.post("http://localhost:3000/appointment/progress",this.email)
+    this.http.get("http://localhost:3000/appointment/progress/"+this.email)
       .subscribe((result) => {
-        this.casesProgree = result ;
+        this.casesProgress = result ;
     })
   }
 
 
   loadCasesFinish(){
     this.onShowTermine();
-    this.http.post("http://localhost:3000/appointment/complete",this.email)
+    this.http.get("http://localhost:3000/appointment/complete/"+this.email)
       .subscribe((result) => {
         this.cansesFinish = result ;
     })

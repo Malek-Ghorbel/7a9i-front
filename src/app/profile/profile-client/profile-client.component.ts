@@ -37,8 +37,7 @@ export class ProfileClientComponent implements OnInit {
         this.client.image="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" ;
       }else{
         this.client.image=result.image;
-      }
-      
+      } 
     });
   }
 
@@ -51,8 +50,7 @@ export class ProfileClientComponent implements OnInit {
         .subscribe((result:any) => {
            this.client.image=result.image;
         }) ;
-    
-}
+  }
 
 
 

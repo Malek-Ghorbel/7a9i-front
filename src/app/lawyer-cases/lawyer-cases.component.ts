@@ -12,6 +12,11 @@ export class LawyerCasesComponent implements OnInit {
   colorencours = "deep-orange";
   colorterm="white";
   etat="en cours";
+
+  case = {
+    name:"",
+    
+  }
   constructor() { }
 
   ngOnInit(): void {

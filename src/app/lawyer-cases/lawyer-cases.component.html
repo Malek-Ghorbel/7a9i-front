@@ -1,23 +1,52 @@
-
+<div >
 <div class="btn-group" >
     <button mdbBtn
         type="button" 
         color={{colordemand}}
-        (click)="onShowDemand()"
+        (click)="loadCasesDemand()"
         mdbWavesEffect>Demande
     </button>
     <button mdbBtn
         type="button" 
         color={{colorencours}}
-        (click)="onShowEncours()"
+        (click)="loadCasesProgress()"
         mdbWavesEffect>En cours
     </button>
     <button mdbBtn
         type="button" 
         color={{colorterm}}
-        (click)="onShowTermine()"
+        (click)="loadCasesFinish()"
         mdbWavesEffect>Terminée
     </button>
 </div>
-<app-lawyer-cases-list  [etat]="etat" ></app-lawyer-cases-list>
-
+<div class="container">
+    <div *ngIf="etat==='demande'">
+        <div *ngFor="let case of casesDemand">
+            <app-lawyer-case 
+              [case]="case"
+            >
+            </app-lawyer-case>
+            <br>
+        </div>
+    
+    </div>
+    <div *ngIf="etat === 'en cours'">
+        <div *ngFor="let case of casesProgree">
+            <app-lawyer-case 
+              [case]="case"
+            >
+            </app-lawyer-case>
+            <br>
+        </div> 
+    </div>
+    <div *ngIf="etat === 'terminée'">
+        <div *ngFor="let case of cansesFinish">
+            <app-lawyer-case 
+              [case]="case"
+            >
+            </app-lawyer-case>
+            <br>
+        </div>
+    </div>
+</div>
+</div>

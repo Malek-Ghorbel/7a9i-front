@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Output } from '@angular/core';
 
 @Component({
@@ -13,14 +14,23 @@ export class LawyerCasesComponent implements OnInit {
   colordemand="white"
   colorterm="white";
   etat="en cours";
+  email="";
 
   case = {
     name:"",
     
   }
-  constructor() { }
+
+
+  casesDemand:any;
+  casesProgree:any;
+  cansesFinish:any;
+
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.getLawyerEmail();
   }
 
   onShowEncours(){
@@ -29,6 +39,7 @@ export class LawyerCasesComponent implements OnInit {
     //this.btnterm ="btn btn-outline-warning"
     this.colorencours = "deep-orange";
     this.colorterm="white";
+    this.colordemand = "white";
   }
 
   onShowDemand(){
@@ -45,7 +56,44 @@ export class LawyerCasesComponent implements OnInit {
     //this.btnterm="btn btn-warning";
     //this.btnencours ="btn btn-outline-warning"
     this.colorencours = "white";
+    this.colordemand = "white";
     this.colorterm="deep-orange";
+  }
+
+  getLawyerEmail(){
+    const jwt=localStorage.getItem("jwt");
+    this.http.get('http://localhost:3000/auth-lawyer/lawyerInfo/'+jwt)
+    .subscribe((result :any)  => {
+      this.email=result.email;
+    })
+  }
+
+
+  loadCasesDemand() {
+    this.onShowDemand()
+    
+    this.http.post("http://localhost:3000/appointment/demand",this.email)
+      .subscribe((result) => {
+        this.casesDemand = result ;
+    })
+  }
+
+
+  loadCasesProgress() {
+    this.onShowEncours();
+    this.http.post("http://localhost:3000/appointment/progress",this.email)
+      .subscribe((result) => {
+        this.casesProgree = result ;
+    })
+  }
+
+
+  loadCasesFinish(){
+    this.onShowTermine();
+    this.http.post("http://localhost:3000/appointment/complete",this.email)
+      .subscribe((result) => {
+        this.cansesFinish = result ;
+    })
   }
 
 }

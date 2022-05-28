@@ -17,7 +17,8 @@ export class LawyerTableComponent implements OnInit {
     clientEmail:"",
     date:"",
     description:"",
-    type:""
+    type:"",
+    status:"demand"
   }
 
   hasBooked=false;

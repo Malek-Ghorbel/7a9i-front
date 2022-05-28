@@ -9,7 +9,7 @@ import { Case } from '../case.model';
 })
 export class LawyerCasesListComponent implements OnInit {
 
-  public cases: Case[] = []
+ /* public cases: Case[] = []
   public nbencours =0;
   public nbterm = 0;
 
@@ -32,14 +32,37 @@ export class LawyerCasesListComponent implements OnInit {
 
       
     })
-  }
+  }*/
 
+  /*casesDemand:any;
+  casesProgree:any;
+  cansesFinish:any;*/
   
   constructor(private http: HttpClient) { }
 
-  ngOnInit(): void {
-    this.getcases();
-    
+  ngOnInit(): void {}
+
+  /*loadCasesDemand() {
+    this.http.get("http://localhost:3000/appointment/demand")
+      .subscribe((result) => {
+        this.casesDemand = result ;
+    })
   }
+
+
+  loadCasesProgress() {
+    this.http.get("http://localhost:3000/appointment/progress")
+      .subscribe((result) => {
+        this.casesProgree = result ;
+    })
+  }
+
+
+  loadCasesFinish() {
+    this.http.get("http://localhost:3000/appointment/complete")
+      .subscribe((result) => {
+        this.cansesFinish = result ;
+    })
+  }*/
 
 }

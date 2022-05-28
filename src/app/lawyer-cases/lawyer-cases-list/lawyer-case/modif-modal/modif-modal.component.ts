@@ -9,6 +9,8 @@ import { Case } from 'src/app/lawyer-cases/case.model';
 })
 export class ModifModalComponent implements OnInit {
 
+
+
   clientName!:string;
   name!:string;
   description!: string;

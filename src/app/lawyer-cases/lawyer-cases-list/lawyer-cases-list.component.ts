@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Case } from '../case.model';
 
@@ -8,20 +9,37 @@ import { Case } from '../case.model';
 })
 export class LawyerCasesListComponent implements OnInit {
 
-  cases: Case[] = [
-    new Case('Divorce', 'Detail sur l avancement de l affaire', 'MR xx', 'en cours',[]),
-    new Case('Meurtre', 'Detail sur l avancement de l affaire', 'MR yy', 'en cours',['appeler le client']),
-    new Case('Cheque sans provision', 'Detail sur l avancement de l affaire', 'MR zz', 'terminée',['Signer les papiers'])
-  ]
+  public cases: Case[] = []
+  public nbencours =0;
+  public nbterm = 0;
 
   @Input() etat!:string ;
 
-  nbencours = this.cases.filter((i) => i.etat == "en cours").length;
-  nbterm = this.cases.filter((i) => i.etat == "terminée").length;
+  getcases(){
+    this.http.get('http://localhost:3000/cases/lawyerCases/456')
+    .subscribe((result: any)=>{
+      console.log(result)
+      for(var i = 0; i < result.length; i++){
+        //const obj = JSON.parse(result[i]);
+        this.cases.push(result[i]);
+        if (result[i].etat == "en cours"){
+          this.nbencours ++;
+        }
+        else {this.nbterm ++ }
+      }
+      //this.nbencours = this.cases.filter((i) => i.etat == "en cours").length;
+      //this.nbterm = this.cases.filter((i) => i.etat == "terminée").length;
 
-  constructor() { }
+      
+    })
+  }
+
+  
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.getcases();
+    
   }
 
 }

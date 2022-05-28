@@ -39,7 +39,9 @@ import { ModifModalComponent } from './lawyer-cases/lawyer-cases-list/lawyer-cas
 import { TodoComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case/modif-modal/todo/todo.component';
 import { LawyerTableComponent } from './lawyer-table/lawyer-table.component';
 import { LoginLawyerComponent } from './login-lawyer/login-lawyer.component';
-
+import { EspaceAvocatComponent } from './espace-avocat/espace-avocat.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 
 @NgModule({
@@ -61,6 +63,7 @@ import { LoginLawyerComponent } from './login-lawyer/login-lawyer.component';
     TodoComponent,
     LawyerTableComponent,
     LoginLawyerComponent,
+    EspaceAvocatComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,7 +88,11 @@ import { LoginLawyerComponent } from './login-lawyer/login-lawyer.component';
     
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

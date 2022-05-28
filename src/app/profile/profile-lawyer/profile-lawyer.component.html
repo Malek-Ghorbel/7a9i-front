@@ -6,11 +6,13 @@
         <div class="card mb-4">
           <div class="card-body text-center">
             <img src={{lawyer.image}} alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-            <h5 class="my-3">{{lawyer.firstName}} {{lawyer.familyName}}</h5>
+            <h5 class="my-3 fw-bold">{{lawyer.firstName}} {{lawyer.familyName}}</h5>
             <p class="text-muted mb-4">{{lawyer.adress}}</p>
-            <div class="d-flex justify-content-center mb-2">
+            <div class="d-flex justify-content-center mb-2" style="margin-left:190px">
               <form action="" method="post" enctype="multipart/form-data" >
-                <input type="file" name="profile" id="fileUploadField" (change)="setImage($event)" > <input type="submit">
+                
+                <input type="file" name="file" id="file" (change)="setImage($event)" style="color:rgb(255, 255, 255);">
+
             </form>
            
           </div>
@@ -23,7 +25,7 @@
           <div class="card-body">
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">Nom et prénom :</p>
+                <p class="mb-0 fw-bold">Nom et prénom :</p>
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0">{{lawyer.firstName}} {{lawyer.familyName}}</p>
@@ -32,7 +34,7 @@
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">Email :</p>
+                <p class="mb-0 fw-bold">Email :</p>
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0">{{lawyer.email}}</p>
@@ -41,7 +43,7 @@
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">Téléphone :</p>
+                <p class="mb-0 fw-bold">Téléphone :</p>
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0">(097) 234-5678</p>
@@ -50,19 +52,14 @@
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">Addresse :</p>
+                <p class="mb-0 fw-bold">Addresse :</p>
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0">{{lawyer.adress}}</p>
               </div>
             </div>
             <hr>
-            <div class="row">
-             
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">Nord Africa , Tunisia </p>
-              </div>
-            </div>
+            
           </div>
         </div>
         <div class="row">

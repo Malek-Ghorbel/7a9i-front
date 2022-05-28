@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EspaceAvocatComponent } from './espace-avocat/espace-avocat.component';
 import { HomeComponent } from './home/home.component';
 import { LawyerCasesComponent } from './lawyer-cases/lawyer-cases.component';
 import { LoginLawyerComponent } from './login-lawyer/login-lawyer.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path : 'profileLawyer', component: ProfileLawyerComponent},
   {path : 'profileClient', component: ProfileClientComponent},
   {path : 'lawyerCases', component: LawyerCasesComponent},
+  {path : 'lawyerSpace', component: EspaceAvocatComponent},
   {path : '**' , component: HomeComponent}
 ];
 

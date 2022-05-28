@@ -11,6 +11,7 @@ export class ProfileClientComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   token : string | null ="" ;
+  
   client={
     firstName:"",
     familyName:"",
@@ -19,11 +20,16 @@ export class ProfileClientComponent implements OnInit {
     email:"",
     image:""
   }
+  
+  
+  cases:any;
+  
   ngOnInit(): void {
     this.getProfile();
+    
   }
 
-  getProfile(){
+  async getProfile(){
     this.token =localStorage.getItem("token");
     this.http.get('http://localhost:3000/auth-client/clientInfo/'+this.token)
     .subscribe((result :any)  => {
@@ -38,10 +44,12 @@ export class ProfileClientComponent implements OnInit {
       }else{
         this.client.image=result.image;
       } 
-    });
+      this.loadClientCases();
+    })
+    
   }
 
-  setImage(event: any){
+  async setImage(event: any){
     const fd=new FormData();
     const file =<File>event.target.files[0];
     fd.append("file",file,file.name);
@@ -50,6 +58,16 @@ export class ProfileClientComponent implements OnInit {
         .subscribe((result:any) => {
            this.client.image=result.image;
         }) ;
+  }
+
+  async loadClientCases() {
+    console.log("coucou");
+    console.log(this.client.email);
+
+    this.http.get("http://localhost:3000/appointment/appointments/"+this.client.email)
+      .subscribe((result) => {
+        this.cases=result;
+    })
   }
 
 

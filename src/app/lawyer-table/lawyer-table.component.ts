@@ -18,7 +18,7 @@ export class LawyerTableComponent implements OnInit {
     date:"",
     description:"",
     type:"",
-    status:"demand"
+    status:"demande"
   }
 
   hasBooked=false;

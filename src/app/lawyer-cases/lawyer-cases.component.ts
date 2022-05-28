@@ -10,6 +10,7 @@ export class LawyerCasesComponent implements OnInit {
  // btnencours= "btn btn-warning";
   //btnterm="btn btn-outline-warning";
   colorencours = "deep-orange";
+  colordemand="white"
   colorterm="white";
   etat="en cours";
   constructor() { }
@@ -23,6 +24,15 @@ export class LawyerCasesComponent implements OnInit {
     //this.btnterm ="btn btn-outline-warning"
     this.colorencours = "deep-orange";
     this.colorterm="white";
+  }
+
+  onShowDemand(){
+    this.etat="demande";
+    //this.btnencours="btn btn-warning";
+    //this.btnterm ="btn btn-outline-warning"
+    this.colordemand = "deep-orange";
+    this.colorterm="white";
+    this.colorencours = "white";
   }
 
   onShowTermine(){

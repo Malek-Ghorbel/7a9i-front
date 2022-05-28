@@ -2,6 +2,12 @@
 <div class="btn-group" >
     <button mdbBtn
         type="button" 
+        color={{colordemand}}
+        (click)="onShowDemand()"
+        mdbWavesEffect>Demande
+    </button>
+    <button mdbBtn
+        type="button" 
         color={{colorencours}}
         (click)="onShowEncours()"
         mdbWavesEffect>En cours

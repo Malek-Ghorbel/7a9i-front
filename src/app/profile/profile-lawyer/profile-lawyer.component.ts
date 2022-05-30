@@ -55,7 +55,6 @@ export class ProfileLawyerComponent implements OnInit {
         .subscribe((result:any) => {
            this.lawyer.image=result.image;
         }) ;
-  
+  }
 
-}
 }

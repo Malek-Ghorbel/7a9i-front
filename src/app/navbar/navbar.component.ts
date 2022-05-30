@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
     if (localStorage.getItem("token")) return true
     else return false ;
   }
-
+  
   
   getProfile(){
     const token =localStorage.getItem("token");
@@ -26,6 +26,8 @@ export class NavbarComponent implements OnInit {
       console.log(result);
     }) ;
   }
+
+
 
   signout() : void {
     localStorage.removeItem("token");

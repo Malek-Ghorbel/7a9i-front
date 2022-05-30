@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { Case } from 'src/app/lawyer-cases/case.model';
@@ -10,26 +11,39 @@ import { Case } from 'src/app/lawyer-cases/case.model';
 export class ModifModalComponent implements OnInit {
 
 
-
-  clientName!:string;
-  name!:string;
+  clientName!: string;
+  _id!: string;
+  lawyerEmail!: string;
+  clientEmail!: string;
+  type!: string;
   description!: string;
-  etat!:string;
+  date!: Date;
+  status!: string;
   todos!: string[];
   
 
-  constructor(private modalService: MdbModalService,public modalRef: MdbModalRef<ModifModalComponent>) {}
+  constructor(private http: HttpClient, private modalService: MdbModalService,public modalRef: MdbModalRef<ModifModalComponent>) {}
  
   close(): void {
-    //const closeMessage = 'Modal closed';
-    const i = {name:this.name, 
-      description: this.description, 
+    
+    const i = 
+    { 
       clientName: this.clientName, 
-      etat: this.etat, 
-      todos:this.todos}
-    this.modalRef.close(i);
+      _id: this._id,
+      type:this.type, 
+      description: this.description,
+      status: this.status, 
+      date: this.date,
+      todos:this.todos
+    }
+    console.log(i);
+    this.modalRef.close(i); 
   }
   ngOnInit(): void {
+    this.http.get('http://localhost:3000/auth-client/clientInfoByEmail/'+this.clientEmail)
+    .subscribe((result: any) =>{
+      this.clientName = result.name
+    })
   }
 
 }

@@ -20,7 +20,7 @@
     </button>
 </div>
 <div class="container">
-    <div *ngIf="etat==='demande'">
+    <div *ngIf="etat === 'demande'">
         <div *ngFor="let case of casesDemand">
             <app-lawyer-case 
               [case]="case"

@@ -1,18 +1,21 @@
 export class Case {
-    public id: string;
-    public name: string;
-    public idClient: string;
-    public idLawyer: string;
-     public description: string;
-     public etat: string;
-     public todos : string[];
-     constructor(id: string, name:string, idClient:string, idLawyer:string, desc: string, etat: string, todos: string[]){
-        this.id= id;  
-        this.name= name;
-        this.idClient= idClient;
-        this.idLawyer= idLawyer;
+    public _id: string;
+    public type: string;
+    public clientEmail: string;
+    public lawyerEmail: string;
+    public date: Date;
+    public description: string;
+    public status: string;
+    public todos : string[];
+
+    constructor(_id: string, type:string, clientEmail:string, lawyerEmail:string, date:Date, desc: string, status: string, todos: string[]){
+        this._id= _id;  
+        this.type= type;
+        this.clientEmail= clientEmail;
+        this.lawyerEmail= lawyerEmail;
+        this.date= date;
          this.description= desc;
-         this.etat=etat;
+         this.status=status;
          this.todos= todos;
      }
  }

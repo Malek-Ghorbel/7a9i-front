@@ -17,25 +17,37 @@ export class LawyerCaseComponent implements OnInit {
   @Input() case!: Case ;
   public clientName!: string;
 
-
   constructor(private modalService: MdbModalService, private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.http.get('http://localhost:3000/auth-client/clientInfoByEmail/'+this.case.clientEmail)
+    .subscribe((result: any) =>{
+      this.clientName= result.name;
+    })
   }
+  
   openModal() {
     this.modalRef = this.modalService.open(ModifModalComponent, 
-            {data: this.case});
-
-    this.modalRef.onClose.subscribe((i: Case)=>{
-      this.http.patch('http://localhost:3000/cases/'+i.id, i)
+      {data: this.case});
+      this.modalRef.onClose.subscribe((i: Case)=>{
+      console.log("i:" +i)
+      this.http.patch('http://localhost:3000/appointment/update/'+i._id, i)
       .subscribe((result: any)=>{
         this.case = result;
       })
-      //this.case.etat = i.etat;
-      //this.case.description=i.description;
-      //this.case.todos = todos;
+      console.log("case: " + this.case)
     })
-    
+  }
+
+  caseAccepted(){
+    this.case.status = 'en cours';
+    this.http.patch('http://localhost:3000/appointment/update/'+this.case._id, this.case)
+    .subscribe((result: any)=>{})
+  }
+
+  caseDeleted(){
+    this.http.delete('http://localhost:3000/appointment/delete/'+this.case._id)
+    .subscribe((result: any)=>{})
   }
 
 }

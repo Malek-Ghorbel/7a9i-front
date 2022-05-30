@@ -3,14 +3,42 @@
       <b>{{clientName}}</b>
     </div>
     <div class="card-body">
-      <h5 class="card-title">{{case.name}}</h5>
+      <b class="card-title">{{case.type}}</b>
       <p class="card-text">
         {{case.description}}
       </p>
-      <button 
+      <div *ngIf="case.status == 'en cours' && case.date">
+        <b class="card-title">Votre prochain rendez-vous:</b>
+        <p class="card-text">
+          {{case.date}}
+        </p>
+      </div>
+      <br>
+      <div *ngIf="case.status == 'en cours' && case.todos">
+        <b class="card-title">A faire:</b>
+        <div *ngFor="let i of case.todos">
+          <p> {{i}} </p>
+        </div>
+        <br>
+      </div>
+      <button *ngIf="case.status == 'en cours'" 
         type="button" 
         class="btn btn-outline-warning btn-rounded"
-        (click)="openModal()">Modifier</button>
-    </div>
+        (click)="openModal()">
+          Modifier
+      </button>
+      <div *ngIf="case.status == 'demande'">
+        <button type="button" 
+        class="btn btn-outline-success"
+        (click)="caseAccepted()">
+          Accépter
+        </button>
+        <button type="button" 
+          class="btn btn-outline-danger"
+          (click)="caseDeleted()">
+          Refuser
+        </button>
+      </div>
+  </div>
 </div>
   

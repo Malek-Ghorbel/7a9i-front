@@ -2,7 +2,7 @@
     <h4 class="modal-title" id="exampleModalLabel">{{clientName}}</h4>
   </div>
   <div class="modal-body">
-        <b>{{name}}:</b>
+        <b>{{type}}:</b>
         <div class="row mt-1" >
           <div class="col-12 col-md-12  d-flex 
                       justify-content-center align-items-center ">
@@ -23,8 +23,8 @@
               type="radio"
               name="encours"
               id="encours"
-              [checked]="etat == 'en cours'"
-              (click)="etat='en cours'"
+              [checked]="status == 'en cours'"
+              (click)="status ='en cours'"
               
             />
             <label class="form-check-label" for="encours"> En cours </label>
@@ -36,14 +36,31 @@
             type="radio"
             name="termine"
             id="termine"
-            [checked]="etat == 'terminée'"
-            (click)="etat='terminée'"
+            [checked]="status == 'terminée'"
+            (click)="status='terminée'"
           />
           <label class="form-check-label" for="termine"> Terminée </label>
         </div>
         <br>
+        <div *ngIf="status == 'en cours'">
+        <b>Date du rendez-vous: </b>
+        <div class="row mt-1" >
+          <div class="col-12 col-md-12  d-flex 
+                      justify-content-center align-items-center ">
+              <input [(ngModel)]="date" 
+                      type="date" 
+                      value={{date}} 
+                      class="col-10 form-control"
+                      style="width:600px;"
+              > 
+          </div>
+      </div>
+      <br>
+    </div> 
+     <div *ngIf="status == 'en cours'">
         <b>A faire:</b>
         <app-todo [items]="todos" ></app-todo>
+        </div>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-success" (click)="close()">Sauvegarder</button>

@@ -67,15 +67,12 @@
                   <div class="container">
                    
                       <div *ngFor="let case of progressCases">
-                        <div class="card text-center">
-                          <div class="card-header">{card.}</div>
-                          <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                           
-                          </div>
-                          <div class="card-footer text-muted">2 days ago</div>
-                        </div>
+                          <app-lawyer-case 
+                            [case]="case"
+                            [isLawyer]="false"
+                          >
+                          </app-lawyer-case>
+                          <br>
                       </div> 
                 
                   </div>

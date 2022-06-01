@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-      <b>{{clientName}}</b>
+      <b>{{name}}</b>
     </div>
     <div class="card-body">
       <b class="card-title">{{case.type}}</b>
@@ -14,14 +14,14 @@
         </p>
       </div>
       <br>
-      <div *ngIf="case.status == 'en cours' && case.todos">
+      <div *ngIf="case.status == 'en cours' && case.todos.length">
         <b class="card-title">A faire:</b>
         <div *ngFor="let i of case.todos">
           <p> {{i}} </p>
         </div>
         <br>
       </div>
-      <button *ngIf="case.status == 'en cours'" 
+      <button *ngIf="case.status == 'en cours' && isLawyer" 
         type="button" 
         class="btn btn-outline-warning btn-rounded"
         (click)="openModal()">

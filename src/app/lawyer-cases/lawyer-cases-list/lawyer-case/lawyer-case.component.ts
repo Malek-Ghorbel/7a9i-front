@@ -15,15 +15,24 @@ export class LawyerCaseComponent implements OnInit {
   modalRef: MdbModalRef<ModifModalComponent> | null = null;
 
   @Input() case!: Case ;
-  public clientName!: string;
+  //public clientName!: string;
+  public name!: string;
+  @Input() isLawyer!: boolean;
+
 
   constructor(private modalService: MdbModalService, private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:3000/auth-client/clientInfoByEmail/'+this.case.clientEmail)
+    if(this.isLawyer){
+      this.http.get('http://localhost:3000/auth-client/clientInfoByEmail/'+this.case.clientEmail)
     .subscribe((result: any) =>{
-      this.clientName= result.name;
+      this.name= result.name;
     })
+    }
+    else{
+      this.getLawyerName();
+    }
+    
   }
   
   openModal() {
@@ -50,4 +59,12 @@ export class LawyerCaseComponent implements OnInit {
     .subscribe((result: any)=>{})
   }
 
+  async getLawyerName(){
+    this.http.get("http://localhost:3000/auth-lawyer/lawyerInfoByEmail/"+this.case.lawyerEmail)
+    .subscribe((result: any) => {
+      console.log(result);
+      
+    this.name="Maitre "+ result.FamilyName+" "+ result.name  ;
+    })
+  }
 }

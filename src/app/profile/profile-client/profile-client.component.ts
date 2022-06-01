@@ -21,14 +21,11 @@ export class ProfileClientComponent implements OnInit {
     image:""
   }
   
-  progressCases={
-    
-  } ;
+  progressCases:any;
   cases:any;
   
   ngOnInit(): void {
-    this.getProfile();
-    //this.displayCasesInProgress();
+    this.getProfile();    
   }
 
   async getProfile(){
@@ -73,13 +70,18 @@ export class ProfileClientComponent implements OnInit {
 
    
  async displayCasesInProgress(){
-    
-    this.http.get("http://localhost:3000/appointment/progressClient/"+this.client.email)
+  this.http.get("http://localhost:3000/appointment/progressClient/"+this.client.email)
     .subscribe((result) => {
-      this.progressCases=result;
+    this.progressCases=result;
   })
   }
 
+  /*async getLawyerName(){
+  this.http.get("http://localhost:3000/auth-lawyer/lawyerInfoByEmail/"+this.client.email)
+  .subscribe((result) => {
+  this.clientEmail=result;
+  })
+  }*/
 
 
 }

@@ -24,6 +24,7 @@
         <div *ngFor="let case of casesDemand">
             <app-lawyer-case 
               [case]="case"
+              [isLawyer]="true"
             >
             </app-lawyer-case>
             <br>
@@ -34,6 +35,7 @@
         <div *ngFor="let case of casesProgress">
             <app-lawyer-case 
               [case]="case"
+              [isLawyer]="true"
             >
             </app-lawyer-case>
             <br>
@@ -43,6 +45,7 @@
         <div *ngFor="let case of cansesFinish">
             <app-lawyer-case 
               [case]="case"
+              [isLawyer]="true"
             >
             </app-lawyer-case>
             <br>

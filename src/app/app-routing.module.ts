@@ -1,3 +1,4 @@
+import { SigninComponent } from './signin/signin.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EspaceAvocatComponent } from './espace-avocat/espace-avocat.component';
@@ -15,6 +16,7 @@ import { SignupComponent } from './signup/signup.component';
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'loginLawyer', component: LoginLawyerComponent},
+  {path : 'signin', component: SigninComponent},
   {path:'signupLawyer', component:SignupLawyerComponent},
   {path:'signup', component:SignupComponent},
   {path:'signupClient', component:SignupClientComponent},

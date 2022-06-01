@@ -14,6 +14,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  collapsed = true; 
+  
   isAuth() : boolean {
     if (localStorage.getItem("token")) return true
     else return false ;

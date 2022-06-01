@@ -44,6 +44,8 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { SignupComponent } from './signup/signup.component';
 import { RatingModalComponent } from './rating-modal/rating-modal.component';
+import { SigninComponent } from './signin/signin.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -68,6 +70,7 @@ import { RatingModalComponent } from './rating-modal/rating-modal.component';
     EspaceAvocatComponent,
     SignupComponent,
     RatingModalComponent,
+    SigninComponent,
   ],
   imports: [
     BrowserModule,
@@ -96,7 +99,8 @@ import { RatingModalComponent } from './rating-modal/rating-modal.component';
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,
-    })
+    }),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

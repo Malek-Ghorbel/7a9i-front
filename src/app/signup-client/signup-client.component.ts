@@ -18,6 +18,7 @@ export class SignupClientComponent implements OnInit {
     age:"",
     city:"",
     email:"",
+    phoneNumber:"",
     password:"",
     confirmPassword:"",
     type:"client",
@@ -31,6 +32,7 @@ export class SignupClientComponent implements OnInit {
     age : new FormControl('', Validators.required),
     city : new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
+    phoneNumber: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
     confirmPassword : new FormControl('', Validators.required)
   })
@@ -44,6 +46,7 @@ export class SignupClientComponent implements OnInit {
       age:['',[ Validators.required, Validators.min(18)]],
       city:['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      phoneNumber: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(9)]],
       confirmPassword: ['', Validators.required],
       type:["client"],
@@ -55,6 +58,7 @@ export class SignupClientComponent implements OnInit {
     this.http.post('http://localhost:3000/auth-client/signup' , user ,{withCredentials: true})
     .subscribe((result :any)  => {
       localStorage.setItem("token",result.token);
+      localStorage.setItem("type","client");
       this.router.navigate(['/'])
     }) ;
    }

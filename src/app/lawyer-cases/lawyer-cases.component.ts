@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lawyer-cases',
@@ -18,10 +19,31 @@ export class LawyerCasesComponent implements OnInit {
   casesProgress:any;
   cansesFinish:any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router:Router) { }
 
   ngOnInit(): void {
+    if(!this.isAuthLawyer()) {
+      window.alert('you are a client you need to be logged in as a lawyer') ;
+      this.router.navigate(['/']) ;
+    }
+    if(!this.isAuth()) {
+      window.alert('you need to be logged in as a lawyer') ;
+      this.router.navigate(['/loginLawyer']) ;
+    }
     this.getLawyerEmail();
+  }
+
+  isAuth() : boolean {
+    if (localStorage.getItem("token")) return true
+    else return false ;
+  }
+
+  isAuthLawyer() : boolean {
+    if (localStorage.getItem("token")) {
+      if (localStorage.getItem("type") === "lawyer") return true
+      else return false ;
+    }
+    else return true ;
   }
 
   getLawyerEmail(){
@@ -29,6 +51,7 @@ export class LawyerCasesComponent implements OnInit {
     this.http.get('http://localhost:3000/auth-lawyer/lawyerInfo/'+jwt)
     .subscribe((result :any)  => {
       this.email=result.email;
+      this.loadCasesProgress();
     })
   }
   onShowEncours(){

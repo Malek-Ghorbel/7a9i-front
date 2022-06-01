@@ -28,13 +28,26 @@ export class ProblemComponent implements OnInit {
     else return false ;
   }
 
+  isAuthClient() : boolean {
+    if (localStorage.getItem("token")) {
+    if (localStorage.getItem("type") === "client") return true
+      else return false ;
+    }
+    else return true ;
+  }
+
   ngOnInit(): void {
+    if(!this.isAuthClient()) {
+      window.alert('you are a lwayer you need to be logged in as a client') ;
+      this.router.navigate(['/'])
+    }
     if(!this.isAuth()) {
+      window.alert('you need to be loggzd in as a client') ;
       this.router.navigate(['/login'])
     }
     this.problemDescriptionForm = this.formBuilder.group({
-      type: [''],
-      description: [''],
+      type: ['',  Validators.required],
+      description: ['',  Validators.required],
     })
   }
 
@@ -42,8 +55,6 @@ export class ProblemComponent implements OnInit {
 
   loadLawyers() {
     this.shouldShowLawyers = true ;
-    localStorage.setItem('type', this.problem.type);
-    localStorage.setItem('description',this.problem.description);
   }
 
 }

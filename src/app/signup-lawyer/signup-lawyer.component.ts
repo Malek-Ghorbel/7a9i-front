@@ -19,6 +19,7 @@ export class SignupLawyerComponent implements OnInit {
     speciality:"",
     description:"",
     email:"",
+    phoneNumber:"",
     password:"",
     confirmPassword:"",
     type:"lawyer"
@@ -34,6 +35,7 @@ export class SignupLawyerComponent implements OnInit {
     speciality : new FormControl('', Validators.required),
     description : new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
+    phoneNumber: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
     confirmPassword : new FormControl('', Validators.required)
   })
@@ -49,6 +51,7 @@ export class SignupLawyerComponent implements OnInit {
       speciality:['', Validators.required],
       description:['', Validators.required],
       email: ['',[Validators.required, Validators.email]],
+      phoneNumber: ['', Validators.required], 
       password: ['', [Validators.required, Validators.minLength(9)]],
       confirmPassword: ['', Validators.required],
       type:["lawyer"],
@@ -60,6 +63,7 @@ export class SignupLawyerComponent implements OnInit {
     this.http.post('http://localhost:3000/auth-lawyer/signup' , lawyer ,{withCredentials: true})
     .subscribe((result :any)  => {
       localStorage.setItem("token",result.token);
+      localStorage.setItem("type","lawyer");
       this.router.navigate(['/'])
     }) ;
   }

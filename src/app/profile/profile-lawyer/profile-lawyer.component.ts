@@ -13,6 +13,7 @@ export class ProfileLawyerComponent implements OnInit {
     age:"",
     adress:"",
     email:"",
+    phoneNumber:"",
     speciality:"",
     description:"",
     image:"",
@@ -36,6 +37,7 @@ export class ProfileLawyerComponent implements OnInit {
       this.lawyer.age=result.age;
       this.lawyer.adress=result.adress;
       this.lawyer.email=result.email;
+      this.lawyer.phoneNumber= result.phoneNumber;
       this.lawyer.speciality=result.speciality;
       this.lawyer.description=result.description;
       if(result.image === undefined){

@@ -43,6 +43,7 @@ import { EspaceAvocatComponent } from './espace-avocat/espace-avocat.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { SignupComponent } from './signup/signup.component';
+import { RatingModalComponent } from './rating-modal/rating-modal.component';
 
 
 @NgModule({
@@ -66,6 +67,7 @@ import { SignupComponent } from './signup/signup.component';
     LoginLawyerComponent,
     EspaceAvocatComponent,
     SignupComponent,
+    RatingModalComponent,
   ],
   imports: [
     BrowserModule,

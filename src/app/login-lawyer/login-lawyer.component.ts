@@ -38,6 +38,7 @@ export class LoginLawyerComponent implements OnInit {
     this.http.post('http://localhost:3000/auth-lawyer/signin' , user ,{withCredentials: true})
     .subscribe((result :any)  => {
       localStorage.setItem("token",result.token);
+      localStorage.setItem("type","lawyer");
       this.router.navigate(['/'])
     }) ;
   }

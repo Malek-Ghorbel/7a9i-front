@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -17,20 +18,37 @@ export class NavbarComponent implements OnInit {
     if (localStorage.getItem("token")) return true
     else return false ;
   }
+
+  isAuthLawyer() : boolean {
+    if (localStorage.getItem("token")) {
+      if (localStorage.getItem("type") === "lawyer") return true
+      else return false ;
+    }
+    else return true ;
+  }
   
-  
+  isAuthClient() : boolean {
+    if (localStorage.getItem("token")) {
+    if (localStorage.getItem("type") === "client") return true
+      else return false ;
+    }
+    else return true ;
+  }
+
   getProfile(){
     const token =localStorage.getItem("token");
-    this.http.get('http://localhost:3000/auth-client/info/'+token)
-    .subscribe((result :any)  => {
-      console.log(result);
-    }) ;
+    const type = localStorage.getItem("type");
+    if(type === "client")
+      this.router.navigate(["/profileClient"]) ;
+    else 
+      this.router.navigate(["/profileLawyer"]) ;
   }
 
 
 
   signout() : void {
     localStorage.removeItem("token");
+    localStorage.removeItem("type");
   }
  
 }

@@ -14,10 +14,16 @@
                   <div class="form-group">
                     <label for="age">Type de problème :</label>
                        <select class="form-control" name="type"  formControlName="type" [(ngModel)]="problem.type">
-                         <option>Droit public</option>
-                         <option>Droit pénal</option>
-                         <option>Droit immobilier</option>
-                         <option>Droit commercial</option>
+                        <option value="" disabled selected>Litige:</option>
+                         <option>Administratif</option>
+                         <option>Financier</option>
+                         <option>Foncier</option>
+                         <option>Commercial</option>
+                         <option>Fiscale</option>
+                         <option>Contractuel</option>
+                         <option>Civil</option>
+                         <option>Pénal</option>
+                         <option>Familier</option>
                         </select>
                   </div>
                   <br/>
@@ -26,7 +32,7 @@
                   <textarea class="form-control"  formControlName="description" id="comment" rows="3" placeholder="Commentaire" [(ngModel)]="problem.description"></textarea>
                  </div>
                  <br>
-                 <button type="submit" mdbBtn class="btn btn-primary" (click)="loadLawyers()" color="deep-orange">Résoudre</button>
+                 <button type="submit" [disabled]="!problemDescriptionForm.valid" mdbBtn class="btn btn-primary" (click)="loadLawyers()" color="deep-orange">Résoudre</button>
                 </form>
             </div>
           </div>
@@ -49,6 +55,9 @@
     <br/>
 
     <div *ngIf="shouldShowLawyers">
-        <app-lawyer-table></app-lawyer-table>
+        <app-lawyer-table 
+          [description]="problem.description"
+          [problemType]="problem.type"
+        ></app-lawyer-table>
     </div>
 </div>

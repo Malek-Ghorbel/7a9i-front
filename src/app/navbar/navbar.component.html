@@ -36,10 +36,7 @@
           <a class="nav-link" routerLink="/problem">Faire une demande</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/lawyerSpace">Espace avocat</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/lawyerCases">Affaires</a>
+          <a class="nav-link" *ngIf="isAuthLawyer()" routerLink="/lawyerCases">Espace avocat</a>
         </li>
       </ul>
       <!-- Left links -->
@@ -49,10 +46,10 @@
           Se connecter
         </button>
 
-        <button mdbBtn type="button" class="btn  me-3" color="deep-orange" *ngIf="!isAuth()" routerLink="/signupClient" mdbWavesEffect>
+        <button mdbBtn type="button" class="btn  me-3" color="deep-orange" *ngIf="!isAuth()" routerLink="/signup" mdbWavesEffect>
           S'inscrire
         </button>
-        <button type="button" class="btn me-2" routerLink="profileClient" *ngIf="isAuth()">
+        <button type="button" class="btn me-2"  *ngIf="isAuth()" (click)="getProfile()">
           <i class="fas fa-user"></i>
         </button>
         <button mdbBtn type="button" class="btn btn-primary me-3" color="deep-orange" (click)="signout()" *ngIf="isAuth()" routerLink="/" mdbWavesEffect>

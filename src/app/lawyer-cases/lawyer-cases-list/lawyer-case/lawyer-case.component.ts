@@ -35,6 +35,13 @@ export class LawyerCaseComponent implements OnInit {
     
   }
   
+  rate(n : number) {
+    this.http.patch('http://localhost:3000/appointment/rated/'+ this.case._id ,"") 
+    .subscribe((result) => {console.log(result);})
+    this.http.post('http://localhost:3000/auth-lawyer/updateRating/'+ this.case.lawyerEmail + '/' + n ,"") 
+    .subscribe((result) => {console.log(result);})
+  }
+
   openModal() {
     this.modalRef = this.modalService.open(ModifModalComponent, 
       {data: this.case});
@@ -43,6 +50,7 @@ export class LawyerCaseComponent implements OnInit {
       this.http.patch('http://localhost:3000/appointment/update/'+i._id, i)
       .subscribe((result: any)=>{
         this.case = result;
+        location.reload();
       })
       console.log("case: " + this.case)
     })
@@ -51,19 +59,17 @@ export class LawyerCaseComponent implements OnInit {
   caseAccepted(){
     this.case.status = 'en cours';
     this.http.patch('http://localhost:3000/appointment/update/'+this.case._id, this.case)
-    .subscribe((result: any)=>{})
+    .subscribe((result: any)=>{location.reload();})
   }
 
   caseDeleted(){
     this.http.delete('http://localhost:3000/appointment/delete/'+this.case._id)
-    .subscribe((result: any)=>{})
+    .subscribe((result: any)=>{location.reload();})
   }
 
   async getLawyerName(){
     this.http.get("http://localhost:3000/auth-lawyer/lawyerInfoByEmail/"+this.case.lawyerEmail)
     .subscribe((result: any) => {
-      console.log(result);
-      
     this.name="Maitre "+ result.FamilyName+" "+ result.name  ;
     })
   }

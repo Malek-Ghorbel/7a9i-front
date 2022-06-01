@@ -73,6 +73,18 @@
        <br/>
        <div class="form-group">
          <input 
+         type="text" 
+         formControlName="phoneNumber"
+         class="form-control" 
+         name="phoneNumber" 
+         placeholder="Numero du téléphone"  
+         [(ngModel)]="user.phoneNumber">
+         <span class="text-danger" *ngIf="signupClientForm.controls['phoneNumber'].dirty && signupClientForm.hasError('required','phoneNumber')">Entrez votre mot de passe</span>
+       </div>
+
+       <br/>
+       <div class="form-group">
+         <input 
          type="password" 
          formControlName="password"
          class="form-control" 

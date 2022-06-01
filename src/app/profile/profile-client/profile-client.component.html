@@ -8,10 +8,13 @@
               <img src={{client.image}} alt="avatar" class="rounded-circle img-fluid " style="width: 150px;">
               <h5 class="my-3 fw-bold">{{client.firstName}} {{client.familyName}}</h5>
               <p class="text-muted mb-4">{{client.adress}}</p>
-              <div class="d-flex justify-content-center mb-2" style="margin-left:190px">
+              <div class="d-flex justify-content-center mb-2" >
                 <form action="" method="post" enctype="multipart/form-data" >
-                    <input type="file" name="profile" id="fileUpload" (change)="setImage($event)" style="color:rgb(255, 255, 255);">
-              </form>
+                  <div class="photo-changer">
+                    Changer photo
+                    <input type="file" class="hide_file" name="profile" id="fileUpload" (change)="setImage($event)" style="color:rgb(255, 255, 255);">
+                    </div>
+                  </form>
               </div>
             </div>
           </div>
@@ -22,7 +25,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0 fw-bold">Full Name</p>
+                  <p class="mb-0 fw-bold">Nom complet</p>
                 </div>
                 <div class="col-sm-9">
                   <p class="text-muted mb-0">{{client.firstName}} {{client.familyName}}</p>
@@ -40,16 +43,16 @@
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0 fw-bold">Phone</p>
+                  <p class="mb-0 fw-bold">Telephone</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">(097) 234-5678</p>
+                  <p class="text-muted mb-0">{{client.phoneNumber}}</p>
                 </div>
               </div>
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0 fw-bold">Address</p>
+                  <p class="mb-0 fw-bold">Addresse</p>
                 </div>
                 <div class="col-sm-9">
                   <p class="text-muted mb-0">{{client.adress}}</p>
@@ -63,9 +66,9 @@
             <div class="card-body">
               <div class="row">
                 <div >
-                  <p class="mb-0"><b style="font-size:20px;" class="fw-bold">My cases :</b></p>
-                  <div class="container">
-                   
+                  <p class="mb-0"><b style="font-size:20px;" class="fw-bold">Mes affaires :</b></p>
+                  <div>
+                   <br/>
                       <div *ngFor="let case of progressCases">
                           <app-lawyer-case 
                             [case]="case"
@@ -74,37 +77,13 @@
                           </app-lawyer-case>
                           <br>
                       </div> 
-                
                   </div>
-                  <br />
-                  <div *ngFor="let case of cases">
-                  <div class="card">
-                    <div class="card-header">
-                      <b style="color:rgb(32, 91, 32)" class="fw-bold">{{case.type}}</b>
-                    </div>
-                    <div class="card-body">
-                      <p class="fw-bold" class="badge text-wrap" style="background-color:rgb(230, 112, 48);width: 8rem;height:5px auto;" >Description:</p>
-                      <p class="card-text" >
-                        {{case.description}}
-                      </p>
-                      <p class="fw-bold" class="badge text-wrap" style="background-color:rgb(230, 112, 48);width: 8rem;height:5px auto;">Email de l'avocat:</p>
-                      <p>{{case.lawyerEmail}}</p>
-
-                      <span class="badge badge-success" *ngIf="case.status"> {{case.status}}</span>
-                       
-                      
-                      
-                    </div>
-                  </div>
-                  <br />
-                </div>
-                </div>
-                
+                <br />
+              </div>
             </div>
           </div>
-          </div>
-          
-          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>

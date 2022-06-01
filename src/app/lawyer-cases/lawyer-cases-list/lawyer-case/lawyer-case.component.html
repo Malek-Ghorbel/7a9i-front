@@ -7,11 +7,24 @@
       <p class="card-text">
         {{case.description}}
       </p>
+      
       <div *ngIf="case.status == 'en cours' && case.date">
         <b class="card-title">Votre prochain rendez-vous:</b>
         <p class="card-text">
           {{case.date}}
         </p>
+      </div>
+      <div class="rating" *ngIf="case.status == 'terminée' && !isLawyer">
+        <input type="radio" name="rating" id="rating-5" (click)="rate(5)">
+        <label for="rating-5"></label>
+        <input type="radio" name="rating" id="rating-4" (click)="rate(4)">
+        <label for="rating-4"></label>
+        <input type="radio" name="rating" id="rating-3" (click)="rate(3)">
+        <label for="rating-3"></label>
+        <input type="radio" name="rating" id="rating-2" (click)="rate(2)">
+        <label for="rating-2"></label>
+        <input type="radio" name="rating" id="rating-1" (click)="rate(1)">
+        <label for="rating-1"></label>
       </div>
       <br>
       <div *ngIf="case.status == 'en cours' && case.todos.length">

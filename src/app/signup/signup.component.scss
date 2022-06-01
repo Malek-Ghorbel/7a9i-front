@@ -1,0 +1,35 @@
+.image-header{
+    padding: 40px;
+    text-align: center;
+    font-size: 62pt;
+    color: aliceblue;
+    font-family: "Monotype corsiva";
+    -webkit-text-stroke: 1px rgb(0, 0, 0);
+}
+  .left {
+    left: 0;
+    background-image: url("../../assets/img/za.jpg");height:900px;width:100%;background-repeat: no-repeat;background-size: cover;
+  }
+  
+  /* Control the right side */
+  .right {
+    right: 0;
+    background-image:url("../../assets/img/t.jpeg");height:900px;width:100%;background-repeat: no-repeat;background-size: cover;
+  }
+  
+  /* If you want the content centered horizontally and vertically */
+  .centered {
+    padding-top: 90px;
+    filter: brightness(50%);
+    text-align: center;
+  }
+
+  .centered:hover {
+    filter: brightness(100%);
+  }
+  
+  /* Style the image inside the centered container, if needed */
+  .centered img {
+    width: 150px;
+    border-radius: 50%;
+  }

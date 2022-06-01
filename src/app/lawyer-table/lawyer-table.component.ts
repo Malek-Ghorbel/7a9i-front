@@ -10,6 +10,7 @@ export class LawyerTableComponent implements OnInit {
 
   lawyers : any  ;
 
+
   constructor(private http: HttpClient) { }
   
   appointment={
@@ -36,7 +37,10 @@ export class LawyerTableComponent implements OnInit {
     this.http.post("http://localhost:3000/auth-lawyer/lawyers", "")
       .subscribe((result) => {
         this.lawyers = result ;
+        this.lawyers.map((lawyer: any) => lawyer.rating = "50%") ;
+        console.log(this.lawyers)
     })
+    
   }
 
   saveLawyer(lawyer:any){

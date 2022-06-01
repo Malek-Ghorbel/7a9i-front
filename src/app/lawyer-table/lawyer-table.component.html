@@ -6,6 +6,7 @@
         <th>Spécialité</th>
         <th>Status</th>
         <th>Email</th>
+        <th>Note</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -33,6 +34,25 @@
           <span class="badge badge-success rounded-pill d-inline">disponible</span>
         </td>
         <td>{{lawyer.email}} </td>
+        <td>
+          <div class="rating">
+            <div class="rating-upper" [ngStyle]="{width : lawyer.rating}">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+            </div>
+            <span class="rating-lower">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+            </span>
+            
+          </div>
+        </td>
         <td>
           <div>
             <button mdbBtn color="green" type="button" class="btn btn-sm btn-rounded" mdbRipple rippleColor="dark" (click)="saveLawyer(lawyer)">

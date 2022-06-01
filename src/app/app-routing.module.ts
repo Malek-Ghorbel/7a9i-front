@@ -10,11 +10,13 @@ import { ProfileClientComponent } from './profile/profile-client/profile-client.
 import { ProfileLawyerComponent } from './profile/profile-lawyer/profile-lawyer.component';
 import { SignupClientComponent } from './signup-client/signup-client.component';
 import { SignupLawyerComponent } from './signup-lawyer/signup-lawyer.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'loginLawyer', component: LoginLawyerComponent},
   {path:'signupLawyer', component:SignupLawyerComponent},
+  {path:'signup', component:SignupComponent},
   {path:'signupClient', component:SignupClientComponent},
   {path:'problem', component:ProblemComponent},
   {path : 'profileLawyer', component: ProfileLawyerComponent},

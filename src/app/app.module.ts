@@ -46,6 +46,10 @@ import { SignupComponent } from './signup/signup.component';
 import { RatingModalComponent } from './rating-modal/rating-modal.component';
 import { SigninComponent } from './signin/signin.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Scroll1Component } from './scroll1/scroll1.component';
+import { Scroll2Component } from './scroll2/scroll2.component';
+import { Scroll3Component } from './scroll3/scroll3.component';
+import { Scroll4Component } from './scroll4/scroll4.component';
 
 
 @NgModule({
@@ -71,6 +75,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SignupComponent,
     RatingModalComponent,
     SigninComponent,
+    Scroll1Component,
+    Scroll2Component,
+    Scroll3Component,
+    Scroll4Component,
   ],
   imports: [
     BrowserModule,

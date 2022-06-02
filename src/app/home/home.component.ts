@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IconsModule } from 'angular-bootstrap-md';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({

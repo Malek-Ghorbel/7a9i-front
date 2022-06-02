@@ -46,10 +46,14 @@ import { SignupComponent } from './signup/signup.component';
 import { RatingModalComponent } from './rating-modal/rating-modal.component';
 import { SigninComponent } from './signin/signin.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+<<<<<<< HEAD
 import { Scroll1Component } from './scroll1/scroll1.component';
 import { Scroll2Component } from './scroll2/scroll2.component';
 import { Scroll3Component } from './scroll3/scroll3.component';
 import { Scroll4Component } from './scroll4/scroll4.component';
+=======
+import { LawComponent } from './law/law.component';
+>>>>>>> dcb2f83fe3f3a48290cd67acffe1e7a888edaf67
 
 
 @NgModule({
@@ -75,10 +79,14 @@ import { Scroll4Component } from './scroll4/scroll4.component';
     SignupComponent,
     RatingModalComponent,
     SigninComponent,
+<<<<<<< HEAD
     Scroll1Component,
     Scroll2Component,
     Scroll3Component,
     Scroll4Component,
+=======
+    LawComponent,
+>>>>>>> dcb2f83fe3f3a48290cd67acffe1e7a888edaf67
   ],
   imports: [
     BrowserModule,

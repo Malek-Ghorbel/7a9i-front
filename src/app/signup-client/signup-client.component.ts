@@ -57,6 +57,7 @@ export class SignupClientComponent implements OnInit {
   submitForm(user: any){
     this.http.post('http://localhost:3000/auth-client/signup' , user ,{withCredentials: true})
     .subscribe((result :any)  => {
+      console.log(result)
       localStorage.setItem("token",result.token);
       localStorage.setItem("type","client");
       this.router.navigate(['/'])

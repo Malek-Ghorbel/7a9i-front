@@ -62,6 +62,8 @@ export class SignupLawyerComponent implements OnInit {
   submitForm(lawyer: any){
     this.http.post('http://localhost:3000/auth-lawyer/signup' , lawyer ,{withCredentials: true})
     .subscribe((result :any)  => {
+      console.log("result");
+      console.log(result);
       localStorage.setItem("token",result.token);
       localStorage.setItem("type","lawyer");
       this.router.navigate(['/'])

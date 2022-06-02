@@ -46,6 +46,7 @@ import { SignupComponent } from './signup/signup.component';
 import { RatingModalComponent } from './rating-modal/rating-modal.component';
 import { SigninComponent } from './signin/signin.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LawComponent } from './law/law.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SignupComponent,
     RatingModalComponent,
     SigninComponent,
+    LawComponent,
   ],
   imports: [
     BrowserModule,

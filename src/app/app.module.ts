@@ -50,6 +50,7 @@ import { Scroll1Component } from './scroll1/scroll1.component';
 import { Scroll2Component } from './scroll2/scroll2.component';
 import { Scroll3Component } from './scroll3/scroll3.component';
 import { Scroll4Component } from './scroll4/scroll4.component';
+import { LawComponent } from './law/law.component';
 
 
 @NgModule({
@@ -79,6 +80,7 @@ import { Scroll4Component } from './scroll4/scroll4.component';
     Scroll2Component,
     Scroll3Component,
     Scroll4Component,
+    LawComponent,
   ],
   imports: [
     BrowserModule,

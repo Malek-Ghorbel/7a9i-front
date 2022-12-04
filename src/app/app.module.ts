@@ -51,6 +51,8 @@ import { Scroll2Component } from './scroll2/scroll2.component';
 import { Scroll3Component } from './scroll3/scroll3.component';
 import { Scroll4Component } from './scroll4/scroll4.component';
 import { LawComponent } from './law/law.component';
+import { HomeRemadeComponent } from './home-remade/home-remade.component';
+import { NavbarRemadeComponent } from './navbar-remade/navbar-remade.component';
 
 
 @NgModule({
@@ -81,6 +83,8 @@ import { LawComponent } from './law/law.component';
     Scroll3Component,
     Scroll4Component,
     LawComponent,
+    HomeRemadeComponent,
+    NavbarRemadeComponent,
   ],
   imports: [
     BrowserModule,

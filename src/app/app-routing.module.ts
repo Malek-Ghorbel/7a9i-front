@@ -16,6 +16,7 @@ import { Scroll1Component } from './scroll1/scroll1.component';
 import { Scroll2Component } from './scroll2/scroll2.component';
 import { Scroll3Component } from './scroll3/scroll3.component';
 import { Scroll4Component } from './scroll4/scroll4.component';
+import { HomeRemadeComponent } from './home-remade/home-remade.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -33,7 +34,7 @@ const routes: Routes = [
   {path: 'scroll2', component: Scroll2Component},
   {path: 'scroll3', component: Scroll3Component},
   {path: 'scroll4', component: Scroll4Component},
-  {path : '**' , component: HomeComponent}
+  {path : '**' , component: HomeRemadeComponent}
 ];
 
 @NgModule({

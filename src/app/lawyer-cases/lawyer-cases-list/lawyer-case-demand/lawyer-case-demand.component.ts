@@ -2,16 +2,15 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Case } from '../../case.model';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { HttpClient } from '@angular/common/http';
-import { ModifModalComponent } from '../lawyer-case-progress/modif-modal/modif-modal.component';
+import { LawyerCasesService } from 'src/app/services/lawyer-cases.service';
 
 @Component({
-  selector: 'app-lawyer-case',
-  templateUrl: './lawyer-case.component.html',
-  styleUrls: ['./lawyer-case.component.scss']
+  selector: 'app-lawyer-case-demand',
+  templateUrl: './lawyer-case-demand.component.html',
+  styleUrls: ['./lawyer-case-demand.component.scss']
 })
-export class LawyerCaseComponent implements OnInit {
+export class LawyerCaseDemandComponent implements OnInit {
 
-  modalRef: MdbModalRef<ModifModalComponent> | null = null;
 
   @Input() case!: Case ;
   
@@ -20,7 +19,7 @@ export class LawyerCaseComponent implements OnInit {
   @Input() isLawyer!: boolean;
 
 
-  constructor(private modalService: MdbModalService, private http: HttpClient) { }
+  constructor( private http: HttpClient) { }
 
   ngOnInit(): void {
     if(this.isLawyer){
@@ -42,20 +41,7 @@ export class LawyerCaseComponent implements OnInit {
     .subscribe((result) => {console.log(result);})
   }
 
-  openModal() {
-    this.modalRef = this.modalService.open(ModifModalComponent, 
-      {data: this.case});
-      this.modalRef.onClose.subscribe((i: Case)=>{
-      console.log("i:" +i)
-      this.http.patch('http://localhost:3000/appointment/update/'+i._id, i)
-      .subscribe((result: any)=>{
-        this.case = result;
-        location.reload();
-      })
-      console.log("case: " + this.case)
-    })
-  }
-
+  
   caseAccepted(){
     this.case.status = 'en cours';
     this.http.patch('http://localhost:3000/appointment/update/'+this.case._id, this.case)

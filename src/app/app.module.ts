@@ -34,9 +34,6 @@ import { ProfileLawyerComponent } from './profile/profile-lawyer/profile-lawyer.
 import { ProfileClientComponent } from './profile/profile-client/profile-client.component';
 import { LawyerCasesComponent } from './lawyer-cases/lawyer-cases.component';
 import { LawyerCasesListComponent } from './lawyer-cases/lawyer-cases-list/lawyer-cases-list.component';
-import { LawyerCaseComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case/lawyer-case.component';
-import { ModifModalComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case/modif-modal/modif-modal.component';
-import { TodoComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case/modif-modal/todo/todo.component';
 import { LawyerTableComponent } from './lawyer-table/lawyer-table.component';
 import { LoginLawyerComponent } from './login-lawyer/login-lawyer.component';
 import { EspaceAvocatComponent } from './espace-avocat/espace-avocat.component';
@@ -53,6 +50,13 @@ import { Scroll4Component } from './scroll4/scroll4.component';
 import { LawComponent } from './law/law.component';
 import { HomeRemadeComponent } from './home-remade/home-remade.component';
 import { NavbarRemadeComponent } from './navbar-remade/navbar-remade.component';
+import { SearchComponent } from './lawyer-cases/search/search.component';
+import { LawyerCaseDemandComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case-demand/lawyer-case-demand.component';
+import { LawyerCaseProgressComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case-progress/lawyer-case-progress.component';
+import { LawyerCaseFinishComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case-finish/lawyer-case-finish.component';
+import { ModifModalComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case-progress/modif-modal/modif-modal.component';
+import { TodoComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case-progress/modif-modal/todo/todo.component';
+import { LawyerCaseComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case/lawyer-case.component';
 
 
 @NgModule({
@@ -70,8 +74,6 @@ import { NavbarRemadeComponent } from './navbar-remade/navbar-remade.component';
     LawyerCasesComponent,
     LawyerCasesListComponent,
     LawyerCaseComponent,
-    ModifModalComponent,
-    TodoComponent,
     LawyerTableComponent,
     LoginLawyerComponent,
     EspaceAvocatComponent,
@@ -85,6 +87,12 @@ import { NavbarRemadeComponent } from './navbar-remade/navbar-remade.component';
     LawComponent,
     HomeRemadeComponent,
     NavbarRemadeComponent,
+    SearchComponent,
+    LawyerCaseDemandComponent,
+    LawyerCaseProgressComponent,
+    LawyerCaseFinishComponent,
+    ModifModalComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,

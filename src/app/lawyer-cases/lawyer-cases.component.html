@@ -1,57 +1,33 @@
-<div class="image-header">Affaires</div>
-<br/>
-<div >
-<div class="btn-group" >
-    <button mdbBtn
-        type="button" 
-        color={{colordemand}}
-        (click)="loadCasesDemand()"
-        mdbWavesEffect>Demande
-    </button>
-    <button mdbBtn
-        type="button" 
-        color={{colorencours}}
-        (click)="loadCasesProgress()"
-        mdbWavesEffect>En cours
-    </button>
-    <button mdbBtn
-        type="button" 
-        color={{colorterm}}
-        (click)="loadCasesFinish()"
-        mdbWavesEffect>Terminée
-    </button>
-</div>
-<div class="container">
-    <div *ngIf="etat === 'demande'">
-        <div *ngFor="let case of casesDemand">
-            <app-lawyer-case 
-              [case]="case"
-              [isLawyer]="true"
-            >
-            </app-lawyer-case>
-            <br>
+<div class="page">
+    <div class="image-header">Affaires</div>
+    <br/>
+    <div >
+        <div class="groupbutton" >
+            <button mdbBtn
+                class="bdr"
+                type="button" 
+                color={{colordemand}}
+                (click)="onShowDemand()"
+                mdbWavesEffect>Demande
+            </button>
+            <button mdbBtn
+                class="bdr"
+                type="button" 
+                color={{colorencours}}
+                (click)="onShowEncours()"
+                mdbWavesEffect>En cours
+            </button>
+            <button mdbBtn
+                class="bdr"
+                type="button" 
+                color={{colorterm}}
+                (click)="onShowTermine()"
+                mdbWavesEffect>Terminée
+            </button>
         </div>
-    
+
+        <app-search></app-search>
+
+        <app-lawyer-cases-list></app-lawyer-cases-list>
     </div>
-    <div *ngIf="etat === 'en cours'">
-        <div *ngFor="let case of casesProgress">
-            <app-lawyer-case 
-              [case]="case"
-              [isLawyer]="true"
-            >
-            </app-lawyer-case>
-            <br>
-        </div> 
-    </div>
-    <div *ngIf="etat === 'terminée'">
-        <div *ngFor="let case of cansesFinish">
-            <app-lawyer-case 
-              [case]="case"
-              [isLawyer]="true"
-            >
-            </app-lawyer-case>
-            <br>
-        </div>
-    </div>
-</div>
 </div>

@@ -1,15 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Case } from '../../case.model';
+import { ModifModalComponent } from './modif-modal/modif-modal.component';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { HttpClient } from '@angular/common/http';
-import { ModifModalComponent } from '../lawyer-case-progress/modif-modal/modif-modal.component';
 
 @Component({
-  selector: 'app-lawyer-case',
-  templateUrl: './lawyer-case.component.html',
-  styleUrls: ['./lawyer-case.component.scss']
+  selector: 'app-lawyer-case-progress',
+  templateUrl: './lawyer-case-progress.component.html',
+  styleUrls: ['./lawyer-case-progress.component.scss']
 })
-export class LawyerCaseComponent implements OnInit {
+export class LawyerCaseProgressComponent implements OnInit {
 
   modalRef: MdbModalRef<ModifModalComponent> | null = null;
 
@@ -73,4 +73,5 @@ export class LawyerCaseComponent implements OnInit {
     this.case.clientName="Maitre "+ result.FamilyName+" "+ result.name  ;
     })
   }
+
 }

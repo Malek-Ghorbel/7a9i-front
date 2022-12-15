@@ -2,16 +2,14 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Case } from '../../case.model';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { HttpClient } from '@angular/common/http';
-import { ModifModalComponent } from '../lawyer-case-progress/modif-modal/modif-modal.component';
 
 @Component({
-  selector: 'app-lawyer-case',
-  templateUrl: './lawyer-case.component.html',
-  styleUrls: ['./lawyer-case.component.scss']
+  selector: 'app-lawyer-case-finish',
+  templateUrl: './lawyer-case-finish.component.html',
+  styleUrls: ['./lawyer-case-finish.component.scss']
 })
-export class LawyerCaseComponent implements OnInit {
-
-  modalRef: MdbModalRef<ModifModalComponent> | null = null;
+export class LawyerCaseFinishComponent implements OnInit {
+  
 
   @Input() case!: Case ;
   
@@ -40,31 +38,6 @@ export class LawyerCaseComponent implements OnInit {
     .subscribe((result) => {console.log(result);})
     this.http.post('http://localhost:3000/auth-lawyer/updateRating/'+ this.case.lawyerEmail + '/' + n ,"") 
     .subscribe((result) => {console.log(result);})
-  }
-
-  openModal() {
-    this.modalRef = this.modalService.open(ModifModalComponent, 
-      {data: this.case});
-      this.modalRef.onClose.subscribe((i: Case)=>{
-      console.log("i:" +i)
-      this.http.patch('http://localhost:3000/appointment/update/'+i._id, i)
-      .subscribe((result: any)=>{
-        this.case = result;
-        location.reload();
-      })
-      console.log("case: " + this.case)
-    })
-  }
-
-  caseAccepted(){
-    this.case.status = 'en cours';
-    this.http.patch('http://localhost:3000/appointment/update/'+this.case._id, this.case)
-    .subscribe((result: any)=>{location.reload();})
-  }
-
-  caseDeleted(){
-    this.http.delete('http://localhost:3000/appointment/delete/'+this.case._id)
-    .subscribe((result: any)=>{location.reload();})
   }
 
   async getLawyerName(){

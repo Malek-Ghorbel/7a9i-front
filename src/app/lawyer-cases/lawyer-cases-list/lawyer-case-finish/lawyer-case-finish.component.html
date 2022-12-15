@@ -1,0 +1,27 @@
+<div class="card" >
+    <div class="card-header">
+      <b>{{case.clientName}}</b>
+    </div>
+    <div class="card-body">
+      <b class="card-title">{{case.type}}</b>
+      <p class="card-text">
+        {{case.description}}
+      </p>
+      
+      <div class="rating" *ngIf="!isLawyer">
+        <input type="radio" name="rating" id="rating-5" (click)="rate(5)">
+        <label for="rating-5"></label>
+        <input type="radio" name="rating" id="rating-4" (click)="rate(4)">
+        <label for="rating-4"></label>
+        <input type="radio" name="rating" id="rating-3" (click)="rate(3)">
+        <label for="rating-3"></label>
+        <input type="radio" name="rating" id="rating-2" (click)="rate(2)">
+        <label for="rating-2"></label>
+        <input type="radio" name="rating" id="rating-1" (click)="rate(1)">
+        <label for="rating-1"></label>
+      </div>
+      <br>
+      
+  </div>
+</div>
+  

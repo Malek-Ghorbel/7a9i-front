@@ -1,19 +1,38 @@
 
-<!--------
 <div class="container">
-<div *ngFor="let i of cases">
-    <app-lawyer-case 
-            *ngIf="i.etat === etat"
-            [case]="i"
-             >
-    </app-lawyer-case>
-    <br>
+    <div *ngIf="etat === 'demande'">
+        <div *ngFor="let case of casesDemand" >
+            <app-lawyer-case-demand
+            *ngIf="searchText === '' || case.clientName.toLowerCase().includes(searchText.toLowerCase())" 
+            [case]="case"
+            [isLawyer]="true"
+            >
+            </app-lawyer-case-demand>
+            <br>
+        </div>
+    </div>
+
+    <div *ngIf="etat === 'en cours'">
+        <div *ngFor="let case of casesProgress ">
+            <app-lawyer-case-progress
+            *ngIf="searchText === '' || case.clientName.toLowerCase().includes(searchText.toLowerCase())"
+            [case]="case"
+            [isLawyer]="true"
+            >
+            </app-lawyer-case-progress>
+            <br>
+        </div> 
+    </div>
+    
+    <div *ngIf="etat === 'terminée'">
+        <div *ngFor="let case of casesFinish ">
+            <app-lawyer-case-finish
+            *ngIf="searchText === '' || case.clientName.toLowerCase().includes(searchText.toLowerCase())"
+                [case]="case"
+                [isLawyer]="true"
+                >
+            </app-lawyer-case-finish>
+            <br>
+        </div>
+    </div>
 </div>
-<div *ngIf="etat === 'en cours'">
-    <h3 *ngIf="nbencours === 0">Il n'y a aucune affaire en cours</h3>  
-</div>
-<div *ngIf="etat === 'terminée'">
-    <h3 *ngIf="nbterm === 0">Il n'y a aucune affaire terminée</h3>  
-</div>
-</div>
--------->

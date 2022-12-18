@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Case } from '../lawyer-cases/case.model';
 
 
@@ -52,35 +53,29 @@ export class LawyerCasesService {
       if (localStorage.getItem("type") === "lawyer") return true
       else return false ;
     }
-    else return true ;
+    else return false ;
   }
 
-  getLawyerEmail() : Observable<Object> {
+  getLawyer() : Observable<Object> {
     const jwt=localStorage.getItem("token");
-    return this.http.get('http://localhost:3000/auth-lawyer/lawyerInfo/'+ jwt)
+    return this.http.get(environment.DOMAIN + '/auth-lawyer/lawyerInfo/'+ jwt)
 
     
   }
 
   loadCasesDemand(email: string) : Observable<Case[]> {
-    return this.http.get<Case[]>(CASE_DEMAND + email)
-    
-    //console.log(this.casesDemand);
-    
+    return this.http.get<Case[]>(environment.DOMAIN + environment.CASE_DEMAND + email)
+   
   }
 
   loadCasesProgress(email: string) : Observable<Case[]> {
-    return this.http.get<Case[]>(CASE_PROGRESS + email)
-      
-    //console.log(this.casesProgress);
-    
+    return this.http.get<Case[]>(environment.DOMAIN + environment.CASE_PROGRESS + email)
+   
   }
 
   loadCasesFinish(email: string) : Observable<Case[]> {
-    return this.http.get<Case[]>(CASE_FINISH + email)
-    
-    //console.log(this.casesFinish);
-    
+    return this.http.get<Case[]>(environment.DOMAIN + environment.CASE_FINISH + email)
+   
   }
 
   onSearchTextChanged(text: string){

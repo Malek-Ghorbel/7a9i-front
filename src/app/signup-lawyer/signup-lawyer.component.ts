@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
+import { SignupService } from '../services/signup.service';
 
 @Component({
   selector: 'app-signup-lawyer',
@@ -10,22 +10,6 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./signup-lawyer.component.scss']
 })
 export class SignupLawyerComponent implements OnInit {
-
-  lawyer = {
-    name:"",
-    FamilyName:"",
-    age:"",
-    city:"",
-    speciality:"",
-    description:"",
-    email:"",
-    phoneNumber:"",
-    password:"",
-    confirmPassword:"",
-    type:"lawyer"
-  }
-
-  cookieValue : any ;
 
   public signupLawyerForm = new FormGroup ({
     name: new FormControl('', Validators.required),
@@ -40,7 +24,7 @@ export class SignupLawyerComponent implements OnInit {
     confirmPassword : new FormControl('', Validators.required)
   })
 
-  constructor(private http: HttpClient, private cookieService: CookieService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private signupService: SignupService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.signupLawyerForm = this.formBuilder.group({
@@ -59,15 +43,16 @@ export class SignupLawyerComponent implements OnInit {
   }, );
   }
 
-  submitForm(lawyer: any){
-    this.http.post('http://localhost:3000/auth-lawyer/signup' , lawyer ,{withCredentials: true})
-    .subscribe((result :any)  => {
-      console.log("result");
-      console.log(result);
-      localStorage.setItem("token",result.token);
-      localStorage.setItem("type","lawyer");
-      this.router.navigate(['/'])
-    }) ;
+  submitForm(signupLawyerForm: FormGroup){
+    this.signupService.signupLawyer(signupLawyerForm.value)
+    .subscribe(
+      result => {
+        console.log(result);
+        localStorage.setItem("token",result.token);
+        localStorage.setItem("type","lawyer");
+        this.router.navigate(['/'])
+      },
+      erreur => alert("Veridiez vos données")) ;
   }
   
 

@@ -6,7 +6,7 @@
               <h6>Connectez-vous en tant que avocat </h6>
           </div>
           <br>
-          <form [formGroup]="loginForm"  (ngsubmit)="submitForm(user)">
+          <form [formGroup]="loginForm">
             <div class="form-group">
               <input 
                 type="email" 
@@ -15,9 +15,8 @@
                 name="email" 
                 aria-describedby="emailHelp" 
                 placeholder="Adresse mail"
-                [(ngModel)]="user.email"
               >
-              <span class="text-danger" *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required','email')">entrez votre e-mail</span>
+              <span class="text-danger" *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required','email')">Entrez votre e-mail</span>
             </div>
             <br/>
             <div class="form-group">
@@ -27,12 +26,11 @@
                 class="form-control" 
                 name="password" 
                 placeholder="Mot de passe"
-                [(ngModel)]="user.password"
               >
-              <span class="text-danger" *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')">entrez votre mot de passe</span>
+              <span class="text-danger" *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')">Entrez votre mot de passe</span>
             </div>
             <br/>
-            <button mdbBtn type="submit" [disabled]="!loginForm.valid" class="btn" color="deep-orange" (click)="submitForm(user)" mdbWavesEffect>Se connecter</button>
+            <button mdbBtn type="submit" [disabled]="!loginForm.valid" class="btn" color="deep-orange" (click)="submitForm(loginForm)" mdbWavesEffect>Se connecter</button>
           </form>
           <a style="color:  black; margin-top: 10px;" routerLink="/signupLawyer">Inscrivez-vous si vous n'avez pas de compte</a>
         </div>

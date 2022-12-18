@@ -5,7 +5,7 @@
         <h1>S'inscrire</h1>
         <h6> Inscrivez-vous en tant qu'avocat</h6>
     </div>
-    <form [formGroup]="signupLawyerForm" (ngsubmit)="submitForm(lawyer)">
+    <form [formGroup]="signupLawyerForm">
       <div class="form-group">
         <input 
           type="text"
@@ -14,7 +14,6 @@
           name="name" 
           aria-describedby="name" 
           placeholder="Prénom"
-          [(ngModel)]="lawyer.name"
         >
         <span class="text-danger" *ngIf="signupLawyerForm.controls['name'].dirty && signupLawyerForm.hasError('required','name')">Entrez votre prénom</span>
       </div>
@@ -26,8 +25,7 @@
           class="form-control" 
           name="FamilyName" 
           aria-describedby="lastName" 
-          placeholder="Nom"
-          [(ngModel)]="lawyer.FamilyName">
+          placeholder="Nom">
           <span class="text-danger" *ngIf="signupLawyerForm.controls['FamilyName'].dirty && signupLawyerForm.hasError('required','FamilyName')">Entrez votre nom</span>
       </div>
       <br/>
@@ -38,7 +36,6 @@
           class="form-control"
           name="age" 
           placeholder="Âge"
-          [(ngModel)]="lawyer.age"
         >
         <span class="text-danger" *ngIf="signupLawyerForm.controls['age'].dirty && signupLawyerForm.hasError('required','age')">Entrez votre âge</span>
       </div>
@@ -47,8 +44,7 @@
         <select 
           class="form-control" 
           formControlName="city"
-          name="city"  
-          [(ngModel)]="lawyer.city">
+          name="city"  >
           <option value="" disabled selected>Ville</option>
           <option>Tunis</option>
           <option>Sousse</option>
@@ -66,8 +62,7 @@
           class="form-control" 
           name="email" 
           aria-describedby="emailHelp" 
-          placeholder="Adresse mail"  
-          [(ngModel)]="lawyer.email"
+          placeholder="Adresse mail" 
         >
         <span class="text-danger" *ngIf="signupLawyerForm.controls['email'].dirty && signupLawyerForm.hasError('required','email')">Entrez votre adresse mail</span>
         <span class="text-danger" *ngIf="signupLawyerForm.controls['email'].dirty && signupLawyerForm.hasError('email','email')">Adresse mail invalide</span>
@@ -80,8 +75,7 @@
          formControlName="phoneNumber"
          class="form-control" 
          name="phoneNumber" 
-         placeholder="Numero du téléphone"  
-         [(ngModel)]="lawyer.phoneNumber">
+         placeholder="Numero du téléphone">
          <span class="text-danger" *ngIf="signupLawyerForm.controls['phoneNumber'].dirty && signupLawyerForm.hasError('required','phoneNumber')">Entrez votre mot de passe</span>
        </div>
 
@@ -94,7 +88,6 @@
           name="speciality" 
           aria-describedby="speciality" 
           placeholder="Specialité"
-          [(ngModel)]="lawyer.speciality"
         >
         <span class="text-danger" *ngIf="signupLawyerForm.controls['speciality'].dirty && signupLawyerForm.hasError('required','speciality')">Entrez votre specialité</span>
       </div>
@@ -107,7 +100,6 @@
           name="description" 
           aria-describedby="description" 
           placeholder="Description"
-          [(ngModel)]="lawyer.description"
         ></textarea>
         <span class="text-danger" *ngIf="signupLawyerForm.controls['description'].dirty && signupLawyerForm.hasError('required','description')">Entrez votre déscription</span>
       </div>
@@ -119,7 +111,6 @@
           class="form-control" 
           name="password" 
           placeholder="Mot de passe"  
-          [(ngModel)]="lawyer.password"
         >
         <span class="text-danger" *ngIf="signupLawyerForm.controls['password'].dirty && signupLawyerForm.hasError('required','password')">Entrez votre mot de passe</span>
       </div>
@@ -130,13 +121,12 @@
           formControlName="confirmPassword"
           class="form-control" 
           name="confirmPassword" 
-          placeholder="Confirmation du mot de passe"  
-          [(ngModel)]="lawyer.confirmPassword"
+          placeholder="Confirmation du mot de passe"
         >
         <span class="text-danger" *ngIf="signupLawyerForm.controls['confirmPassword'].dirty && signupLawyerForm.hasError('required','confirmPassword')">Confirmez votre mot de passe</span>
       </div>
       <br/>
-        <button mdbBtn type="submit" [disabled]="!signupLawyerForm.valid" class="btn" color="deep-orange" (click)="submitForm(lawyer)" mdbWavesEffect>S'inscrire</button>
+        <button mdbBtn type="submit" [disabled]="!signupLawyerForm.valid" class="btn" color="deep-orange" (click)="submitForm(signupLawyerForm)" mdbWavesEffect>S'inscrire</button>
     </form>
     <a style="color: black; margin-top: 10px;" routerLink="/loginLawyer">Avez-vous déja un compte? Connectez-vous.</a>
   </div>

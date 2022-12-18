@@ -37,7 +37,7 @@ export class LawyerCasesComponent implements OnInit {
   }
 
   getLawyerEmail(){
-    this.lawyerCasesService.getLawyerEmail()
+    this.lawyerCasesService.getLawyer()
     .subscribe((result :any) => {
       this.email=result.email;
       console.log(this.email)

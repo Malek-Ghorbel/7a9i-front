@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { SignupService } from '../services/signup.service';
 
 @Component({
@@ -24,7 +25,7 @@ export class SignupLawyerComponent implements OnInit {
     confirmPassword : new FormControl('', Validators.required)
   })
 
-  constructor(private signupService: SignupService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private signupService: SignupService, private formBuilder: FormBuilder, private router: Router, private toastr : ToastrService) { }
 
   ngOnInit(): void {
     this.signupLawyerForm = this.formBuilder.group({
@@ -40,7 +41,27 @@ export class SignupLawyerComponent implements OnInit {
       confirmPassword: ['', Validators.required],
       type:["lawyer"],
       image:[""],
-  }, );
+    }, 
+    {validator : this.ConfirmedValidator('password' , 'confirmPassword')}
+  );
+  }
+
+  ConfirmedValidator(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+      if (
+        matchingControl.errors &&
+        !matchingControl.errors.confirmedValidator
+      ) {
+        return;
+      }
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ confirmedValidator: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    };
   }
 
   submitForm(signupLawyerForm: FormGroup){
@@ -52,7 +73,7 @@ export class SignupLawyerComponent implements OnInit {
         localStorage.setItem("type","lawyer");
         this.router.navigate(['/'])
       },
-      erreur => alert("Veridiez vos données")) ;
+      erreur => this.toastr.error("Veridiez vos données")) ;
   }
   
 

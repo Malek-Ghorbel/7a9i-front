@@ -57,6 +57,7 @@ import { LawyerCaseFinishComponent } from './lawyer-cases/lawyer-cases-list/lawy
 import { ModifModalComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case-progress/modif-modal/modif-modal.component';
 import { TodoComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case-progress/modif-modal/todo/todo.component';
 import { LawyerCaseComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case/lawyer-case.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -114,6 +115,7 @@ import { LawyerCaseComponent } from './lawyer-cases/lawyer-cases-list/lawyer-cas
     MdbTooltipModule,
     MdbValidationModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     
     HttpClientModule,
     ReactiveFormsModule,

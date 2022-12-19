@@ -4,6 +4,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SignupService } from '../services/signup.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup-client',
@@ -25,7 +26,7 @@ export class SignupClientComponent implements OnInit {
     confirmPassword : new FormControl('', Validators.required)
   })
 
-  constructor(private signupService: SignupService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private signupService: SignupService, private formBuilder: FormBuilder, private router: Router , private toastr : ToastrService ) { }
 
   ngOnInit(): void {
     this.signupClientForm = this.formBuilder.group({
@@ -39,7 +40,27 @@ export class SignupClientComponent implements OnInit {
       confirmPassword: ['', Validators.required],
       type:["client"],
       image:[""],
-  })
+    },
+    {validator : this.ConfirmedValidator('password' , 'confirmPassword')}
+    )
+  }
+
+  ConfirmedValidator(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+      if (
+        matchingControl.errors &&
+        !matchingControl.errors.confirmedValidator
+      ) {
+        return;
+      }
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ confirmedValidator: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    };
   }
 
   submitForm(signupClientForm: FormGroup){
@@ -51,7 +72,7 @@ export class SignupClientComponent implements OnInit {
         localStorage.setItem("type","client");
         this.router.navigate(['/'])
       },
-      erreur => alert("Verifiez vos données")) ;
+      erreur => this.toastr.error("Verifiez vos données")) ;
    }
   
 }

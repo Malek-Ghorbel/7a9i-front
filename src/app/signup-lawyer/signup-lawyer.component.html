@@ -1,4 +1,4 @@
-<div style='background-image:url("../../assets/img/signuplawyer.jpg");height:1500px;width:100%;background-repeat: no-repeat;background-size: cover;'>
+<div style='background-image:url("../../assets/img/signupclient1.jpg");height:1300px;width:100%;background-repeat: no-repeat;background-size: cover;'>
 <div class="div container">
   <div class="card">
     <div class="text-center">
@@ -38,6 +38,7 @@
           placeholder="Âge"
         >
         <span class="text-danger" *ngIf="signupLawyerForm.controls['age'].dirty && signupLawyerForm.hasError('required','age')">Entrez votre âge</span>
+        <span class="text-danger" *ngIf="signupLawyerForm.controls['age'].dirty && signupLawyerForm.hasError('min','age')">age doit etre minimum 25</span>
       </div>
       <br/>
       <div class="form-group">
@@ -67,7 +68,6 @@
         <span class="text-danger" *ngIf="signupLawyerForm.controls['email'].dirty && signupLawyerForm.hasError('required','email')">Entrez votre adresse mail</span>
         <span class="text-danger" *ngIf="signupLawyerForm.controls['email'].dirty && signupLawyerForm.hasError('email','email')">Adresse mail invalide</span>
       </div>
-      <br/>
       <br/>
        <div class="form-group">
          <input 
@@ -99,7 +99,7 @@
           class="form-control" 
           name="description" 
           aria-describedby="description" 
-          placeholder="Description"
+          placeholder="Parler un peu de votre experience"
         ></textarea>
         <span class="text-danger" *ngIf="signupLawyerForm.controls['description'].dirty && signupLawyerForm.hasError('required','description')">Entrez votre déscription</span>
       </div>
@@ -113,6 +113,7 @@
           placeholder="Mot de passe"  
         >
         <span class="text-danger" *ngIf="signupLawyerForm.controls['password'].dirty && signupLawyerForm.hasError('required','password')">Entrez votre mot de passe</span>
+        <span class="text-danger" *ngIf="signupLawyerForm.controls['password'].dirty && signupLawyerForm.hasError('minLength','password')">votre mot de passe doit avoir au moins 9 caracteres</span>
       </div>
       <br/> 
       <div class="form-group">
@@ -124,9 +125,10 @@
           placeholder="Confirmation du mot de passe"
         >
         <span class="text-danger" *ngIf="signupLawyerForm.controls['confirmPassword'].dirty && signupLawyerForm.hasError('required','confirmPassword')">Confirmez votre mot de passe</span>
+        <span class="text-danger" *ngIf="signupLawyerForm.controls['confirmPassword'].dirty && signupLawyerForm.controls['confirmPassword'].errors?.['confirmedValidator']">mot de passe pas identiques</span>
       </div>
       <br/>
-        <button mdbBtn type="submit" [disabled]="!signupLawyerForm.valid" class="btn" color="deep-orange" (click)="submitForm(signupLawyerForm)" mdbWavesEffect>S'inscrire</button>
+        <button mdbBtn type="submit" [disabled]="!signupLawyerForm.valid" class="btn" (click)="submitForm(signupLawyerForm)" mdbWavesEffect>S'inscrire</button>
     </form>
     <a style="color: black; margin-top: 10px;" routerLink="/loginLawyer">Avez-vous déja un compte? Connectez-vous.</a>
   </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { LoginService } from '../services/login.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl('')
   })
 
-  constructor(private loginService : LoginService, private formBuilder: FormBuilder, private router: Router ) { }
+  constructor(private loginService : LoginService, private formBuilder: FormBuilder, private router: Router , private toastr : ToastrService ) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("type","client");
         this.router.navigate(['/'])
       },
-      error => alert("Verifiez vos données")) ;
+      error => this.toastr.error("Verifiez vos données")) ;
   }
 
  

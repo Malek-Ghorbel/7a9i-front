@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Case } from '../lawyer-cases/case.model';
@@ -28,18 +29,19 @@ export class LawyerCasesService {
   // private selectStatusSubject = new Subject<string>();
   // selectStatusSubject_ = this.selectSearchSubject.asObservable()
  
-  constructor(private http: HttpClient, private router:Router) { 
+  constructor(private http: HttpClient, private router:Router, private toastr: ToastrService) { 
     
   }
 
   verification(){
-    if(!this.isAuthLawyer()) {
-      window.alert('you are a client you need to be logged in as a lawyer') ;
-      this.router.navigate(['/']) ;
-    }
+    
     if(!this.isAuth()) {
-      window.alert('you need to be logged in as a lawyer') ;
+      this.toastr.error('you need to be logged in as a lawyer');
       this.router.navigate(['/loginLawyer']) ;
+    }
+    else if(!this.isAuthLawyer()) {
+      this.toastr.error('you are a client you need to be logged in as a lawyer');
+      this.router.navigate(['/']) ;
     }
   }
 

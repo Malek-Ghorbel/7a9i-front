@@ -30,7 +30,7 @@
               <span class="text-danger" *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')">entrez votre mot de passe</span>
             </div>
             <br/>
-            <button mdbBtn type="submit" [disabled]="!loginForm.valid" class="btn" color="deep-orange" (click)="submitForm(loginForm)" mdbWavesEffect>Se connecter</button>
+            <button mdbBtn type="submit" [disabled]="!loginForm.valid" class="btn"  (click)="submitForm(loginForm)" mdbWavesEffect>Se connecter</button>
           </form>
           <a style="color:  black; margin-top: 10px;" routerLink="/signupClient">Inscrivez-vous si vous n'avez pas de compte</a>
         </div>

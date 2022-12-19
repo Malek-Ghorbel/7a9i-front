@@ -26,7 +26,7 @@ export class NavbarRemadeComponent implements OnInit {
       if (localStorage.getItem("type") === "lawyer") return true
       else return false ;
     }
-    else return true ;
+    else return false ;
   }
   
   isAuthClient() : boolean {
@@ -34,7 +34,7 @@ export class NavbarRemadeComponent implements OnInit {
     if (localStorage.getItem("type") === "client") return true
       else return false ;
     }
-    else return true ;
+    else return false ;
   }
 
   getProfile(){

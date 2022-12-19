@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-lawyer-table',
@@ -12,7 +13,7 @@ export class LawyerTableComponent implements OnInit {
   @Input() description: any ;
   @Input() problemType: any ;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private toastr: ToastrService) { }
   
   appointment={
     
@@ -57,7 +58,7 @@ export class LawyerTableComponent implements OnInit {
     console.log(this.appointment);
     this.http.post("http://localhost:3000/appointment/book/",this.appointment)
     .subscribe((result :any)  => {});
-    alert("You have booked an appointment.Wait until you get accepted !");
+    this.toastr.success("You have booked an appointment.Wait until you get accepted !");
     });
     
   

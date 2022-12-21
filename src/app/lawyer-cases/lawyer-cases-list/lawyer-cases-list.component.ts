@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { LawyerCasesService } from 'src/app/services/lawyer-cases.service';
-import { Case } from '../case.model';
+import { LoginService } from 'src/app/services/login.service';
+import { Case } from '../../Model/case.model';
 
 @Component({
   selector: 'app-lawyer-cases-list',
@@ -31,12 +32,12 @@ export class LawyerCasesListComponent implements OnInit {
   searchText: string = '';
 
 
-  constructor(private lawyerCasesService: LawyerCasesService) { 
+  constructor(private lawyerCasesService: LawyerCasesService, private loginService: LoginService) { 
     
   }
 
   ngOnInit(): void {
-    this.lawyerCasesService.verification();
+    this.loginService.verification();
     this.getLawyerEmail();
     this.lawyerCasesService.subscribeTo(
       "search",
@@ -56,7 +57,7 @@ export class LawyerCasesListComponent implements OnInit {
   }
 
   getLawyerEmail(){
-    this.lawyerCasesService.getLawyer()
+    this.loginService.getLawyer()
     .subscribe((result :any) => {
       this.email=result.email;
       this.loadCasesProgress();

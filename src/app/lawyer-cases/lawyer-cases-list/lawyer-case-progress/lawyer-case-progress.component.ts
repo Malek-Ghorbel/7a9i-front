@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Case } from '../../case.model';
+import { Case } from '../../../Model/case.model';
 import { ModifModalComponent } from './modif-modal/modif-modal.component';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { HttpClient } from '@angular/common/http';

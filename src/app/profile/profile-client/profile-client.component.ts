@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { RatingModalComponent } from 'src/app/rating-modal/rating-modal.component';
+import { Client } from 'src/app/Model/client.model';
+import { LoginService } from 'src/app/services/login.service';
+import { LawyerCasesService } from 'src/app/services/lawyer-cases.service';
 
 @Component({
   selector: 'app-profile-client',
@@ -10,19 +13,11 @@ import { RatingModalComponent } from 'src/app/rating-modal/rating-modal.componen
 })
 export class ProfileClientComponent implements OnInit {
 
-  constructor(private http: HttpClient, private modalService: MdbModalService) { }
+  constructor(private http: HttpClient, private modalService: MdbModalService, private loginService: LoginService, private lawyerCasesService: LawyerCasesService) { }
 
   token : string | null ="" ;
   
-  client={
-    firstName:"",
-    familyName:"",
-    age:"",
-    adress:"",
-    email:"",
-    phoneNumber:"",
-    image:""
-  }
+  client!: Client;
   
   progressCases:any;
   cases:any;
@@ -33,21 +28,11 @@ export class ProfileClientComponent implements OnInit {
     
   }
 
-  async getProfile(){
-    this.token =localStorage.getItem("token");
-    this.http.get('http://localhost:3000/auth-client/clientInfo/'+this.token)
-    .subscribe((result :any)  => {
-      this.client.firstName=result.firstName ;
-      this.client.familyName=result.familyName;
-      this.client.age=result.age;
-      this.client.adress=result.adress;
-      this.client.email=result.email;
-      this.client.phoneNumber= result.phoneNumber;
-      if(result.image === undefined){
-        this.client.image="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" ;
-      }else{
-        this.client.image=result.image;
-      } 
+   getProfile(){
+    this.loginService.getClient()
+    .subscribe(
+      result => {
+      this.client = result;
       this.displayCasesInProgress() ; 
       this.displayCasesComplete() ;
     })
@@ -73,15 +58,15 @@ export class ProfileClientComponent implements OnInit {
   }*/
 
    
- async displayCasesInProgress(){
-  this.http.get("http://localhost:3000/appointment/progressClient/"+this.client.email)
+ displayCasesInProgress(){
+  this.lawyerCasesService.loadCasesProgressClient(this.client.email)
     .subscribe((result) => {
     this.progressCases=result;
   })
   }
 
   async displayCasesComplete(){
-    this.http.get("http://localhost:3000/appointment/completeClient/"+this.client.email)
+    this.lawyerCasesService.loadCasesFinishClient(this.client.email)
       .subscribe((result) => {
         this.completeCases=result;
         if(this.completeCases.length != 0 ) 

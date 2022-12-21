@@ -5,7 +5,7 @@
       <div class="col-lg-4">
         <div class="card mb-4">
           <div class="card-body text-center">
-            <img src={{lawyer.image}} alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+            <img src={{lawyer.image|defaultImage}} alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
             <h5 class="my-3 fw-bold">{{lawyer.firstName}} {{lawyer.familyName}}</h5>
             <p class="text-muted mb-4">{{lawyer.adress}}</p>
             <div class="d-flex justify-content-center mb-2" >
@@ -68,7 +68,7 @@
             
               
                 
-                <button mdbBtn type="button" color="deep-orange" routerLink="/lawyerCases" mdbWavesEffect>progrès de mes affaires</button>
+            <button mdbBtn type="button" color="deep-orange" routerLink="/lawyerCases" mdbWavesEffect>progrès de mes affaires</button>
              
              
            

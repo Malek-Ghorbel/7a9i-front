@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { LawyerCasesService } from '../services/lawyer-cases.service';
-import { Case } from './case.model';
+import { Case } from '../Model/case.model';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-lawyer-cases',
@@ -26,18 +27,18 @@ export class LawyerCasesComponent implements OnInit {
   searchText: string = '';
 
 
-  constructor(private lawyerCasesService: LawyerCasesService) { 
+  constructor(private lawyerCasesService: LawyerCasesService, private loginService: LoginService) { 
     
   }
 
   ngOnInit(): void {
-    this.lawyerCasesService.verification();
+    this.loginService.verification();
     this.getLawyerEmail();
    
   }
 
   getLawyerEmail(){
-    this.lawyerCasesService.getLawyer()
+    this.loginService.getLawyer()
     .subscribe((result :any) => {
       this.email=result.email;
       console.log(this.email)

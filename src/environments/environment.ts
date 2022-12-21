@@ -6,9 +6,7 @@
 export const environment = {
   production: false,
   DOMAIN: "http://localhost:3000",
-  CASE_DEMAND : "/appointment/demand/",
-  CASE_PROGRESS : "/appointment/progress/",
-  CASE_FINISH : "/appointment/complete/"
+  
 };
 
 /*

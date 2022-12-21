@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-navbar-remade',
@@ -9,32 +10,23 @@ import { Router } from '@angular/router';
 })
 export class NavbarRemadeComponent implements OnInit {
 
-  constructor(private http: HttpClient, private router:Router) { }
+  constructor(private router:Router, private loginService: LoginService) { }
 
   ngOnInit(): void {
   }
-
+  visibility = false
   collapsed = true; 
   
   isAuth() : boolean {
-    if (localStorage.getItem("token")) return true
-    else return false ;
+    return this.loginService.isAuth();
   }
 
   isAuthLawyer() : boolean {
-    if (localStorage.getItem("token")) {
-      if (localStorage.getItem("type") === "lawyer") return true
-      else return false ;
-    }
-    else return false ;
+    return this.loginService.isAuthLawyer() ;
   }
   
   isAuthClient() : boolean {
-    if (localStorage.getItem("token")) {
-    if (localStorage.getItem("type") === "client") return true
-      else return false ;
-    }
-    else return false ;
+    return this.loginService.isAuthClient() ;
   }
 
   getProfile(){
@@ -53,4 +45,7 @@ export class NavbarRemadeComponent implements OnInit {
     localStorage.removeItem("type");
   }
 
+  show(){
+    this.visibility = !this.visibility;
+  }
 }

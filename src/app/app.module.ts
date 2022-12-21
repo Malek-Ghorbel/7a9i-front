@@ -58,6 +58,7 @@ import { ModifModalComponent } from './lawyer-cases/lawyer-cases-list/lawyer-cas
 import { TodoComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case-progress/modif-modal/todo/todo.component';
 import { LawyerCaseComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case/lawyer-case.component';
 import { ToastrModule } from 'ngx-toastr';
+import { DefaultImagePipe } from './pipe/default-image.pipe';
 
 
 @NgModule({
@@ -93,7 +94,8 @@ import { ToastrModule } from 'ngx-toastr';
     LawyerCaseProgressComponent,
     LawyerCaseFinishComponent,
     ModifModalComponent,
-    TodoComponent
+    TodoComponent,
+    DefaultImagePipe
   ],
   imports: [
     BrowserModule,

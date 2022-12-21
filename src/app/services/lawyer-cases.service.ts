@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Case } from '../lawyer-cases/case.model';
+import { Case } from '../Model/case.model';
 
 
 const CASE_DEMAND = "http://localhost:3000/appointment/demand/";
@@ -33,50 +33,60 @@ export class LawyerCasesService {
     
   }
 
-  verification(){
+  // verification(){
     
-    if(!this.isAuth()) {
-      this.toastr.error('you need to be logged in as a lawyer');
-      this.router.navigate(['/loginLawyer']) ;
-    }
-    else if(!this.isAuthLawyer()) {
-      this.toastr.error('you are a client you need to be logged in as a lawyer');
-      this.router.navigate(['/']) ;
-    }
-  }
+  //   if(!this.isAuth()) {
+  //     this.toastr.error('you need to be logged in as a lawyer');
+  //     this.router.navigate(['/loginLawyer']) ;
+  //   }
+  //   else if(!this.isAuthLawyer()) {
+  //     this.toastr.error('you are a client you need to be logged in as a lawyer');
+  //     this.router.navigate(['/']) ;
+  //   }
+  // }
 
-  isAuth() : boolean {
-    if (localStorage.getItem("token")) return true
-    else return false ;
-  }
+  // isAuth() : boolean {
+  //   if (localStorage.getItem("token")) return true
+  //   else return false ;
+  // }
 
-  isAuthLawyer() : boolean {
-    if (localStorage.getItem("token")) {
-      if (localStorage.getItem("type") === "lawyer") return true
-      else return false ;
-    }
-    else return false ;
-  }
+  // isAuthLawyer() : boolean {
+  //   if (localStorage.getItem("token")) {
+  //     if (localStorage.getItem("type") === "lawyer") return true
+  //     else return false ;
+  //   }
+  //   else return false ;
+  // }
 
-  getLawyer() : Observable<Object> {
-    const jwt=localStorage.getItem("token");
-    return this.http.get(environment.DOMAIN + '/auth-lawyer/lawyerInfo/'+ jwt)
+  // getLawyer() : Observable<Object> {
+  //   const jwt=localStorage.getItem("token");
+  //   return this.http.get(environment.DOMAIN + '/auth-lawyer/lawyerInfo/'+ jwt)
 
     
-  }
+  // }
 
   loadCasesDemand(email: string) : Observable<Case[]> {
-    return this.http.get<Case[]>(environment.DOMAIN + environment.CASE_DEMAND + email)
+    return this.http.get<Case[]>(environment.DOMAIN + '/appointment/demand/' + email)
    
   }
 
   loadCasesProgress(email: string) : Observable<Case[]> {
-    return this.http.get<Case[]>(environment.DOMAIN + environment.CASE_PROGRESS + email)
+    return this.http.get<Case[]>(environment.DOMAIN + '/appointment/progress/' + email)
    
   }
 
   loadCasesFinish(email: string) : Observable<Case[]> {
-    return this.http.get<Case[]>(environment.DOMAIN + environment.CASE_FINISH + email)
+    return this.http.get<Case[]>(environment.DOMAIN + '/appointment/complete/' + email)
+   
+  }
+  
+  loadCasesProgressClient(email: string) : Observable<Case[]> {
+    return this.http.get<Case[]>(environment.DOMAIN + '/appointment/progressClient/' + email)
+   
+  }
+
+  loadCasesFinishClient(email: string) : Observable<Case[]> {
+    return this.http.get<Case[]>(environment.DOMAIN + '/appointment/completeClient/' + email)
    
   }
 

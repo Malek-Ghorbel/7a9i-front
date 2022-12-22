@@ -25,6 +25,7 @@ export class ProfileLawyerComponent implements OnInit {
     .subscribe(
       result => {
         this.lawyer = result;
+        this.token = localStorage.getItem("token");
       }
     );
   }

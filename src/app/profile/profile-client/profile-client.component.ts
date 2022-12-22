@@ -35,6 +35,7 @@ export class ProfileClientComponent implements OnInit {
       this.client = result;
       this.displayCasesInProgress() ; 
       this.displayCasesComplete() ;
+      this.token = localStorage.getItem("token");
     })
   }
 

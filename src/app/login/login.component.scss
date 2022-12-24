@@ -16,3 +16,16 @@ label{
     color: rgb(92, 86, 86);
 }
 
+button {
+    border-radius: 20px;
+    background-color:#FCEAD7;
+    border:1px solid #5D0C0C;
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+

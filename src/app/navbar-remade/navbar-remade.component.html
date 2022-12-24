@@ -21,27 +21,24 @@
       aria-controls="navbarButtonsExample"
       aria-expanded="false"
       aria-label="Toggle navigation"
+      (click)="show()"
     >
       <i class="fas fa-bars"></i>
     </button>
 
     <!-- Collapsible wrapper -->
-    <div class="collapse navbar-collapse" id="navbarButtonsExample">
+    <div class="collapse navbar-collapse" [ngClass]="{'show':visibility}" id="navbarButtonsExample">
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link" routerLink="**">Acceuil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/problem">Faire une demande</a>
+          <a class="nav-link" *ngIf="!isAuthLawyer()" routerLink="/problem">Faire une demande</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" *ngIf="isAuthLawyer()" routerLink="/lawyerCases">Espace avocat</a>
+          <a class="nav-link" *ngIf="!isAuthClient()" routerLink="/lawyerCases">Espace avocat</a>
         </li>
-
-
-
-
         
           <ul class="navbar-nav ms-auto">
             <li class="nav-item" ngbDropdown>
@@ -56,12 +53,6 @@
               </div>
             </li>
           </ul>
-      
-
-     
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/problem">Mes droits</a>
-        </li>
       </ul>
       <!-- Left links -->
 
@@ -73,10 +64,10 @@
         <button mdbBtn type="button" class="btn  me-3"  style="border-radius: 20px;background-color:#FCEAD7;border:1px solid #5D0C0C;" *ngIf="!isAuth()" routerLink="/signup" mdbWavesEffect>
           S'inscrire
         </button>
-        
-          <i class="fas fa-user" *ngIf="isAuth()" (click)="getProfile()" style="margin-right:30px;"></i>
-        
-        <button mdbBtn  style="border-radius: 20px;background-color:#FCEAD7;border:1px solid #5D0C0C;"  type="button" class="btn me-3"  (click)="signout()" *ngIf="isAuth()" routerLink="/" mdbWavesEffect>
+        <button type="button" class="btn btn-link px-3 me-2" style="border-radius: 20px;border:1px solid;"  *ngIf="isAuth()" (click)="getProfile()">
+          <i class="fas fa-user"></i>
+        </button>
+        <button mdbBtn type="button" class="btn  me-3" style="border-radius: 20px;background-color:#FCEAD7;border:1px solid #5D0C0C;" (click)="signout()" *ngIf="isAuth()" routerLink="/" mdbWavesEffect>
           Se déconnecter
         </button>
       </div>

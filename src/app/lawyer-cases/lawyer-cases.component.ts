@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { LawyerCasesService } from '../services/lawyer-cases.service';
+import { Case } from '../Model/case.model';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-lawyer-cases',
@@ -8,97 +9,76 @@ import { Router } from '@angular/router';
   styleUrls: ['./lawyer-cases.component.scss']
 })
 export class LawyerCasesComponent implements OnInit {
-
+  
   colorencours = "deep-orange";
   colordemand="white"
   colorterm="white";
+
   etat="en cours";
+  
   email="";
 
-  casesDemand:any;
-  casesProgress:any;
-  cansesFinish:any;
+  pd:number = 1;
+  pc:number = 1;
+  pt:number = 1;
+  itemsPerPage: number = 5;
+  totalItems : any;
 
-  constructor(private http: HttpClient, private router:Router) { }
+  searchText: string = '';
+
+
+  constructor(private lawyerCasesService: LawyerCasesService, private loginService: LoginService) { 
+    
+  }
 
   ngOnInit(): void {
-    if(!this.isAuthLawyer()) {
-      window.alert('you are a client you need to be logged in as a lawyer') ;
-      this.router.navigate(['/']) ;
-    }
-    if(!this.isAuth()) {
-      window.alert('you need to be logged in as a lawyer') ;
-      this.router.navigate(['/loginLawyer']) ;
-    }
+    this.loginService.verification();
     this.getLawyerEmail();
-  }
-
-  isAuth() : boolean {
-    if (localStorage.getItem("token")) return true
-    else return false ;
-  }
-
-  isAuthLawyer() : boolean {
-    if (localStorage.getItem("token")) {
-      if (localStorage.getItem("type") === "lawyer") return true
-      else return false ;
-    }
-    else return true ;
+   
   }
 
   getLawyerEmail(){
-    const jwt=localStorage.getItem("token");
-    this.http.get('http://localhost:3000/auth-lawyer/lawyerInfo/'+jwt)
-    .subscribe((result :any)  => {
+    this.loginService.getLawyer()
+    .subscribe((result :any) => {
       this.email=result.email;
-      this.loadCasesProgress();
+      console.log(this.email)
+      this.onShowEncours();
     })
+    
   }
+
   onShowEncours(){
-    this.etat="en cours";
+    
+    this.lawyerCasesService.StatusChanged("en cours");
+
     this.colorencours = "deep-orange";
     this.colorterm="white";
     this.colordemand = "white";
   }
 
   onShowDemand(){
-    this.etat="demande";
+    this.lawyerCasesService.StatusChanged("demande");
     this.colordemand = "deep-orange";
     this.colorterm="white";
     this.colorencours = "white";
   }
 
   onShowTermine(){
-    this.etat="terminée";
+    this.lawyerCasesService.StatusChanged("terminée");
     this.colorencours = "white";
     this.colordemand = "white";
     this.colorterm="deep-orange";
   }
 
-  loadCasesDemand() {
-    this.onShowDemand()
-    console.log(this.email);
-    this.http.get("http://localhost:3000/appointment/demand/"+this.email)
-      .subscribe((result) => {
-        console.log(result)
-        this.casesDemand = result ;
-    })
+  sortDateCroiss(a:Case, b:Case): number{
+    if(a.date < b.date){
+      return -1;
+    }
+    if(a.date > b.date){
+      return 1;
+    }
+    return 0;
   }
 
-  loadCasesProgress() {
-    this.onShowEncours();
-    this.http.get("http://localhost:3000/appointment/progress/"+this.email)
-      .subscribe((result) => {
-        this.casesProgress = result ;
-    })
-  }
-
-  loadCasesFinish(){
-    this.onShowTermine();
-    this.http.get("http://localhost:3000/appointment/complete/"+this.email)
-      .subscribe((result) => {
-        this.cansesFinish = result ;
-    })
-  }
-
+ 
 }

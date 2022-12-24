@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
-import { Case } from 'src/app/lawyer-cases/case.model';
+import { Case } from 'src/app/Model/case.model';
 
 @Component({
   selector: 'app-modif-modal',

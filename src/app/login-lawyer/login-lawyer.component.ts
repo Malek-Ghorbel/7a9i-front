@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
+import { ToastrService } from 'ngx-toastr';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-login-lawyer',
@@ -12,35 +13,33 @@ import { CookieService } from 'ngx-cookie-service';
 export class LoginLawyerComponent implements OnInit {
 
 
-  user = {
-    email : "" ,
-    password : ""
-  } ;
-
-  cookieValue : string ="";
-
   public loginForm = new FormGroup ({
     email: new FormControl(''),
     password: new FormControl('')
   })
 
-  constructor(private http: HttpClient, private cookieService: CookieService, private formBuilder: FormBuilder, private router: Router ) { }
+  constructor(private loginService :LoginService, private formBuilder: FormBuilder, private router: Router , private toastr : ToastrService ) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email:['', Validators.required],
       password:['', Validators.required]
     })
+    
   }
 
 
-  submitForm(user: any){
-    this.http.post('http://localhost:3000/auth-lawyer/signin' , user ,{withCredentials: true})
-    .subscribe((result :any)  => {
-      localStorage.setItem("token",result.token);
-      localStorage.setItem("type","lawyer");
-      this.router.navigate(['/'])
-    }) ;
+  submitForm(loginForm: FormGroup){
+    this.loginService.loginLawyer(loginForm.value)
+    .subscribe(
+      result  => {
+        localStorage.setItem("token",result.token);
+        localStorage.setItem("type","lawyer");
+        this.router.navigate(['/'])
+      },
+      error => this.toastr.error("Verifiez vos données")
+      ) ;
+    console.log(this.loginForm.value)
   }
 
 }

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
+import { Lawyer } from 'src/app/Model/lawyer.model';
+import { LoginService } from 'src/app/services/login.service';
+import { LawyerCasesService } from 'src/app/services/lawyer-cases.service';
 
 @Component({
   selector: 'app-profile-lawyer',
@@ -7,20 +10,10 @@ import { HttpClient} from '@angular/common/http';
   styleUrls: ['./profile-lawyer.component.scss']
 })
 export class ProfileLawyerComponent implements OnInit {
-  lawyer={
-    firstName:"",
-    familyName:"",
-    age:"",
-    adress:"",
-    email:"",
-    phoneNumber:"",
-    speciality:"",
-    description:"",
-    image:"",
-  }
+  lawyer!:Lawyer;
   
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private loginService: LoginService, private lawyerCasesService: LawyerCasesService) { }
 
   token : string | null ="" ;
   ngOnInit(): void {
@@ -28,24 +21,13 @@ export class ProfileLawyerComponent implements OnInit {
   }
 
   getProfile(){
-    this.token =localStorage.getItem("token");
-    this.http.get('http://localhost:3000/auth-lawyer/lawyerInfo/'+this.token)
-    .subscribe((result :any)  => {
-      console.log(result);
-      this.lawyer.firstName=result.firstName ;
-      this.lawyer.familyName=result.familyName;
-      this.lawyer.age=result.age;
-      this.lawyer.adress=result.adress;
-      this.lawyer.email=result.email;
-      this.lawyer.phoneNumber= result.phoneNumber;
-      this.lawyer.speciality=result.speciality;
-      this.lawyer.description=result.description;
-      if(result.image === undefined){
-        this.lawyer.image="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" ;
-      }else{
-        this.lawyer.image=result.image;
+    this.loginService.getLawyer()
+    .subscribe(
+      result => {
+        this.lawyer = result;
+        this.token = localStorage.getItem("token");
       }
-    });
+    );
   }
   
   setImage(event: any){

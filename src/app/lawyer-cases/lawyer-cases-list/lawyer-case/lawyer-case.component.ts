@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Case } from '../../case.model';
-import { ModifModalComponent } from './modif-modal/modif-modal.component';
+import { Case } from '../../../Model/case.model';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { HttpClient } from '@angular/common/http';
+import { ModifModalComponent } from '../lawyer-case-progress/modif-modal/modif-modal.component';
 
 @Component({
   selector: 'app-lawyer-case',
@@ -14,8 +14,9 @@ export class LawyerCaseComponent implements OnInit {
   modalRef: MdbModalRef<ModifModalComponent> | null = null;
 
   @Input() case!: Case ;
+  
   //public clientName!: string;
-  public name!: string;
+  //public name!: string;
   @Input() isLawyer!: boolean;
 
 
@@ -25,7 +26,7 @@ export class LawyerCaseComponent implements OnInit {
     if(this.isLawyer){
       this.http.get('http://localhost:3000/auth-client/clientInfoByEmail/'+this.case.clientEmail)
     .subscribe((result: any) =>{
-      this.name= result.name;
+      this.case.clientName= result.name;
     })
     }
     else{
@@ -75,7 +76,7 @@ export class LawyerCaseComponent implements OnInit {
   async getLawyerName(){
     this.http.get("http://localhost:3000/auth-lawyer/lawyerInfoByEmail/"+this.case.lawyerEmail)
     .subscribe((result: any) => {
-    this.name="Maitre "+ result.FamilyName+" "+ result.name  ;
+    this.case.clientName="Maitre "+ result.FamilyName+" "+ result.name  ;
     })
   }
 }

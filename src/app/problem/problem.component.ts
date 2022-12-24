@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-problem',
@@ -20,7 +21,7 @@ export class ProblemComponent implements OnInit {
     description :new FormControl('')
   })
 
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private toastr: ToastrService ) { }
 
 
   isAuth() : boolean {
@@ -38,11 +39,11 @@ export class ProblemComponent implements OnInit {
 
   ngOnInit(): void {
     if(!this.isAuthClient()) {
-      window.alert('you are a lwayer you need to be logged in as a client') ;
+      this.toastr.error("vous etes un avocat, il faut etre un client");
       this.router.navigate(['/'])
     }
     if(!this.isAuth()) {
-      window.alert('you need to be loggzd in as a client') ;
+      this.toastr.error("vous devez etre connecter en tant que client");
       this.router.navigate(['/login'])
     }
     this.problemDescriptionForm = this.formBuilder.group({

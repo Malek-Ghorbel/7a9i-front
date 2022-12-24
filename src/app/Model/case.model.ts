@@ -2,6 +2,7 @@ export class Case {
     public _id: string;
     public type: string;
     public clientEmail: string;
+    public clientName : string;
     public lawyerEmail: string;
     public date: Date;
     public description: string;
@@ -9,15 +10,18 @@ export class Case {
     public todos : string[];
     public rated : boolean ; 
 
-    constructor(_id: string, type:string, clientEmail:string, lawyerEmail:string, date:Date, desc: string, status: string, todos: string[], rated: boolean){
+    constructor(_id: string, type:string, clientEmail:string, clientName:string, lawyerEmail:string, date:Date, desc: string, status: string, todos: string[], rated: boolean){
         this._id= _id;  
         this.type= type;
         this.clientEmail= clientEmail;
+        this.clientName = clientName;
         this.lawyerEmail= lawyerEmail;
         this.date= date;
-         this.description= desc;
-         this.status=status;
-         this.todos= todos;
-         this.rated = rated ;
+        this.description= desc;
+        this.status=status;
+        this.todos= todos;
+        this.rated = rated ;
      }
+
+     
  }

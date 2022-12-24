@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SignupService } from '../services/signup.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup-client',
@@ -12,20 +14,7 @@ import { Router } from '@angular/router';
 export class SignupClientComponent implements OnInit {
 
 
-  user = {
-    name:"",
-    FamilyName:"",
-    age:"",
-    city:"",
-    email:"",
-    phoneNumber:"",
-    password:"",
-    confirmPassword:"",
-    type:"client",
-   
-}
-  cookieValue : any ;
-
+ 
   public signupClientForm = new FormGroup ({
     name: new FormControl('', Validators.required),
     FamilyName :new FormControl('', Validators.required),
@@ -37,7 +26,7 @@ export class SignupClientComponent implements OnInit {
     confirmPassword : new FormControl('', Validators.required)
   })
 
-  constructor(private http: HttpClient, private cookieService: CookieService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private signupService: SignupService, private formBuilder: FormBuilder, private router: Router , private toastr : ToastrService ) { }
 
   ngOnInit(): void {
     this.signupClientForm = this.formBuilder.group({
@@ -51,17 +40,39 @@ export class SignupClientComponent implements OnInit {
       confirmPassword: ['', Validators.required],
       type:["client"],
       image:[""],
-  })
+    },
+    {validator : this.ConfirmedValidator('password' , 'confirmPassword')}
+    )
   }
 
-  submitForm(user: any){
-    this.http.post('http://localhost:3000/auth-client/signup' , user ,{withCredentials: true})
-    .subscribe((result :any)  => {
-      console.log(result)
-      localStorage.setItem("token",result.token);
-      localStorage.setItem("type","client");
-      this.router.navigate(['/'])
-    }) ;
+  ConfirmedValidator(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+      if (
+        matchingControl.errors &&
+        !matchingControl.errors.confirmedValidator
+      ) {
+        return;
+      }
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ confirmedValidator: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    };
+  }
+
+  submitForm(signupClientForm: FormGroup){
+    this.signupService.signupClient(signupClientForm.value)
+    .subscribe(
+      result => {
+        console.log(result)
+        localStorage.setItem("token",result.token);
+        localStorage.setItem("type","client");
+        this.router.navigate(['/'])
+      },
+      erreur => this.toastr.error("Verifiez vos données")) ;
    }
   
 }

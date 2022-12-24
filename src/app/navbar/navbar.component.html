@@ -76,7 +76,7 @@
         <button type="button" class="btn me-2"  *ngIf="isAuth()" (click)="getProfile()">
           <i class="fas fa-user"></i>
         </button>
-        <button mdbBtn type="button" class="btn btn-primary me-3" color="deep-orange" (click)="signout()" *ngIf="isAuth()" routerLink="/" mdbWavesEffect>
+        <button mdbBtn  style="border-radius: 20px;background-color:#FCEAD7;border:1px solid #5D0C0C;"  type="button" class="btn me-3"  (click)="signout()" *ngIf="isAuth()" routerLink="/" mdbWavesEffect>
           Se déconnecter
         </button>
       </div>

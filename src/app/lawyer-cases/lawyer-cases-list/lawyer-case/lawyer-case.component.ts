@@ -3,7 +3,6 @@ import { Case } from '../../case.model';
 import { ModifModalComponent } from './modif-modal/modif-modal.component';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { HttpClient } from '@angular/common/http';
-import { TokenizeResult } from '@angular/compiler/src/ml_parser/lexer';
 
 @Component({
   selector: 'app-lawyer-case',
@@ -38,8 +37,14 @@ export class LawyerCaseComponent implements OnInit {
   rate(n : number) {
     this.http.patch('http://localhost:3000/appointment/rated/'+ this.case._id ,"") 
     .subscribe((result) => {console.log(result);})
+    this.http.get('http://localhost:3000/auth-lawyer/lawyerInfoByEmail/'+ this.case.lawyerEmail)
+    .subscribe((result:any) => {
+      n=(n*100/5+Number(result.rating))/2;
     this.http.post('http://localhost:3000/auth-lawyer/updateRating/'+ this.case.lawyerEmail + '/' + n ,"") 
     .subscribe((result) => {console.log(result);})
+    });
+    
+    
   }
 
   openModal() {

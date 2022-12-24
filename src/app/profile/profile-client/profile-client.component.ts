@@ -84,8 +84,16 @@ export class ProfileClientComponent implements OnInit {
     this.http.get("http://localhost:3000/appointment/completeClient/"+this.client.email)
       .subscribe((result) => {
         this.completeCases=result;
-        if(this.completeCases.length != 0 ) 
-          this.modalService.open(RatingModalComponent , {data : {cases : this.completeCases }});
+        if(this.completeCases.length != 0 ) {
+           let notRatedCompleteCases : any[] = [];
+           console.log("completeCases: " + JSON.stringify(this.completeCases));
+           this.completeCases.map((completeCase:any) => {
+          if(completeCase.isRated!=true){
+            notRatedCompleteCases.push(completeCase);
+          }
+        });
+        this.modalService.open(RatingModalComponent , {data : {cases : notRatedCompleteCases }});
+        }  
       })
     }
 

@@ -73,10 +73,10 @@
         <button mdbBtn type="button" class="btn  me-3"  style="border-radius: 20px;background-color:#FCEAD7;border:1px solid #5D0C0C;" *ngIf="!isAuth()" routerLink="/signup" mdbWavesEffect>
           S'inscrire
         </button>
-        <button type="button" class="btn me-2"  *ngIf="isAuth()" (click)="getProfile()">
-          <i class="fas fa-user"></i>
-        </button>
-        <button mdbBtn type="button" class="btn btn-primary me-3" color="deep-orange" (click)="signout()" *ngIf="isAuth()" routerLink="/" mdbWavesEffect>
+        
+          <i class="fas fa-user" *ngIf="isAuth()" (click)="getProfile()" style="margin-right:30px;"></i>
+        
+        <button mdbBtn  style="border-radius: 20px;background-color:#FCEAD7;border:1px solid #5D0C0C;"  type="button" class="btn me-3"  (click)="signout()" *ngIf="isAuth()" routerLink="/" mdbWavesEffect>
           Se déconnecter
         </button>
       </div>

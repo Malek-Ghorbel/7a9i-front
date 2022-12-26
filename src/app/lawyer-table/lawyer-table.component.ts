@@ -22,7 +22,8 @@ export class LawyerTableComponent implements OnInit {
     date: null,
     description:"",
     type:"",
-    status:"demande"
+    status:"demande",
+    isRated:false,
   }
 
   hasBooked=false;
@@ -39,7 +40,7 @@ export class LawyerTableComponent implements OnInit {
     this.http.post("http://localhost:3000/auth-lawyer/lawyers", "")
       .subscribe((result) => {
         this.lawyers = result ;
-        this.lawyers.map((lawyer: any) => lawyer.rating = "50%") ;
+        this.lawyers.map((lawyer: any) => console.log(lawyer.rating)) ;
         console.log(this.lawyers)
     })
     
@@ -55,6 +56,7 @@ export class LawyerTableComponent implements OnInit {
     this.appointment.lawyerEmail=lawyer.email;
     this.appointment.type=this.problemType;
     this.appointment.description=this.description;
+    this.appointment.isRated=false;
     console.log(this.appointment);
     this.http.post("http://localhost:3000/appointment/book/",this.appointment)
     .subscribe((result :any)  => {});

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
@@ -118,7 +118,7 @@ import { DefaultImagePipe } from './pipe/default-image.pipe';
     MdbValidationModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    
+    NgxPaginationModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,

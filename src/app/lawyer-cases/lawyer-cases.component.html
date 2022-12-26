@@ -6,21 +6,21 @@
             <button mdbBtn
                 class="bdr"
                 type="button" 
-                color={{colordemand}}
+                [ngStyle]="{'background-color':colordemand}"
                 (click)="onShowDemand()"
                 mdbWavesEffect>Demande
             </button>
             <button mdbBtn
                 class="bdr"
                 type="button" 
-                color={{colorencours}}
+                [ngStyle]="{'background-color':colorencours}"
                 (click)="onShowEncours()"
                 mdbWavesEffect>En cours
             </button>
             <button mdbBtn
                 class="bdr"
                 type="button" 
-                color={{colorterm}}
+                [ngStyle]="{'background-color':colorterm}"
                 (click)="onShowTermine()"
                 mdbWavesEffect>Terminée
             </button>

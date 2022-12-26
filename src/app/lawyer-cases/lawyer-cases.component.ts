@@ -10,7 +10,7 @@ import { LoginService } from '../services/login.service';
 })
 export class LawyerCasesComponent implements OnInit {
   
-  colorencours = "deep-orange";
+  colorencours = "#FCEAD7";
   colordemand="white"
   colorterm="white";
 
@@ -51,14 +51,14 @@ export class LawyerCasesComponent implements OnInit {
     
     this.lawyerCasesService.StatusChanged("en cours");
 
-    this.colorencours = "deep-orange";
+    this.colorencours = "#FCEAD7";
     this.colorterm="white";
     this.colordemand = "white";
   }
 
   onShowDemand(){
     this.lawyerCasesService.StatusChanged("demande");
-    this.colordemand = "deep-orange";
+    this.colordemand = "#FCEAD7";
     this.colorterm="white";
     this.colorencours = "white";
   }
@@ -67,7 +67,7 @@ export class LawyerCasesComponent implements OnInit {
     this.lawyerCasesService.StatusChanged("terminée");
     this.colorencours = "white";
     this.colordemand = "white";
-    this.colorterm="deep-orange";
+    this.colorterm="#FCEAD7";
   }
 
   sortDateCroiss(a:Case, b:Case): number{

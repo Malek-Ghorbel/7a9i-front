@@ -13,7 +13,7 @@ export class TodoComponent implements OnInit {
   public newTask!:string;
 
   public addToList() {
-        if (this.newTask == '') {
+        if (this.newTask.trim().length == 0) {
         }
         else {
             this.items.push(this.newTask);

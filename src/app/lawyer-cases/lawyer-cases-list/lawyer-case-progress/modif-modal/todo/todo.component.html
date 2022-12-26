@@ -8,7 +8,7 @@
                 style="width:600px;"
             >
             <!-- <div class="col-1"></div> -->
-            <button (click)="addToList()" class="btn btn-light text-success" [ngStyle]="{'border-radius': '100px', 'height':'40px', 'padding':'12px', 'margin-left':'13px'}">
+            <button (click)="addToList()" class="btn btn-light success" >
                 <i class="fas fa-plus"></i>
             </button>  
         </div>
@@ -18,7 +18,7 @@
        <li  class="row d-flex align-items-center" >
             <div class="col-md-10" >- {{x}}</div>
             <div class="col-md-2">
-                <button (click)="deleteTask(index)" class="btn btn-light text-danger" style="margin-left:10px;" [ngStyle]="{'border-radius': '100px', 'height':'40px', 'padding':'14px'}">
+                <button (click)="deleteTask(index)" class="btn btn-light danger" style="margin-left:10px;" [ngStyle]="{'border-radius': '100px', 'height':'40px', 'padding':'14px'}">
                     <i class="fas fa-times"></i>
                 </button>
             </div>

@@ -8,7 +8,7 @@
 .search-bar{
     width: 100%;
     max-width: 700px;
-    background: rgba(241, 150, 30, 0.322);
+    background: #FCEAD7;
     display: flex;
     align-items: center;
     border-radius: 60px;
@@ -26,6 +26,7 @@
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    background: #58629b;
+    background: #681d1a;
+    color: white;
     cursor: pointer;
 }

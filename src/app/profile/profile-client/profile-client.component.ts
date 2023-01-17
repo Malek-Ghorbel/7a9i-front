@@ -74,13 +74,16 @@ export class ProfileClientComponent implements OnInit {
            let notRatedCompleteCases : any[] = [];
            console.log("completeCases: " + JSON.stringify(this.completeCases));
            this.completeCases.map((completeCase:any) => {
-          if(completeCase.isRated!=true){
-            notRatedCompleteCases.push(completeCase);
-          }
-        });
-        this.modalService.open(RatingModalComponent , {data : {cases : notRatedCompleteCases }});
-        }  
-      })
+              if(!completeCase.isRated){
+                notRatedCompleteCases.push(completeCase);
+              }
+            });
+            if (notRatedCompleteCases.length != 0){
+              this.modalService.open(RatingModalComponent , {data : {cases : notRatedCompleteCases }});
+            }
+          }  
+        }
+      )
     }
 
   /*async getLawyerName(){

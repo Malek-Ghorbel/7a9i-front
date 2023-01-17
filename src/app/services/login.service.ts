@@ -59,10 +59,25 @@ export class LoginService {
     const jwt=localStorage.getItem("token");
     return this.http.get<Lawyer>(environment.DOMAIN + '/auth-lawyer/lawyerInfo/'+ jwt)
   }
+  getLawyerByEmail(email: string): Observable<Lawyer> {
+    return this.http.get<Lawyer>(environment.DOMAIN + '/auth-lawyer/lawyerInfoByEmail/'+ email)
+  }
+
+  getLawyers(): Observable<Lawyer[]>{
+    return  this.http.post<Lawyer[]>(environment.DOMAIN + "/auth-lawyer/lawyers", "")
+  }
 
   getClient() : Observable<Client> {
     const jwt=localStorage.getItem("token");
     return this.http.get<Client>(environment.DOMAIN + '/auth-client/clientInfo/'+ jwt)
+  }
+
+  getClientByEmail(email: string): Observable<Client>{
+    return this.http.get<Client>(environment.DOMAIN + '/auth-client/clientInfoByEmail/'+ email)
+  }
+
+  updateRatingLawyer(n: number, email: string):Observable<any>{
+    return this.http.post(environment.DOMAIN + '/auth-lawyer/updateRating/'+ email + '/' + n ,"")
   }
 
 

@@ -1,13 +1,28 @@
 .photo-changer{
-    padding:5px 10px;
-    background:#ff7043;
-    border:1px solid #ff7043;
+    padding:15px 50px;
     position:relative;
-    color:#fff;
-    border-radius:2px;
+    color:#5D0C0C;
     text-align:center;
+    border-radius: 20px;
+    font-weight: bold;
+    background-color:#FCEAD7;
+    border:1px solid #5D0C0C;
     
     cursor:pointer
+  }
+  .card{
+    border-radius: 15px;
+  }
+  
+  .progBtn{
+    padding:15px 50px;
+    position:relative;
+    color:#5D0C0C;
+    text-align:center;
+    border-radius: 20px;
+    font-weight: bold;
+    background-color:#FCEAD7;
+    border:1px solid #5D0C0C;
   }
   .hide_file {
       position: absolute;

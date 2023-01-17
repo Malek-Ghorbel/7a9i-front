@@ -3,6 +3,7 @@ import { Case } from '../../../Model/case.model';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { HttpClient } from '@angular/common/http';
 import { LawyerCasesService } from 'src/app/services/lawyer-cases.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-lawyer-case-demand',
@@ -19,12 +20,15 @@ export class LawyerCaseDemandComponent implements OnInit {
   @Input() isLawyer!: boolean;
 
 
-  constructor( private http: HttpClient) { }
+  constructor( 
+    private http: HttpClient, 
+    private loginService: LoginService, 
+    private lawyerCasesService: LawyerCasesService) { }
 
   ngOnInit(): void {
     if(this.isLawyer){
-      this.http.get('http://localhost:3000/auth-client/clientInfoByEmail/'+this.case.clientEmail)
-    .subscribe((result: any) =>{
+      this.loginService.getClientByEmail(this.case.clientEmail)
+      .subscribe((result: any) =>{
       this.case.clientName= result.name;
     })
     }
@@ -35,28 +39,29 @@ export class LawyerCaseDemandComponent implements OnInit {
   }
   
   rate(n : number) {
-    this.http.patch('http://localhost:3000/appointment/rated/'+ this.case._id ,"") 
+    this.lawyerCasesService.ratedAppointment(this.case._id) 
     .subscribe((result) => {console.log(result);})
-    this.http.post('http://localhost:3000/auth-lawyer/updateRating/'+ this.case.lawyerEmail + '/' + n ,"") 
+    this.loginService.updateRatingLawyer(n, this.case.lawyerEmail) 
     .subscribe((result) => {console.log(result);})
   }
 
   
   caseAccepted(){
     this.case.status = 'en cours';
-    this.http.patch('http://localhost:3000/appointment/update/'+this.case._id, this.case)
+    this.lawyerCasesService.updateCase(this.case._id, this.case)
     .subscribe((result: any)=>{location.reload();})
   }
 
   caseDeleted(){
-    this.http.delete('http://localhost:3000/appointment/delete/'+this.case._id)
+    this.lawyerCasesService.deleteCase(this.case._id)
     .subscribe((result: any)=>{location.reload();})
   }
 
   async getLawyerName(){
-    this.http.get("http://localhost:3000/auth-lawyer/lawyerInfoByEmail/"+this.case.lawyerEmail)
+    this.loginService.getLawyerByEmail(this.case.lawyerEmail)
     .subscribe((result: any) => {
-    this.case.clientName="Maitre "+ result.FamilyName+" "+ result.name  ;
-    })
+        this.case.clientName="Maitre "+ result.FamilyName+" "+ result.name  ;
+      }
+    )
   }
 }

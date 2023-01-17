@@ -1,63 +1,57 @@
 
 
 <div class="container">
-    <br/>
-
-    <div class="row">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-                <h3> Posez votre problème : </h3>
-                <br />
-                <div style="width:40%">
-                 <form [formGroup]="problemDescriptionForm">
-                  <div class="form-group">
-                    <label for="age">Type de problème :</label>
-                       <select class="form-control" name="type"  formControlName="type" [(ngModel)]="problem.type">
-                        <option value="" disabled selected>Litige:</option>
-                         <option>Administratif</option>
-                         <option>Financier</option>
-                         <option>Foncier</option>
-                         <option>Commercial</option>
-                         <option>Fiscale</option>
-                         <option>Contractuel</option>
-                         <option>Civil</option>
-                         <option>Pénal</option>
-                         <option>Familier</option>
-                        </select>
-                  </div>
-                  <br/>
-                 <div class="form-group">
-                  <label for="comment">description</label>
-                  <textarea class="form-control"  formControlName="description" id="comment" rows="3" placeholder="Commentaire" [(ngModel)]="problem.description"></textarea>
-                 </div>
-                 <br>
-                 <button type="submit" [disabled]="!problemDescriptionForm.valid" mdbBtn class="btn btn-primary" (click)="loadLawyers()" color="deep-orange">Résoudre</button>
-                </form>
-            </div>
+  <br/>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h3> Posez votre problème : </h3>
+          <br />
+          <div style="width:40%">
+            <form [formGroup]="problemDescriptionForm">
+              <div class="form-group">
+                <label for="age">Type de problème :</label>
+                <select class="form-control" name="type"  formControlName="type" [(ngModel)]="problem.type">
+                  <option value="" disabled selected>Litige:</option>
+                  <option>Administratif</option>
+                  <option>Financier</option>
+                  <option>Foncier</option>
+                  <option>Commercial</option>
+                  <option>Fiscale</option>
+                  <option>Contractuel</option>
+                  <option>Civil</option>
+                  <option>Pénal</option>
+                  <option>Familier</option>
+                </select>
+              </div>
+              <br/>
+              <div class="form-group">
+                <label for="comment">description</label>
+                <textarea class="form-control"  formControlName="description" id="comment" rows="3" placeholder="Commentaire" [(ngModel)]="problem.description"></textarea>
+              </div>
+              <br>
+              <button 
+                type="submit" [disabled]="!problemDescriptionForm.valid" mdbBtn class="resBtn" (click)="loadLawyers()" >Résoudre</button>
+            </form>
           </div>
         </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body" style="background-image:url('assets/img/justice.jpg');height:440px;background-size:cover;background-repeat: no-repeat;">
-            
-            </div>
-          </div>
-        </div>
-      
-    
-    
-    
+      </div>
     </div>
-    
-   
-    <br/>
-
-    <div *ngIf="shouldShowLawyers">
-        <app-lawyer-table 
+    <div class="col-sm-6">
+      <div class="card">
+        <div 
+          class="card-body" 
+          style="background-image:url('assets/img/im.jpg.png');height:440px;background-size:cover;background-repeat: no-repeat;">    
+        </div>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <div *ngIf="shouldShowLawyers">
+    <app-lawyer-table 
           [description]="problem.description"
           [problemType]="problem.type"
-        ></app-lawyer-table>
-    </div>
+    ></app-lawyer-table>
+  </div>
 </div>

@@ -1,5 +1,10 @@
 <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">Affaires terminées</h5>
+    <h5 
+    class="modal-title" 
+    id="exampleModalLabel"
+    [ngStyle]="{'color':'#5D0C0C','font-weight':'bold'}">
+      Affaires terminées
+    </h5>
     <button
       type="button"
       class="btn-close"
@@ -9,7 +14,7 @@
   </div>
   <div class="modal-body">
     <div>
-        vous avez un affaire terminé avec cet avocat vous pouvez le noter :
+        Votre avis est important :
     </div>
     <div *ngFor="let case of cases">
         <app-lawyer-case 
@@ -20,8 +25,13 @@
     </div>
     </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="modalRef.close()">
-      Close
+    <!-- <button type="button" class="btn btn-secondary" (click)="modalRef.close()">
+      Fermer
+    </button> -->
+    <button 
+    type="button" 
+    class="btn btn-outline-success" 
+    (click)="modalRef.close()">
+      Sauvegarder
     </button>
-    <button type="button" class="btn btn-primary" (click)="modalRef.close()">Save changes</button>
   </div>

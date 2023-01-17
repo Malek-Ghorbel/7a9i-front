@@ -90,6 +90,22 @@ export class LawyerCasesService {
    
   }
 
+  deleteCase(id: string): Observable<any>{
+    return this.http.delete(environment.DOMAIN + '/appointment/delete/'+id)
+  }
+
+  updateCase(id: string, myCase: Case): Observable<any>{
+    return this.http.patch(environment.DOMAIN + '/appointment/update/'+id, myCase)
+  }
+
+  bookAppointment(appointment: any):Observable<any>{
+    return this.http.post(environment.DOMAIN + "/appointment/book/",appointment)
+  }
+
+  ratedAppointment(id: string): Observable<any>{
+    return this.http.patch(environment.DOMAIN + '/appointment/rated/'+ id ,"") 
+  }
+
   onSearchTextChanged(text: string){
     this.selectSearchSubject.next({
       event: "search",

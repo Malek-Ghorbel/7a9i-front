@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { Case } from 'src/app/Model/case.model';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-modif-modal',
@@ -22,7 +23,7 @@ export class ModifModalComponent implements OnInit {
   todos!: string[];
   
 
-  constructor(private http: HttpClient, private modalService: MdbModalService,public modalRef: MdbModalRef<ModifModalComponent>) {}
+  constructor(private http: HttpClient, private modalService: MdbModalService,public modalRef: MdbModalRef<ModifModalComponent>, private loginService: LoginService) {}
  
   close(): void {
     
@@ -40,7 +41,7 @@ export class ModifModalComponent implements OnInit {
     this.modalRef.close(i); 
   }
   ngOnInit(): void {
-    this.http.get('http://localhost:3000/auth-client/clientInfoByEmail/'+this.clientEmail)
+    this.loginService.getLawyerByEmail(this.clientEmail)
     .subscribe((result: any) =>{
       this.clientName = result.name
     })

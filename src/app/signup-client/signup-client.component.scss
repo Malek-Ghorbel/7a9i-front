@@ -1,6 +1,6 @@
 .card{
     box-shadow: 0 3px 5px #0000006f ;
-    width: 500px;
+    width: 600px;
     padding: 30px;
     margin-top: 10px;
     position: absolute;
@@ -23,13 +23,13 @@ label{
     color: rgb(92, 86, 86);
 }
 .ng-valid[required], .ng-valid.required  {
-    border-left: 5px solid #42A948; /* green */
+    border-left: 5px solid #1c6822; /* green */
   }
   
   
   
   input.ng-invalid.ng-touched {
-    border: red 1px solid;
+    border: #a12828 1px solid;
 }
 
 button {

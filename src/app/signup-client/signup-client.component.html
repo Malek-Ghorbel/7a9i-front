@@ -7,99 +7,131 @@
         </div>
         <br>
         <form [formGroup]="signupClientForm">
-          <div class="form-group">
-            <input 
-            type="text" 
-            formControlName="name"
-            class="form-control" 
-            name="name" 
-            aria-describedby="name" 
-            placeholder="Prénom"
-            required >
-            <span class="text-danger" *ngIf="signupClientForm.controls['name'].dirty && signupClientForm.hasError('required','name')">Entrez votre prénom</span>
-          </div>
-          <br/>
-          <div class="form-group">
-            <input 
-              type="text" 
-              formControlName="FamilyName"
-              class="form-control" 
-              name="FamilyName" 
-              aria-describedby="FamilyName" 
-              placeholder="Nom" required  >
-            <span class="text-danger" *ngIf="signupClientForm.controls['FamilyName'].dirty && signupClientForm.hasError('required','FamilyName')">Entrez votre nom</span>
-          </div>
-          <br/>
-          <div class="form-group">
-            <input 
-              type="number" 
-              formControlName="age"
-              class="form-control" 
-              name="age" 
-              placeholder="Âge" required  >
-            <span class="text-danger" *ngIf="signupClientForm.controls['age'].dirty && signupClientForm.hasError('required','age')">Entrez votre âge</span>
-            <span class="text-danger" *ngIf="signupClientForm.controls['age'].dirty && signupClientForm.hasError('min','age')">age doit etre superieure ou egale a 18</span>
-          </div>
-          <br/>
-          <div class="form-group">
-            <select 
-              class="form-control" 
-              formControlName="city"
-              name="city" required  >
-                <option value="" disabled selected>Ville</option>
-                <option>Tunis</option>
-                <option>Sousse</option>
-                <option>Sfax</option>
-                <option>Kairouan</option>
-                <option>Monastir</option>
-            </select>
-            <span class="text-danger" *ngIf="signupClientForm.controls['city'].dirty && signupClientForm.hasError('required','city')">Entrez votre ville</span>
-          </div>
-          <br/>
-          <div class="form-group">
-            <input 
-              type="email"
-              formControlName="email" 
-              class="form-control" 
-              name="email" 
-              aria-describedby="emailHelp" 
-              placeholder="Adresse mail" required >
-            <span class="text-danger" *ngIf="signupClientForm.controls['email'].dirty && signupClientForm.hasError('required','email')">Entrez votre adresse mail</span>
-            <span class="text-danger" *ngIf="signupClientForm.controls['email'].dirty && signupClientForm.hasError('email','email')">Adresse mail invalide</span>
-          </div>
-          <br/>
-          <div class="form-group">
-            <input 
-              type="text" 
-              formControlName="phoneNumber"
-              class="form-control" 
-              name="phoneNumber" 
-              placeholder="Numero du téléphone" required >
-            <span class="text-danger" *ngIf="signupClientForm.controls['phoneNumber'].dirty && signupClientForm.hasError('required','phoneNumber')">Entrez votre mot de passe</span>
-          </div>
-          <br/>
-          <div class="form-group">
-            <input 
-              type="password" 
-              formControlName="password"
-              class="form-control" 
-              name="password" 
-              placeholder="Mot de passe" required >
-            <span class="text-danger" *ngIf="signupClientForm.controls['password'].dirty && signupClientForm.hasError('required','password')">Entrez votre mot de passe</span>
-            <span class="text-danger" *ngIf="signupClientForm.controls['password'].dirty && signupClientForm.hasError('minLength','password')">votre mot de passe doit avoir au moins 9 caracteres</span>
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <input 
+                type="text" 
+                formControlName="name"
+                class="form-control" 
+                name="name" 
+                aria-describedby="name" 
+                placeholder="Prénom"
+                required >
+                <span class="text-danger" *ngIf="signupClientForm.controls['name'].dirty && signupClientForm.hasError('required','name')">Entrez votre prénom</span>
+              </div>
             </div>
-        <br/>  
-        <div class="form-group">
-            <input 
-              type="password" 
-              formControlName="confirmPassword"
-              class="form-control" 
-              name="confirmPassword" 
-              placeholder="Confirmation du mot de passe" required  >
-            <span class="text-danger" *ngIf="signupClientForm.controls['confirmPassword'].dirty && signupClientForm.hasError('required','confirmPassword')">Confirmez votre mot de passe</span>
-            <span class="text-danger" *ngIf="signupClientForm.controls['confirmPassword'].dirty && signupClientForm.controls['confirmPassword'].errors?.['confirmedValidator']">mot de passe pas identiques</span>
+
+            <div class="col-6">
+              <div class="form-group">
+                <input 
+                  type="text" 
+                  formControlName="FamilyName"
+                  class="form-control" 
+                  name="FamilyName" 
+                  aria-describedby="FamilyName" 
+                  placeholder="Nom" required  >
+                <span class="text-danger" *ngIf="signupClientForm.controls['FamilyName'].dirty && signupClientForm.hasError('required','FamilyName')">Entrez votre nom</span>
+              </div>
+            </div>
           </div>
+          
           <br/>
+
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <input 
+                  type="number" 
+                  formControlName="age"
+                  class="form-control" 
+                  name="age" 
+                  placeholder="Âge" required  >
+                <span class="text-danger" *ngIf="signupClientForm.controls['age'].dirty && signupClientForm.hasError('required','age')">Entrez votre âge</span>
+                <span class="text-danger" *ngIf="signupClientForm.controls['age'].dirty && signupClientForm.hasError('min','age')">age doit etre superieure ou egale a 18</span>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="form-group">
+                <select 
+                  class="form-control" 
+                  formControlName="city"
+                  name="city" required  >
+                    <option value="" disabled selected>Ville</option>
+                    <option>Tunis</option>
+                    <option>Sousse</option>
+                    <option>Sfax</option>
+                    <option>Kairouan</option>
+                    <option>Monastir</option>
+                </select>
+                <span class="text-danger" *ngIf="signupClientForm.controls['city'].dirty && signupClientForm.hasError('required','city')">Entrez votre ville</span>
+              </div>
+            </div>
+          </div>
+
+          <br/>
+          
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <input 
+                  type="email"
+                  formControlName="email" 
+                  class="form-control" 
+                  name="email" 
+                  aria-describedby="emailHelp" 
+                  placeholder="Adresse mail" required >
+                <span class="text-danger" *ngIf="signupClientForm.controls['email'].dirty && signupClientForm.hasError('required','email')">Entrez votre adresse mail</span>
+                <span class="text-danger" *ngIf="signupClientForm.controls['email'].dirty && signupClientForm.hasError('email','email')">Adresse mail invalide</span>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="form-group">
+                <input 
+                  type="text" 
+                  formControlName="phoneNumber"
+                  class="form-control" 
+                  name="phoneNumber" 
+                  placeholder="Numero du téléphone" required >
+                <span class="text-danger" *ngIf="signupClientForm.controls['phoneNumber'].dirty && signupClientForm.hasError('required','phoneNumber')">Entrez votre mot de passe</span>
+              </div>
+            </div>
+          </div>
+
+          <br/>
+          
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <input 
+                  type="password" 
+                  formControlName="password"
+                  class="form-control" 
+                  name="password" 
+                  placeholder="Mot de passe" required >
+                <span class="text-danger" *ngIf="signupClientForm.controls['password'].dirty && signupClientForm.hasError('required','password')">Entrez votre mot de passe</span>
+                <span class="text-danger" *ngIf="signupClientForm.controls['password'].dirty && signupClientForm.hasError('minLength','password')">votre mot de passe doit avoir au moins 9 caracteres</span>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="form-group">
+                <input 
+                  type="password" 
+                  formControlName="confirmPassword"
+                  class="form-control" 
+                  name="confirmPassword" 
+                  placeholder="Confirmation du mot de passe" required  >
+                <span class="text-danger" *ngIf="signupClientForm.controls['confirmPassword'].dirty && signupClientForm.hasError('required','confirmPassword')">Confirmez votre mot de passe</span>
+                <span class="text-danger" *ngIf="signupClientForm.controls['confirmPassword'].dirty && signupClientForm.controls['confirmPassword'].errors?.['confirmedValidator']">mot de passe pas identiques</span>
+              </div>
+            </div>
+          </div>
+
+          <br/>
+          
           <button  mdbBtn type="submit" [disabled]="!signupClientForm.valid" class="btn"  (click)="submitForm(signupClientForm)"  mdbWavesEffect>S'inscrire</button>
         </form>
         <a style="color: black; margin-top: 10px;" routerLink="/login">Avez-vous déja un compte? Connectez-vous.</a>

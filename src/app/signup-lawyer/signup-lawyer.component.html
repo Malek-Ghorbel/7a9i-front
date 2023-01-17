@@ -1,136 +1,181 @@
-<div style='background-image:url("../../assets/img/signupclient1.jpg");height:1300px;width:100%;background-repeat: no-repeat;background-size: cover;'>
-<div class="div container">
+<div class="bodyy" >
+  
   <div class="card">
-    <div class="text-center">
+      <div class="text-center">
         <h1>S'inscrire</h1>
         <h6> Inscrivez-vous en tant qu'avocat</h6>
-    </div>
-    <form [formGroup]="signupLawyerForm">
-      <div class="form-group">
-        <input 
-          type="text"
-          formControlName="name"
-          class="form-control" 
-          name="name" 
-          aria-describedby="name" 
-          placeholder="Prénom"
-        >
-        <span class="text-danger" *ngIf="signupLawyerForm.controls['name'].dirty && signupLawyerForm.hasError('required','name')">Entrez votre prénom</span>
       </div>
-      <br/>
-      <div class="form-group">
-        <input 
-          type="text" 
-          formControlName="FamilyName"
-          class="form-control" 
-          name="FamilyName" 
-          aria-describedby="lastName" 
-          placeholder="Nom">
-          <span class="text-danger" *ngIf="signupLawyerForm.controls['FamilyName'].dirty && signupLawyerForm.hasError('required','FamilyName')">Entrez votre nom</span>
-      </div>
-      <br/>
-      <div class="form-group">
-        <input 
-          type="number"
-          formControlName="age" 
-          class="form-control"
-          name="age" 
-          placeholder="Âge"
-        >
-        <span class="text-danger" *ngIf="signupLawyerForm.controls['age'].dirty && signupLawyerForm.hasError('required','age')">Entrez votre âge</span>
-        <span class="text-danger" *ngIf="signupLawyerForm.controls['age'].dirty && signupLawyerForm.hasError('min','age')">age doit etre minimum 25</span>
-      </div>
-      <br/>
-      <div class="form-group">
-        <select 
-          class="form-control" 
-          formControlName="city"
-          name="city"  >
-          <option value="" disabled selected>Ville</option>
-          <option>Tunis</option>
-          <option>Sousse</option>
-          <option>Sfax</option>
-          <option>Kairouan</option>
-          <option>Monastir</option>
-        </select>
-        <span class="text-danger" *ngIf="signupLawyerForm.controls['city'].dirty && signupLawyerForm.hasError('required','city')">Entrez votre ville</span>
-      </div>
-      <br/>
-      <div class="form-group">
-        <input 
-          type="email"
-          formControlName="email" 
-          class="form-control" 
-          name="email" 
-          aria-describedby="emailHelp" 
-          placeholder="Adresse mail" 
-        >
-        <span class="text-danger" *ngIf="signupLawyerForm.controls['email'].dirty && signupLawyerForm.hasError('required','email')">Entrez votre adresse mail</span>
-        <span class="text-danger" *ngIf="signupLawyerForm.controls['email'].dirty && signupLawyerForm.hasError('email','email')">Adresse mail invalide</span>
-      </div>
-      <br/>
-       <div class="form-group">
-         <input 
-         type="text" 
-         formControlName="phoneNumber"
-         class="form-control" 
-         name="phoneNumber" 
-         placeholder="Numero du téléphone">
-         <span class="text-danger" *ngIf="signupLawyerForm.controls['phoneNumber'].dirty && signupLawyerForm.hasError('required','phoneNumber')">Entrez votre mot de passe</span>
-       </div>
+      <form [formGroup]="signupLawyerForm">
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <input 
+                type="text"
+                formControlName="name"
+                class="form-control" 
+                name="name" 
+                aria-describedby="name" 
+                placeholder="Prénom"
+              >
+              <span class="text-danger" *ngIf="signupLawyerForm.controls['name'].dirty && signupLawyerForm.hasError('required','name')">Entrez votre prénom</span>
+            </div>
+          </div>
 
-       <br/>
-      <div class="form-group">
-        <input 
-          type="text" 
-          formControlName="speciality"
-          class="form-control" 
-          name="speciality" 
-          aria-describedby="speciality" 
-          placeholder="Specialité"
-        >
-        <span class="text-danger" *ngIf="signupLawyerForm.controls['speciality'].dirty && signupLawyerForm.hasError('required','speciality')">Entrez votre specialité</span>
-      </div>
-      <br/>
-      <div class="form-group">
-        <textarea 
-          type="text" 
-          formControlName="description"
-          class="form-control" 
-          name="description" 
-          aria-describedby="description" 
-          placeholder="Parler un peu de votre experience"
-        ></textarea>
-        <span class="text-danger" *ngIf="signupLawyerForm.controls['description'].dirty && signupLawyerForm.hasError('required','description')">Entrez votre déscription</span>
-      </div>
-      <br/>
-      <div>
-        <input 
-          type="password" 
-          formControlName="password"
-          class="form-control" 
-          name="password" 
-          placeholder="Mot de passe"  
-        >
-        <span class="text-danger" *ngIf="signupLawyerForm.controls['password'].dirty && signupLawyerForm.hasError('required','password')">Entrez votre mot de passe</span>
-        <span class="text-danger" *ngIf="signupLawyerForm.controls['password'].dirty && signupLawyerForm.hasError('minLength','password')">votre mot de passe doit avoir au moins 9 caracteres</span>
-      </div>
-      <br/> 
-      <div class="form-group">
-        <input 
-          type="password" 
-          formControlName="confirmPassword"
-          class="form-control" 
-          name="confirmPassword" 
-          placeholder="Confirmation du mot de passe"
-        >
-        <span class="text-danger" *ngIf="signupLawyerForm.controls['confirmPassword'].dirty && signupLawyerForm.hasError('required','confirmPassword')">Confirmez votre mot de passe</span>
-        <span class="text-danger" *ngIf="signupLawyerForm.controls['confirmPassword'].dirty && signupLawyerForm.controls['confirmPassword'].errors?.['confirmedValidator']">mot de passe pas identiques</span>
-      </div>
-      <br/>
+          <div class="col-6">
+            <div class="form-group">
+              <input 
+                type="text" 
+                formControlName="FamilyName"
+                class="form-control" 
+                name="FamilyName" 
+                aria-describedby="lastName" 
+                placeholder="Nom">
+                <span class="text-danger" *ngIf="signupLawyerForm.controls['FamilyName'].dirty && signupLawyerForm.hasError('required','FamilyName')">Entrez votre nom</span>
+            </div>
+          </div>
+        </div>
+
+        <br/>
+
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <input 
+                type="number"
+                formControlName="age" 
+                class="form-control"
+                name="age" 
+                placeholder="Âge"
+              >
+              <span class="text-danger" *ngIf="signupLawyerForm.controls['age'].dirty && signupLawyerForm.hasError('required','age')">Entrez votre âge</span>
+              <span class="text-danger" *ngIf="signupLawyerForm.controls['age'].dirty && signupLawyerForm.hasError('min','age')">age doit etre minimum 25</span>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="form-group">
+              <select 
+                class="form-control" 
+                formControlName="city"
+                name="city"  >
+                <option value="" disabled selected>Ville</option>
+                <option>Tunis</option>
+                <option>Sousse</option>
+                <option>Sfax</option>
+                <option>Kairouan</option>
+                <option>Monastir</option>
+              </select>
+              <span class="text-danger" *ngIf="signupLawyerForm.controls['city'].dirty && signupLawyerForm.hasError('required','city')">Entrez votre ville</span>
+            </div>
+          </div>
+        </div>
+
+        <br/>
+
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <input 
+                type="email"
+                formControlName="email" 
+                class="form-control" 
+                name="email" 
+                aria-describedby="emailHelp" 
+                placeholder="Adresse mail" 
+              >
+              <span class="text-danger" *ngIf="signupLawyerForm.controls['email'].dirty && signupLawyerForm.hasError('required','email')">Entrez votre adresse mail</span>
+              <span class="text-danger" *ngIf="signupLawyerForm.controls['email'].dirty && signupLawyerForm.hasError('email','email')">Adresse mail invalide</span>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="form-group">
+              <input 
+                type="text" 
+                formControlName="phoneNumber"
+                class="form-control" 
+                name="phoneNumber" 
+                placeholder="Numero du téléphone">
+              <span class="text-danger" *ngIf="signupLawyerForm.controls['phoneNumber'].dirty && signupLawyerForm.hasError('required','phoneNumber')">Entrez votre mot de passe</span>
+            </div>
+          </div>
+        </div>
+
+        <br/>
+
+        <div class="row">
+          
+            <div class="form-group">
+              <select 
+                class="form-control" 
+                formControlName="speciality"
+                name="speciality"  >
+                <option value="" disabled selected>Specialité</option>
+                <option>Administratif</option>
+                  <option>Financier</option>
+                  <option>Foncier</option>
+                  <option>Commercial</option>
+                  <option>Fiscale</option>
+                  <option>Contractuel</option>
+                  <option>Civil</option>
+                  <option>Pénal</option>
+                  <option>Familier</option>
+              </select>
+              <span class="text-danger" *ngIf="signupLawyerForm.controls['speciality'].dirty && signupLawyerForm.hasError('required','speciality')">Entrez votre specialité</span>
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="row">
+            <div class="form-group">
+              <textarea 
+                type="text" 
+                formControlName="description"
+                class="form-control" 
+                name="description" 
+                aria-describedby="description" 
+                placeholder="Parler un peu de votre experience"
+              ></textarea>
+              <span class="text-danger" *ngIf="signupLawyerForm.controls['description'].dirty && signupLawyerForm.hasError('required','description')">Entrez votre déscription</span>
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <input 
+                type="password" 
+                formControlName="password"
+                class="form-control" 
+                name="password" 
+                placeholder="Mot de passe"  
+              >
+              <span class="text-danger" *ngIf="signupLawyerForm.controls['password'].dirty && signupLawyerForm.hasError('required','password')">Entrez votre mot de passe</span>
+              <span class="text-danger" *ngIf="signupLawyerForm.controls['password'].dirty && signupLawyerForm.hasError('minLength','password')">votre mot de passe doit avoir au moins 9 caracteres</span>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <input 
+                type="password" 
+                formControlName="confirmPassword"
+                class="form-control" 
+                name="confirmPassword" 
+                placeholder="Confirmation du mot de passe"
+              >
+              <span class="text-danger" *ngIf="signupLawyerForm.controls['confirmPassword'].dirty && signupLawyerForm.hasError('required','confirmPassword')">Confirmez votre mot de passe</span>
+              <span class="text-danger" *ngIf="signupLawyerForm.controls['confirmPassword'].dirty && signupLawyerForm.controls['confirmPassword'].errors?.['confirmedValidator']">mot de passe pas identiques</span>
+            </div>
+          </div>
+        </div>
+
+
         <button mdbBtn type="submit" [disabled]="!signupLawyerForm.valid" class="btn" (click)="submitForm(signupLawyerForm)" mdbWavesEffect>S'inscrire</button>
     </form>
     <a style="color: black; margin-top: 10px;" routerLink="/loginLawyer">Avez-vous déja un compte? Connectez-vous.</a>
   </div>
-</div>
+
 </div>

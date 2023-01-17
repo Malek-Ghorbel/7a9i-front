@@ -1,29 +1,37 @@
 .card{
     border: none;
-    width: 500px;
+    width: 600px;
     padding: 40px;
-    position: absolute;
-    top: 20%;
+    //position: absolute;
+    //top: 20%;
     left: 50%;
     transform: translate(-50%, 5%);
     box-shadow: 0 3px 5px #0000006f ;
-    }
+    
+}
 
-.card h1,
-h6{
+.bodyy{
+    background-image:url("../../assets/img/signupclient1.jpg");
+    height:900px;
+    width:100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card h1, h6{
     color: rgb(66, 60, 60);
 }
+
 label{
     color: rgb(92, 86, 86);
 }
+
 .ng-valid[required], .ng-valid.required  {
-    border-left: 5px solid #42A948; /* green */
-  }
+    border-left: 5px solid #1c6822; /* green */
+}
   
-  
-  
-  input.ng-invalid.ng-touched {
-    border: red 1px solid;
+input.ng-invalid.ng-touched {
+    border: #a12828 1px solid;
 }
 
 button {
@@ -32,8 +40,7 @@ button {
     border:1px solid #5D0C0C;
 }
 
-button:disabled,
-button[disabled]{
+button:disabled, button[disabled]{
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;

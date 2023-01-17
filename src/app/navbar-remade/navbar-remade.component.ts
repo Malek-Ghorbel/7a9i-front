@@ -9,10 +9,11 @@ import { LoginService } from '../services/login.service';
   styleUrls: ['./navbar-remade.component.scss']
 })
 export class NavbarRemadeComponent implements OnInit {
-
+  lawyerIn : boolean = false ;
   constructor(private router:Router, private loginService: LoginService) { }
-
+  
   ngOnInit(): void {
+    this.loginService.checkToken() ;
   }
   visibility = false
   collapsed = true; 

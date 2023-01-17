@@ -40,11 +40,28 @@ export class LoginService {
   }
 
   isAuthLawyer() : boolean {
-    if (localStorage.getItem("token")) {
-      if (localStorage.getItem("type") === "lawyer") return true
-      else return false ;
+    if (localStorage.getItem("token") ) {
+      if (localStorage.getItem("type") === "lawyer") {return true }
+      else { return false };
     }
     else return false ;
+
+  }
+
+   checkToken()  {
+    var r = false ;
+    if (localStorage.getItem("token")) {
+      const type = localStorage.getItem("type")
+      this.http.get(environment.DOMAIN + '/auth-'+type+'/verify').subscribe( (result) => {
+      console.log("response " + result)
+      r = Boolean(result)
+      if (!r) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("type");
+      }
+    })
+    }
+    
   }
 
   isAuthClient() : boolean {

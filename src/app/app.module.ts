@@ -27,7 +27,7 @@ import { SignupLawyerComponent } from './signup-lawyer/signup-lawyer.component';
 import { SignupClientComponent } from './signup-client/signup-client.component';
 
 import { ButtonsModule, MDBBootstrapModule } from 'angular-bootstrap-md';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProblemComponent } from './problem/problem.component';
 import { ProfileLawyerComponent } from './profile/profile-lawyer/profile-lawyer.component';
@@ -59,6 +59,7 @@ import { TodoComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case-prog
 import { LawyerCaseComponent } from './lawyer-cases/lawyer-cases-list/lawyer-case/lawyer-case.component';
 import { ToastrModule } from 'ngx-toastr';
 import { DefaultImagePipe } from './pipe/default-image.pipe';
+import { AddTokenInterceptor } from './add-token.interceptor';
 
 
 @NgModule({
@@ -128,7 +129,13 @@ import { DefaultImagePipe } from './pipe/default-image.pipe';
     }),
     NgbModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AddTokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -39,7 +39,6 @@ export class LoginLawyerComponent implements OnInit {
       },
       error => this.toastr.error("Verifiez vos données")
       ) ;
-    console.log(this.loginForm.value)
   }
 
 }

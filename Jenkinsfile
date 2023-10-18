@@ -13,23 +13,12 @@ pipeline {
         }
 
         stage('Build Docker Image') {
-            steps {
-                script {
-                    def dockerImage = docker.build("malekghorbel/haki:latest")
-                }
-            }
+            dockerImage = docker.build("malekghorbel/haki:latest")
         }
 
         stage('Push to Docker Hub') {
-            steps {
-                script {
-                    withCredentials([usernamePassword(credentialsId: 'dockerhubcred', usernameVariable: 'DOCKER_HUB_USERNAME', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
-                        docker.withRegistry('https://index.docker.io/v1/') {
-                     
-                            dockerImage.push()
-                        }
-                    }
-                }
+            withDockerRegistry([credentialsId: 'dockerhubcred', url: ""]) {
+                dockerImage.push()
             }
         }
     }

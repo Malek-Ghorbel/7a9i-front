@@ -1,26 +1,31 @@
 pipeline {
-    agent any
-    
-    environment {
-        DOCKER_HUB_CREDENTIALS = credentials('dockerhubcred') // Use the ID of your Docker Hub credentials
+  agent any
+  options {
+    buildDiscarder(logRotator(numToKeepStr: '5'))
+  }
+  environment {
+    DOCKERHUB_CREDENTIALS = credentials('dockerhub')
+  }
+  stages {
+    stage('Build') {
+      steps {
+        sh 'docker build -t malekghorbel/haki .'
+      }
     }
-
-    stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
-        stage('Build Docker Image') {
-            dockerImage = docker.build("malekghorbel/haki:latest")
-        }
-
-        stage('Push to Docker Hub') {
-            withDockerRegistry([credentialsId: 'dockerhubcred', url: ""]) {
-                dockerImage.push()
-            }
-        }
+    stage('Login') {
+      steps {
+        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+      }
     }
+    stage('Push') {
+      steps {
+        sh 'docker push malekghorbel/haki'
+      }
+    }
+  }
+  post {
+    always {
+      sh 'docker logout'
+    }
+  }
 }
-
